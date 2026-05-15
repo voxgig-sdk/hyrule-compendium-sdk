@@ -1,0 +1,63 @@
+# Entity: master_mode
+
+main: kit: entity: master_mode: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data"
+      req: true
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "master_mode"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "entry"
+                orig: "entry"
+                reqd: true
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/master_mode/entry/{entry}"
+          parts: [
+            "master_mode"
+            "entry"
+            "{entry}"
+          ]
+          select: {
+            exist: [
+              "entry"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "entry"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,120 @@
+# Entity: compendium_entry
+
+main: kit: entity: compendium_entry: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data"
+      op: {
+        load: {
+          req: false
+          type: "`$OBJECT`"
+        }
+      }
+      req: true
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "compendium_entry"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "white-maned_lynel"
+                kind: "param"
+                name: "entry_id"
+                orig: "entry"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/entry/{entry}/image"
+          parts: [
+            "entry"
+            "{entry_id}"
+            "image"
+          ]
+          rename: {
+            param: {
+              entry: "entry_id"
+            }
+          }
+          select: {
+            exist: [
+              "entry_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "white-maned_lynel"
+                kind: "param"
+                name: "id"
+                orig: "entry"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/entry/{entry}"
+          parts: [
+            "entry"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              entry: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/all"
+          parts: [
+            "all"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "entry"
+      ]
+    ]
+  }
+
+
+
+}

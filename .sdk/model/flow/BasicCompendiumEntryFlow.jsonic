@@ -1,0 +1,28 @@
+# BasicCompendiumEntryFlow
+
+main: kit: flow: BasicCompendiumEntryFlow:
+{
+  entity: "compendium_entry",
+  kind: "basic",
+  name: "BasicCompendiumEntryFlow",
+  step: [
+    {
+      input: {
+        ref: "compendium_entry_ref01",
+        srcdatavar: "compendium_entry_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-compendium_entry_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCompendiumEntryFlow"
+}

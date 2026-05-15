@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "master_mode": {
+      "MASTER_MODE00": {
+        "data": {},
+        "entry": "ENTRY01"
+      },
+      "MASTER_MODE01": {
+        "data": {},
+        "entry": "ENTRY01"
+      },
+      "MASTER_MODE02": {
+        "data": {},
+        "entry": "ENTRY01"
+      }
+    }
+  },
+  "new": {
+    "master_mode": {
+      "master_mode_ref01": {
+        "data": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "region": {
+      "REGION00": {
+        "data": {},
+        "description": "s1f",
+        "name": "s20"
+      },
+      "REGION01": {
+        "data": {},
+        "description": "s3d",
+        "name": "s3e"
+      },
+      "REGION02": {
+        "data": {},
+        "description": "s5b",
+        "name": "s5c"
+      }
+    }
+  },
+  "new": {
+    "region": {
+      "region_ref01": {
+        "data": {},
+        "description": "s79",
+        "name": "s7a"
+      }
+    }
+  }
+}

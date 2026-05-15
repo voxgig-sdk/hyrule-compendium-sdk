@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://github.com/gadhagod/Hyrule-Compendium-API"
+      }
+      description: "An API serving data on all in-game items and regions in Breath of the Wild and Tears of the Kingdom. It allows users to access detailed information about various items, including descriptions, common locations, and drop information."
+      license: {
+        name: "MIT"
+        url: "https://github.com/gadhagod/Hyrule-Compendium-API/blob/master/LICENSE"
+      }
+      servers: [
+        {
+          description: "Production server (v3)"
+          url: "https://botw-compendium.herokuapp.com/api/v3"
+        }
+      ]
+      title: "Hyrule Compendium API"
+      version: "3.0.0"
+    }
+  }
+}
+
+}

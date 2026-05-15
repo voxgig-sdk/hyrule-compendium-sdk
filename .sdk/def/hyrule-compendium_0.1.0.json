@@ -1,0 +1,534 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Hyrule Compendium API",
+    "description": "An API serving data on all in-game items and regions in Breath of the Wild and Tears of the Kingdom. It allows users to access detailed information about various items, including descriptions, common locations, and drop information.",
+    "version": "3.0.0",
+    "contact": {
+      "url": "https://github.com/gadhagod/Hyrule-Compendium-API"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/gadhagod/Hyrule-Compendium-API/blob/master/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://botw-compendium.herokuapp.com/api/v3",
+      "description": "Production server (v3)"
+    }
+  ],
+  "paths": {
+    "/entry/{entry}": {
+      "get": {
+        "summary": "Get a specific compendium entry",
+        "description": "Retrieves detailed information about a specific in-game item or creature by its name or ID",
+        "operationId": "getEntry",
+        "tags": [
+          "Compendium Entries"
+        ],
+        "parameters": [
+          {
+            "name": "entry",
+            "in": "path",
+            "required": true,
+            "description": "The name or ID of the compendium entry (use underscores for spaces, e.g., 'white-maned_lynel' or ID number)",
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "example": "white-maned_lynel"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with entry data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/CompendiumEntry"
+                    }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "name": "white-maned lynel",
+                    "id": 123,
+                    "category": "monsters",
+                    "description": "These fearsome monsters have lived in Hyrule since ancient times. Their ability to breathe fire makes White-Maned Lynels among the toughest of the species; each one of their attacks is an invitation to the grave. There are so few eyewitness accounts of this breed because a White-Maned Lynel is not one to let even simple passersby escape with their lives.",
+                    "common_locations": [
+                      "Hyrule Field",
+                      "Hebra Mountains"
+                    ],
+                    "drops": [
+                      "lynel horn",
+                      "lynel hoof",
+                      "lynel guts"
+                    ],
+                    "image": "https://botw-compendium.herokuapp.com/api/v3/entry/white-maned_lynel/image"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entry not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entry/{entry}/image": {
+      "get": {
+        "summary": "Get an entry's image",
+        "description": "Retrieves the image for a specific compendium entry",
+        "operationId": "getEntryImage",
+        "tags": [
+          "Compendium Entries"
+        ],
+        "parameters": [
+          {
+            "name": "entry",
+            "in": "path",
+            "required": true,
+            "description": "The name or ID of the compendium entry",
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "example": "white-maned_lynel"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image file",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Image not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/category/{category}": {
+      "get": {
+        "summary": "Get all entries in a category",
+        "description": "Retrieves all compendium entries belonging to a specific category",
+        "operationId": "getCategory",
+        "tags": [
+          "Categories"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "description": "The category name (e.g., 'monsters', 'creatures', 'equipment', 'materials', 'treasure')",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "monsters",
+                "creatures",
+                "equipment",
+                "materials",
+                "treasure"
+              ]
+            },
+            "example": "monsters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with category entries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CompendiumEntry"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Category not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/all": {
+      "get": {
+        "summary": "Get all compendium entries",
+        "description": "Retrieves all entries in the compendium database",
+        "operationId": "getAllEntries",
+        "tags": [
+          "Compendium Entries"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with all entries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "creatures": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CompendiumEntry"
+                          }
+                        },
+                        "equipment": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CompendiumEntry"
+                          }
+                        },
+                        "materials": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CompendiumEntry"
+                          }
+                        },
+                        "monsters": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CompendiumEntry"
+                          }
+                        },
+                        "treasure": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CompendiumEntry"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/master_mode/entry/{entry}": {
+      "get": {
+        "summary": "Get a master mode entry",
+        "description": "Retrieves detailed information about a specific master mode entry",
+        "operationId": "getMasterModeEntry",
+        "tags": [
+          "Master Mode"
+        ],
+        "parameters": [
+          {
+            "name": "entry",
+            "in": "path",
+            "required": true,
+            "description": "The name or ID of the master mode entry",
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with master mode entry data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/CompendiumEntry"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entry not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/regions": {
+      "get": {
+        "summary": "Get all regions",
+        "description": "Retrieves information about all regions in Hyrule",
+        "operationId": "getAllRegions",
+        "tags": [
+          "Regions"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with all regions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Region"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/region/{region}": {
+      "get": {
+        "summary": "Get a specific region",
+        "description": "Retrieves information about a specific region in Hyrule",
+        "operationId": "getRegion",
+        "tags": [
+          "Regions"
+        ],
+        "parameters": [
+          {
+            "name": "region",
+            "in": "path",
+            "required": true,
+            "description": "The name of the region (use underscores for spaces)",
+            "schema": {
+              "type": "string"
+            },
+            "example": "hyrule_field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with region data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Region"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Region not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CompendiumEntry": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the entry",
+            "example": 123
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the entry",
+            "example": "white-maned lynel"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the entry",
+            "enum": [
+              "creatures",
+              "equipment",
+              "materials",
+              "monsters",
+              "treasure"
+            ],
+            "example": "monsters"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the entry",
+            "example": "These fearsome monsters have lived in Hyrule since ancient times."
+          },
+          "common_locations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Common locations where this entry can be found",
+            "example": [
+              "Hyrule Field",
+              "Hebra Mountains"
+            ]
+          },
+          "drops": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Items that can be dropped by this entry",
+            "example": [
+              "lynel horn",
+              "lynel hoof",
+              "lynel guts"
+            ]
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the entry's image",
+            "example": "https://botw-compendium.herokuapp.com/api/v3/entry/white-maned_lynel/image"
+          },
+          "dlc": {
+            "type": "boolean",
+            "description": "Whether this entry is part of DLC content"
+          },
+          "cooking_effect": {
+            "type": "string",
+            "description": "Cooking effect for food/material entries"
+          },
+          "hearts_recovered": {
+            "type": "number",
+            "description": "Hearts recovered when consuming this item"
+          },
+          "edible": {
+            "type": "boolean",
+            "description": "Whether this item is edible"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "category"
+        ]
+      },
+      "Region": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the region",
+            "example": "Hyrule Field"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the region"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Compendium Entries",
+      "description": "Operations for retrieving compendium entries"
+    },
+    {
+      "name": "Categories",
+      "description": "Operations for retrieving entries by category"
+    },
+    {
+      "name": "Regions",
+      "description": "Operations for retrieving region information"
+    },
+    {
+      "name": "Master Mode",
+      "description": "Operations for retrieving master mode entries"
+    }
+  ]
+}

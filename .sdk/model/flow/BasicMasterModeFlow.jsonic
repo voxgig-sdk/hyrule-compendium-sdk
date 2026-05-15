@@ -1,0 +1,32 @@
+# BasicMasterModeFlow
+
+main: kit: flow: BasicMasterModeFlow:
+{
+  entity: "master_mode",
+  kind: "basic",
+  name: "BasicMasterModeFlow",
+  step: [
+    {
+      input: {
+        ref: "master_mode_ref01",
+        srcdatavar: "master_mode_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "master_mode01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-master_mode_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMasterModeFlow"
+}

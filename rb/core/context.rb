@@ -1,0 +1,105 @@
+# HyruleCompendium SDK context
+
+require_relative '../utility/struct/voxgig_struct'
+require_relative 'control'
+require_relative 'operation'
+require_relative 'spec'
+require_relative 'result'
+require_relative 'response'
+require_relative 'error'
+require_relative 'helpers'
+
+class HyruleCompendiumContext
+  attr_accessor :id, :out, :client, :utility, :ctrl, :meta, :config,
+                :entopts, :options, :entity, :shared, :opmap,
+                :data, :reqdata, :match, :reqmatch, :point,
+                :spec, :result, :response, :op
+
+  def initialize(ctxmap = {}, basectx = nil)
+    ctxmap ||= {}
+    @id = "C#{rand(10000000..99999999)}"
+    @out = {}
+
+    @client = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "client") || basectx&.client
+    @utility = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "utility") || basectx&.utility
+
+    @ctrl = HyruleCompendiumControl.new
+    ctrl_raw = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "ctrl")
+    if ctrl_raw.is_a?(Hash)
+      @ctrl.throw_err = ctrl_raw["throw"] if ctrl_raw.key?("throw")
+      @ctrl.explain = ctrl_raw["explain"] if ctrl_raw["explain"].is_a?(Hash)
+    elsif basectx&.ctrl
+      @ctrl = basectx.ctrl
+    end
+
+    m = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "meta")
+    @meta = m.is_a?(Hash) ? m : (basectx&.meta || {})
+
+    cfg = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "config")
+    @config = cfg.is_a?(Hash) ? cfg : basectx&.config
+
+    eo = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "entopts")
+    @entopts = eo.is_a?(Hash) ? eo : basectx&.entopts
+
+    o = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "options")
+    @options = o.is_a?(Hash) ? o : basectx&.options
+
+    e = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "entity")
+    @entity = e || basectx&.entity
+
+    s = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "shared")
+    @shared = s.is_a?(Hash) ? s : basectx&.shared
+
+    om = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "opmap")
+    @opmap = om.is_a?(Hash) ? om : (basectx&.opmap || {})
+
+    @data = HyruleCompendiumHelpers.to_map(HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "data")) || {}
+    @reqdata = HyruleCompendiumHelpers.to_map(HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "reqdata")) || {}
+    @match = HyruleCompendiumHelpers.to_map(HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "match")) || {}
+    @reqmatch = HyruleCompendiumHelpers.to_map(HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "reqmatch")) || {}
+
+    pt = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "point")
+    @point = pt.is_a?(Hash) ? pt : basectx&.point
+
+    sp = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "spec")
+    @spec = sp.is_a?(HyruleCompendiumSpec) ? sp : basectx&.spec
+
+    r = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "result")
+    @result = r.is_a?(HyruleCompendiumResult) ? r : basectx&.result
+
+    rp = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "response")
+    @response = rp.is_a?(HyruleCompendiumResponse) ? rp : basectx&.response
+
+    opname = HyruleCompendiumHelpers.get_ctx_prop(ctxmap, "opname") || ""
+    @op = resolve_op(opname)
+  end
+
+  def resolve_op(opname)
+    return @opmap[opname] if @opmap[opname]
+    return HyruleCompendiumOperation.new({}) if opname.empty?
+
+    entname = @entity&.respond_to?(:get_name) ? @entity.get_name : "_"
+    opcfg = VoxgigStruct.getpath(@config, "entity.#{entname}.op.#{opname}")
+
+    input = (opname == "update" || opname == "create") ? "data" : "match"
+
+    points = []
+    if opcfg.is_a?(Hash)
+      t = VoxgigStruct.getprop(opcfg, "points")
+      points = t if t.is_a?(Array)
+    end
+
+    op = HyruleCompendiumOperation.new({
+      "entity" => entname,
+      "name" => opname,
+      "input" => input,
+      "points" => points,
+    })
+    @opmap[opname] = op
+    op
+  end
+
+  def make_error(code, msg)
+    HyruleCompendiumError.new(code, msg, self)
+  end
+end

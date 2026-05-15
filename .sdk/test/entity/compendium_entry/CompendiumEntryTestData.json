@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "compendium_entry": {
+      "COMPENDIUM_ENTRY00": {
+        "data": {},
+        "entry_id": "ENTRY01"
+      },
+      "COMPENDIUM_ENTRY01": {
+        "data": {},
+        "entry_id": "ENTRY01"
+      },
+      "COMPENDIUM_ENTRY02": {
+        "data": {},
+        "entry_id": "ENTRY01"
+      }
+    }
+  },
+  "new": {
+    "compendium_entry": {
+      "compendium_entry_ref01": {
+        "data": {}
+      }
+    }
+  }
+}
