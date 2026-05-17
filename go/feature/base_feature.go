@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/hyrule-compendium-sdk/core"
+	"github.com/voxgig-sdk/hyrule-compendium-sdk/go/core"
 )
 
 type BaseFeature struct {

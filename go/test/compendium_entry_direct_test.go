@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/hyrule-compendium-sdk"
-	"github.com/voxgig-sdk/hyrule-compendium-sdk/core"
+	sdk "github.com/voxgig-sdk/hyrule-compendium-sdk/go"
+	"github.com/voxgig-sdk/hyrule-compendium-sdk/go/core"
 )
 
 func TestCompendiumEntryDirect(t *testing.T) {

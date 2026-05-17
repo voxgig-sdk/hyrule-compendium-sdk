@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/hyrule-compendium-sdk/core"
+	"github.com/voxgig-sdk/hyrule-compendium-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/hyrule-compendium-sdk/go/utility/struct"
 )
 
 type RegionEntity struct {

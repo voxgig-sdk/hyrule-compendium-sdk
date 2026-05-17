@@ -4,17 +4,20 @@
       "REGION00": {
         "data": {},
         "description": "s1f",
-        "name": "s20"
+        "name": "s20",
+        "id": "REGION00"
       },
       "REGION01": {
         "data": {},
         "description": "s3d",
-        "name": "s3e"
+        "name": "s3e",
+        "id": "REGION01"
       },
       "REGION02": {
         "data": {},
         "description": "s5b",
-        "name": "s5c"
+        "name": "s5c",
+        "id": "REGION02"
       }
     }
   },

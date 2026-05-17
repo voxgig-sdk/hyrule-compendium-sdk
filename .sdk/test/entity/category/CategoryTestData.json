@@ -2,13 +2,16 @@
   "existing": {
     "category": {
       "CATEGORY00": {
-        "data": []
+        "data": [],
+        "id": "CATEGORY00"
       },
       "CATEGORY01": {
-        "data": []
+        "data": [],
+        "id": "CATEGORY01"
       },
       "CATEGORY02": {
-        "data": []
+        "data": [],
+        "id": "CATEGORY02"
       }
     }
   },

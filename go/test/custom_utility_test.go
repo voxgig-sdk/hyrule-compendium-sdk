@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/hyrule-compendium-sdk"
+	sdk "github.com/voxgig-sdk/hyrule-compendium-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

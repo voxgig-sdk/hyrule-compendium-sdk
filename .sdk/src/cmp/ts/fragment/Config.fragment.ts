@@ -29,7 +29,7 @@ class Config {
 
 
   options = {
-    base: 'https://botw-compendium.herokuapp.com/api/v3',
+    base: '$$main.kit.info.servers.0.url$$',
 
     'AUTHBLOCK'headers: 'HEADERS',
 

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/hyrule-compendium-sdk/core"
+import "github.com/voxgig-sdk/hyrule-compendium-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll
