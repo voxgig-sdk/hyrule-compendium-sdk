@@ -15,9 +15,6 @@ module HyruleCompendiumConfig
       },
       "options" => {
         "base" => "https://botw-compendium.herokuapp.com/api/v3",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

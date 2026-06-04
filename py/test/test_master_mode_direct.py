@@ -69,14 +69,12 @@ def _master_mode_direct_setup(mockres):
     env = runner.env_override({
         "HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID": {},
         "HYRULECOMPENDIUM_TEST_LIVE": "FALSE",
-        "HYRULECOMPENDIUM_APIKEY": "NONE",
     })
 
     live = env.get("HYRULECOMPENDIUM_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("HYRULECOMPENDIUM_APIKEY"),
         }
         client = HyruleCompendiumSDK(merged_opts)
         return {

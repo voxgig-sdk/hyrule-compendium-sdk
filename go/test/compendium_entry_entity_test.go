@@ -117,7 +117,6 @@ func compendium_entryBasicSetup(extra map[string]any) *entityTestSetup {
 		"HYRULECOMPENDIUM_TEST_COMPENDIUM_ENTRY_ENTID": idmap,
 		"HYRULECOMPENDIUM_TEST_LIVE":      "FALSE",
 		"HYRULECOMPENDIUM_TEST_EXPLAIN":   "FALSE",
-		"HYRULECOMPENDIUM_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["HYRULECOMPENDIUM_TEST_COMPENDIUM_ENTRY_ENTID"])
@@ -128,7 +127,6 @@ func compendium_entryBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["HYRULECOMPENDIUM_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["HYRULECOMPENDIUM_APIKEY"],
 			},
 			extra,
 		})
