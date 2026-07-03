@@ -10,7 +10,7 @@ The Lua SDK for the HyruleCompendium API — an entity-oriented client using Lua
 
 ## Install
 ```bash
-luarocks install hyrule-compendium-sdk
+luarocks install voxgig-sdk-hyrule-compendium
 ```
 
 If the module is not yet published, add the source directory to

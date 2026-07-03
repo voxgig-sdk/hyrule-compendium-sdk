@@ -10,7 +10,7 @@ The TypeScript SDK for the HyruleCompendium API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install hyrule-compendium
+npm install @voxgig-sdk/hyrule-compendium
 ```
 ## Tutorial: your first API call
 

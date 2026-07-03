@@ -10,7 +10,7 @@ The Python SDK for the HyruleCompendium API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install hyrule-compendium-sdk
+pip install voxgig-sdk-hyrule-compendium
 ```
 
 Or install from source:

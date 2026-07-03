@@ -10,13 +10,13 @@ The Ruby SDK for the HyruleCompendium API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install hyrule-compendium-sdk
+gem install voxgig-sdk-hyrule-compendium
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "hyrule-compendium-sdk"
+gem "voxgig-sdk-hyrule-compendium"
 ```
 
 Then run:

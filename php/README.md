@@ -10,7 +10,7 @@ The PHP SDK for the HyruleCompendium API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/hyrule-compendium-sdk
+composer require voxgig-sdk/hyrule-compendium
 ```
 
 
