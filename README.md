@@ -1,20 +1,8 @@
 # HyruleCompendium SDK
 
-Look up items, creatures, monsters, treasures, equipment, materials, and regions from Breath of the Wild and Tears of the Kingdom
+Hyrule Compendium API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Hyrule Compendium API
-
-The Hyrule Compendium API is a community-built JSON API that mirrors the in-game compendium from *The Legend of Zelda: Breath of the Wild* and *Tears of the Kingdom*. It is maintained by [gadhagod](https://github.com/gadhagod/Hyrule-Compendium-API) and hosted on Heroku at `https://botw-compendium.herokuapp.com/api/v3`.
-
-What you get from the API:
-- Individual compendium entries by name or id, with description, common locations, drops, and image URL
-- Entries grouped by category (creatures, monsters, materials, equipment, treasure)
-- Master Mode data exclusive to the Breath of the Wild expansion
-- Regions of Hyrule with associated metadata
-
-The API is read-only and requires no authentication or API key. CORS support varies per endpoint, and because the service is on a free Heroku tier it can be slow to wake from idle or intermittently unavailable.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install hyrule-compendium-sdk
 luarocks install hyrule-compendium-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { HyruleCompendiumSDK } from 'hyrule-compendium'
 
-const client = new HyruleCompendiumSDK({})
+const client = new HyruleCompendiumSDK({
+  apikey: process.env.HYRULE-COMPENDIUM_APIKEY,
+})
 
+// Load category data
+const category = await client.Category().load({})
+console.log(category.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Category** | A grouping of compendium entries (creatures, monsters, materials, equipment, treasure); fetch all entries in a category via `/compendium/category/{category}`. | `/category/{category}` |
-| **CompendiumEntry** | A single item, creature, monster, or piece of equipment with name, id, description, common_locations, drops and image; retrievable via `/compendium/entry/{name-or-id}`. | `/entry/{entry}/image` |
-| **MasterMode** | Entries specific to Breath of the Wild's Master Mode expansion, exposing the harder-difficulty variants of creatures and monsters. | `/master_mode/entry/{entry}` |
-| **Region** | A named area of Hyrule with metadata describing where compendium entries can be found. | `/regions` |
+| **Category** |  | `/category/{category}` |
+| **CompendiumEntry** |  | `/entry/{entry}/image` |
+| **MasterMode** |  | `/master_mode/entry/{entry}` |
+| **Region** |  | `/regions` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,15 +103,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from hyrulecompendium_sdk import HyruleCompendiumSDK
 
-client = HyruleCompendiumSDK({})
+client = HyruleCompendiumSDK({
+    "apikey": os.environ.get("HYRULE-COMPENDIUM_APIKEY"),
+})
 
 
 # Load a specific category
-category, err = client.Category(None).load(
-    {"id": "example_id"}, None
-)
+category, err = client.Category().load({"id": "example_id"})
+print(category)
 ```
 
 ### PHP
@@ -128,13 +122,14 @@ category, err = client.Category(None).load(
 <?php
 require_once 'hyrulecompendium_sdk.php';
 
-$client = new HyruleCompendiumSDK([]);
+$client = new HyruleCompendiumSDK([
+    "apikey" => getenv("HYRULE-COMPENDIUM_APIKEY"),
+]);
 
 
 // Load a specific category
-[$category, $err] = $client->Category(null)->load(
-    ["id" => "example_id"], null
-);
+[$category, $err] = $client->Category()->load(["id" => "example_id"]);
+print_r($category);
 ```
 
 ### Golang
@@ -142,8 +137,13 @@ $client = new HyruleCompendiumSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/hyrule-compendium-sdk/go"
 
-client := sdk.NewHyruleCompendiumSDK(map[string]any{})
+client := sdk.NewHyruleCompendiumSDK(map[string]any{
+    "apikey": os.Getenv("HYRULE-COMPENDIUM_APIKEY"),
+})
 
+// Load category data
+category, err := client.Category(nil).Load(map[string]any{}, nil)
+fmt.Println(category)
 ```
 
 ### Ruby
@@ -151,13 +151,14 @@ client := sdk.NewHyruleCompendiumSDK(map[string]any{})
 ```ruby
 require_relative "HyruleCompendium_sdk"
 
-client = HyruleCompendiumSDK.new({})
+client = HyruleCompendiumSDK.new({
+  "apikey" => ENV["HYRULE-COMPENDIUM_APIKEY"],
+})
 
 
 # Load a specific category
-category, err = client.Category(nil).load(
-  { "id" => "example_id" }, nil
-)
+category, err = client.Category().load({ "id" => "example_id" })
+puts category
 ```
 
 ### Lua
@@ -165,13 +166,14 @@ category, err = client.Category(nil).load(
 ```lua
 local sdk = require("hyrule-compendium_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("HYRULE-COMPENDIUM_APIKEY"),
+})
 
 
 -- Load a specific category
-local category, err = client:Category(nil):load(
-  { id = "example_id" }, nil
-)
+local category, err = client:Category():load({ id = "example_id" })
+print(category)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +192,21 @@ const result = await client.Category().load({ id: 'test01' })
 ### Python
 
 ```python
-client = HyruleCompendiumSDK.test(None, None)
-result, err = client.Category(None).load(
-    {"id": "test01"}, None
-)
+client = HyruleCompendiumSDK.test()
+result, err = client.Category().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = HyruleCompendiumSDK::test(null, null);
-[$result, $err] = $client->Category(null)->load(
-    ["id" => "test01"], null
-);
+$client = HyruleCompendiumSDK::test();
+[$result, $err] = $client->Category()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Category(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +215,15 @@ result, err := client.Category(nil).Load(
 ### Ruby
 
 ```ruby
-client = HyruleCompendiumSDK.test(nil, nil)
-result, err = client.Category(nil).load(
-  { "id" => "test01" }, nil
-)
+client = HyruleCompendiumSDK.test
+result, err = client.Category().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Category(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Category():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,14 +327,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Hyrule Compendium API
-
-- Upstream: [https://gadhagod.github.io/Hyrule-Compendium-API/](https://gadhagod.github.io/Hyrule-Compendium-API/)
-
-- Source code is released under the MIT License.
-- Game content (item names, descriptions, images) is the property of Nintendo; this is an unofficial fan project not affiliated with or endorsed by Nintendo.
-- Credit the project (gadhagod/Hyrule-Compendium-API) when redistributing data.
 
 ---
 

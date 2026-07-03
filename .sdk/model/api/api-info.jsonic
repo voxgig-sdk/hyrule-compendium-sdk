@@ -20,29 +20,7 @@ main: {
       ]
       title: "Hyrule Compendium API"
       version: "3.0.0"
-      tagline: "Look up items, creatures, monsters, treasures, equipment, materials, and regions from Breath of the Wild and Tears of the Kingdom"
-      homepage: "https://gadhagod.github.io/Hyrule-Compendium-API/"
-      docs_url: "https://gadhagod.github.io/Hyrule-Compendium-API/"
-      license_short: "MIT License"
-      license_md: `- Source code is released under the MIT License.
-- Game content (item names, descriptions, images) is the property of Nintendo; this is an unofficial fan project not affiliated with or endorsed by Nintendo.
-- Credit the project (gadhagod/Hyrule-Compendium-API) when redistributing data.`
-      about_md: `The Hyrule Compendium API is a community-built JSON API that mirrors the in-game compendium from *The Legend of Zelda: Breath of the Wild* and *Tears of the Kingdom*. It is maintained by [gadhagod](https://github.com/gadhagod/Hyrule-Compendium-API) and hosted on Heroku at \`https://botw-compendium.herokuapp.com/api/v3\`.
-
-What you get from the API:
-- Individual compendium entries by name or id, with description, common locations, drops, and image URL
-- Entries grouped by category (creatures, monsters, materials, equipment, treasure)
-- Master Mode data exclusive to the Breath of the Wild expansion
-- Regions of Hyrule with associated metadata
-
-The API is read-only and requires no authentication or API key. CORS support varies per endpoint, and because the service is on a free Heroku tier it can be slow to wake from idle or intermittently unavailable.`
-      entity_desc: {
-        category: "A grouping of compendium entries (creatures, monsters, materials, equipment, treasure); fetch all entries in a category via `/compendium/category/{category}`."
-        compendium_entry: "A single item, creature, monster, or piece of equipment with name, id, description, common_locations, drops and image; retrievable via `/compendium/entry/{name-or-id}`."
-        master_mode: "Entries specific to Breath of the Wild's Master Mode expansion, exposing the harder-difficulty variants of creatures and monsters."
-        region: "A named area of Hyrule with metadata describing where compendium entries can be found."
-      }
-      auth: false
     }
   }
 }
+

@@ -110,12 +110,14 @@ func categoryDirectSetup(mockres any) *categoryDirectSetupResult {
 	env := envOverride(map[string]any{
 		"HYRULECOMPENDIUM_TEST_CATEGORY_ENTID": map[string]any{},
 		"HYRULECOMPENDIUM_TEST_LIVE":    "FALSE",
+		"HYRULECOMPENDIUM_APIKEY":       "NONE",
 	})
 
 	live := env["HYRULECOMPENDIUM_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["HYRULECOMPENDIUM_APIKEY"],
 		}
 		client := sdk.NewHyruleCompendiumSDK(mergedOpts)
 

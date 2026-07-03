@@ -85,6 +85,7 @@ function category_basic_setup($extra)
         "HYRULECOMPENDIUM_TEST_CATEGORY_ENTID" => $idmap,
         "HYRULECOMPENDIUM_TEST_LIVE" => "FALSE",
         "HYRULECOMPENDIUM_TEST_EXPLAIN" => "FALSE",
+        "HYRULECOMPENDIUM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function category_basic_setup($extra)
     if ($env["HYRULECOMPENDIUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["HYRULECOMPENDIUM_APIKEY"],
             ],
             $extra ?? [],
         ]);

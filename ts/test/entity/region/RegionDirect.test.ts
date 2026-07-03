@@ -117,12 +117,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'HYRULECOMPENDIUM_TEST_REGION_ENTID': {},
     'HYRULECOMPENDIUM_TEST_LIVE': 'FALSE',
+    'HYRULECOMPENDIUM_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.HYRULECOMPENDIUM_TEST_LIVE
 
   if (live) {
     const client = new HyruleCompendiumSDK({
+      apikey: env.HYRULECOMPENDIUM_APIKEY,
     })
 
     let idmap: any = env['HYRULECOMPENDIUM_TEST_REGION_ENTID']

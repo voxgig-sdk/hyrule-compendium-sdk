@@ -91,6 +91,7 @@ function compendium_entry_basic_setup(extra)
     ["HYRULECOMPENDIUM_TEST_COMPENDIUM_ENTRY_ENTID"] = idmap,
     ["HYRULECOMPENDIUM_TEST_LIVE"] = "FALSE",
     ["HYRULECOMPENDIUM_TEST_EXPLAIN"] = "FALSE",
+    ["HYRULECOMPENDIUM_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function compendium_entry_basic_setup(extra)
   if env["HYRULECOMPENDIUM_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["HYRULECOMPENDIUM_APIKEY"],
       },
       extra or {},
     })

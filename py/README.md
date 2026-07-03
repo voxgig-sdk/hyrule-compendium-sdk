@@ -1,6 +1,11 @@
 # HyruleCompendium Python SDK
 
-The Python SDK for the HyruleCompendium API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the HyruleCompendium API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from hyrulecompendium_sdk import HyruleCompendiumSDK
 
-client = HyruleCompendiumSDK({})
+client = HyruleCompendiumSDK({
+    "apikey": os.environ.get("HYRULE-COMPENDIUM_APIKEY"),
+})
 ```
 
 ### 3. Load a category
 
 ```python
-result, err = client.Category(None).load({"id": "example_id"}, None)
+result, err = client.Category().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -79,11 +87,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = HyruleCompendiumSDK.test(None, None)
+client = HyruleCompendiumSDK.test()
 
-result, err = client.HyruleCompendium(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.HyruleCompendium().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -114,6 +120,7 @@ Create a `.env.local` file at the project root:
 
 ```
 HYRULE-COMPENDIUM_TEST_LIVE=TRUE
+HYRULE-COMPENDIUM_APIKEY=<your-key>
 ```
 
 Then run:
@@ -137,6 +144,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
