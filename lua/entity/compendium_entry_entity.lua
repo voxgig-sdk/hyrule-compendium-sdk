@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CompendiumEntryLoadMatch
+---@param ctrl? table
+---@return CompendiumEntry
+---@return string? err
 function CompendiumEntryEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

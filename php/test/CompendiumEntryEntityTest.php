@@ -49,8 +49,7 @@ class CompendiumEntryEntityTest extends TestCase
         // LOAD
         $compendium_entry_ref01_ent = $client->CompendiumEntry(null);
         $compendium_entry_ref01_match_dt0 = [];
-        [$compendium_entry_ref01_data_dt0_loaded, $err] = $compendium_entry_ref01_ent->load($compendium_entry_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $compendium_entry_ref01_data_dt0_loaded = $compendium_entry_ref01_ent->load($compendium_entry_ref01_match_dt0, null);
         $this->assertNotNull($compendium_entry_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function compendium_entry_basic_setup($extra)
         "HYRULECOMPENDIUM_TEST_COMPENDIUM_ENTRY_ENTID" => $idmap,
         "HYRULECOMPENDIUM_TEST_LIVE" => "FALSE",
         "HYRULECOMPENDIUM_TEST_EXPLAIN" => "FALSE",
-        "HYRULECOMPENDIUM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function compendium_entry_basic_setup($extra)
     if ($env["HYRULECOMPENDIUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["HYRULECOMPENDIUM_APIKEY"],
             ],
             $extra ?? [],
         ]);

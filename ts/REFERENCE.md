@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -146,7 +145,7 @@ Alias for `HyruleCompendiumSDK.test()`.
 ## CategoryEntity
 
 ```ts
-const category = client.Category()
+const category = client.category
 ```
 
 ### Fields
@@ -162,7 +161,7 @@ const category = client.Category()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Category().load({ id: 'category_id' })
+const result = await client.category.load({ id: 'category_id' })
 ```
 
 ### Common Methods
@@ -196,7 +195,7 @@ Return a copy of the entity options.
 ## CompendiumEntryEntity
 
 ```ts
-const compendium_entry = client.CompendiumEntry()
+const compendium_entry = client.compendium_entry
 ```
 
 ### Fields
@@ -218,7 +217,7 @@ const compendium_entry = client.CompendiumEntry()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.CompendiumEntry().load({ id: 'compendium_entry_id' })
+const result = await client.compendium_entry.load({ id: 'compendium_entry_id' })
 ```
 
 ### Common Methods
@@ -252,7 +251,7 @@ Return a copy of the entity options.
 ## MasterModeEntity
 
 ```ts
-const master_mode = client.MasterMode()
+const master_mode = client.master_mode
 ```
 
 ### Fields
@@ -268,7 +267,7 @@ const master_mode = client.MasterMode()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MasterMode().load({ id: 'master_mode_id' })
+const result = await client.master_mode.load({ id: 'master_mode_id' })
 ```
 
 ### Common Methods
@@ -302,7 +301,7 @@ Return a copy of the entity options.
 ## RegionEntity
 
 ```ts
-const region = client.Region()
+const region = client.region
 ```
 
 ### Fields
@@ -320,7 +319,7 @@ const region = client.Region()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Region().list()
+const results = await client.region.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -328,7 +327,7 @@ const results = await client.Region().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Region().load({ id: 'region_id' })
+const result = await client.region.load({ id: 'region_id' })
 ```
 
 ### Common Methods

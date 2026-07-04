@@ -49,8 +49,7 @@ class CategoryEntityTest extends TestCase
         // LOAD
         $category_ref01_ent = $client->Category(null);
         $category_ref01_match_dt0 = [];
-        [$category_ref01_data_dt0_loaded, $err] = $category_ref01_ent->load($category_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $category_ref01_data_dt0_loaded = $category_ref01_ent->load($category_ref01_match_dt0, null);
         $this->assertNotNull($category_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function category_basic_setup($extra)
         "HYRULECOMPENDIUM_TEST_CATEGORY_ENTID" => $idmap,
         "HYRULECOMPENDIUM_TEST_LIVE" => "FALSE",
         "HYRULECOMPENDIUM_TEST_EXPLAIN" => "FALSE",
-        "HYRULECOMPENDIUM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function category_basic_setup($extra)
     if ($env["HYRULECOMPENDIUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["HYRULECOMPENDIUM_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -144,16 +144,23 @@ class HyruleCompendiumSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class HyruleCompendiumSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,30 +212,74 @@ class HyruleCompendiumSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def category(self):
+        """Idiomatic facade: client.category.list() / client.category.load({"id": ...})."""
+        from entity.category_entity import CategoryEntity
+        cached = getattr(self, "_category", None)
+        if cached is None:
+            cached = CategoryEntity(self, None)
+            self._category = cached
+        return cached
 
     def Category(self, data=None):
+        # Deprecated: use client.category instead.
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
+    @property
+    def compendium_entry(self):
+        """Idiomatic facade: client.compendium_entry.list() / client.compendium_entry.load({"id": ...})."""
+        from entity.compendium_entry_entity import CompendiumEntryEntity
+        cached = getattr(self, "_compendium_entry", None)
+        if cached is None:
+            cached = CompendiumEntryEntity(self, None)
+            self._compendium_entry = cached
+        return cached
+
     def CompendiumEntry(self, data=None):
+        # Deprecated: use client.compendium_entry instead.
         from entity.compendium_entry_entity import CompendiumEntryEntity
         return CompendiumEntryEntity(self, data)
 
 
+    @property
+    def master_mode(self):
+        """Idiomatic facade: client.master_mode.list() / client.master_mode.load({"id": ...})."""
+        from entity.master_mode_entity import MasterModeEntity
+        cached = getattr(self, "_master_mode", None)
+        if cached is None:
+            cached = MasterModeEntity(self, None)
+            self._master_mode = cached
+        return cached
+
     def MasterMode(self, data=None):
+        # Deprecated: use client.master_mode instead.
         from entity.master_mode_entity import MasterModeEntity
         return MasterModeEntity(self, data)
 
 
+    @property
+    def region(self):
+        """Idiomatic facade: client.region.list() / client.region.load({"id": ...})."""
+        from entity.region_entity import RegionEntity
+        cached = getattr(self, "_region", None)
+        if cached is None:
+            cached = RegionEntity(self, None)
+            self._region = cached
+        return cached
+
     def Region(self, data=None):
+        # Deprecated: use client.region instead.
         from entity.region_entity import RegionEntity
         return RegionEntity(self, data)
 

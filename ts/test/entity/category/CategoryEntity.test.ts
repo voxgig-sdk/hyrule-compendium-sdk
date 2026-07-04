@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'HYRULE_COMPENDIUM_TEST_CATEGORY_ENTID': idmap,
     'HYRULE_COMPENDIUM_TEST_LIVE': 'FALSE',
     'HYRULE_COMPENDIUM_TEST_EXPLAIN': 'FALSE',
-    'HYRULE_COMPENDIUM_APIKEY': 'NONE',
   })
 
   idmap = env['HYRULE_COMPENDIUM_TEST_CATEGORY_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new HyruleCompendiumSDK(merge([
       {
-        apikey: env.HYRULE_COMPENDIUM_APIKEY,
       },
       extra
     ]))

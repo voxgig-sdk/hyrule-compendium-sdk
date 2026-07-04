@@ -45,6 +45,7 @@ class CompendiumEntryEntity
     end
   end
 
+  # @return [CompendiumEntry, Hash] the current CompendiumEntry data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class CompendiumEntryEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of CompendiumEntry fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single CompendiumEntry.
+  #
+  # @param reqmatch [CompendiumEntryLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [CompendiumEntry, Hash] the loaded CompendiumEntry; raises HyruleCompendiumError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -9,12 +9,9 @@ The Lua SDK for the HyruleCompendium API — an entity-oriented client using Lua
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-hyrule-compendium
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("hyrule-compendium_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("HYRULE-COMPENDIUM_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a category
 
 ```lua
-local result, err = client:Category():load({ id = "example_id" })
+local result, err = client:category():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:HyruleCompendium():load({ id = "test01" })
+local result, err = client:category():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-HYRULE-COMPENDIUM_TEST_LIVE=TRUE
-HYRULE-COMPENDIUM_APIKEY=<your-key>
+HYRULE_COMPENDIUM_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -256,7 +249,7 @@ API path: `/regions`
 
 ### Category
 
-Create an instance: `const category = client.Category()`
+Create an instance: `const category = client.category`
 
 #### Operations
 
@@ -273,13 +266,13 @@ Create an instance: `const category = client.Category()`
 #### Example: Load
 
 ```ts
-const category = await client.Category().load({ id: 'category_id' })
+const category = await client.category.load({ id: 'category_id' })
 ```
 
 
 ### CompendiumEntry
 
-Create an instance: `const compendium_entry = client.CompendiumEntry()`
+Create an instance: `const compendium_entry = client.compendium_entry`
 
 #### Operations
 
@@ -296,13 +289,13 @@ Create an instance: `const compendium_entry = client.CompendiumEntry()`
 #### Example: Load
 
 ```ts
-const compendium_entry = await client.CompendiumEntry().load({ id: 'compendium_entry_id' })
+const compendium_entry = await client.compendium_entry.load({ id: 'compendium_entry_id' })
 ```
 
 
 ### MasterMode
 
-Create an instance: `const master_mode = client.MasterMode()`
+Create an instance: `const master_mode = client.master_mode`
 
 #### Operations
 
@@ -319,13 +312,13 @@ Create an instance: `const master_mode = client.MasterMode()`
 #### Example: Load
 
 ```ts
-const master_mode = await client.MasterMode().load({ id: 'master_mode_id' })
+const master_mode = await client.master_mode.load({ id: 'master_mode_id' })
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.Region()`
+Create an instance: `const region = client.region`
 
 #### Operations
 
@@ -345,13 +338,13 @@ Create an instance: `const region = client.Region()`
 #### Example: Load
 
 ```ts
-const region = await client.Region().load({ id: 'region_id' })
+const region = await client.region.load({ id: 'region_id' })
 ```
 
 #### Example: List
 
 ```ts
-const regions = await client.Region().list()
+const regions = await client.region.list()
 ```
 
 
@@ -426,11 +419,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local category = client:category()
+category:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- category:data_get() now returns the loaded category data
+-- category:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

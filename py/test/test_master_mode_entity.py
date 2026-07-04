@@ -49,8 +49,7 @@ class TestMasterModeEntity:
         # LOAD
         master_mode_ref01_ent = client.MasterMode(None)
         master_mode_ref01_match_dt0 = {}
-        master_mode_ref01_data_dt0_loaded, err = master_mode_ref01_ent.load(master_mode_ref01_match_dt0, None)
-        assert err is None
+        master_mode_ref01_data_dt0_loaded = master_mode_ref01_ent.load(master_mode_ref01_match_dt0, None)
         assert master_mode_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _master_mode_basic_setup(extra):
         "HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID": idmap,
         "HYRULECOMPENDIUM_TEST_LIVE": "FALSE",
         "HYRULECOMPENDIUM_TEST_EXPLAIN": "FALSE",
-        "HYRULECOMPENDIUM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _master_mode_basic_setup(extra):
     if env.get("HYRULECOMPENDIUM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("HYRULECOMPENDIUM_APIKEY"),
             },
             extra or {},
         ])

@@ -42,8 +42,7 @@ class CompendiumEntryEntityTest < Minitest::Test
     # LOAD
     compendium_entry_ref01_ent = client.CompendiumEntry(nil)
     compendium_entry_ref01_match_dt0 = {}
-    compendium_entry_ref01_data_dt0_loaded, err = compendium_entry_ref01_ent.load(compendium_entry_ref01_match_dt0, nil)
-    assert_nil err
+    compendium_entry_ref01_data_dt0_loaded = compendium_entry_ref01_ent.load(compendium_entry_ref01_match_dt0, nil)
     assert !compendium_entry_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def compendium_entry_basic_setup(extra)
     "HYRULECOMPENDIUM_TEST_COMPENDIUM_ENTRY_ENTID" => idmap,
     "HYRULECOMPENDIUM_TEST_LIVE" => "FALSE",
     "HYRULECOMPENDIUM_TEST_EXPLAIN" => "FALSE",
-    "HYRULECOMPENDIUM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def compendium_entry_basic_setup(extra)
   if env["HYRULECOMPENDIUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["HYRULECOMPENDIUM_APIKEY"],
       },
       extra || {},
     ])

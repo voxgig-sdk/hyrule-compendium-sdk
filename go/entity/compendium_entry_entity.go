@@ -85,6 +85,27 @@ func (e *CompendiumEntryEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an CompendiumEntry; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *CompendiumEntryEntity) DataTyped(data ...CompendiumEntry) CompendiumEntry {
+	if len(data) > 0 {
+		return typedFrom[CompendiumEntry](e.Data(asMap(data[0])))
+	}
+	return typedFrom[CompendiumEntry](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through CompendiumEntry (all fields
+// optional at the wire level).
+func (e *CompendiumEntryEntity) MatchTyped(match ...CompendiumEntry) CompendiumEntry {
+	if len(match) > 0 {
+		return typedFrom[CompendiumEntry](e.Match(asMap(match[0])))
+	}
+	return typedFrom[CompendiumEntry](e.Match())
+}
+
 
 func (e *CompendiumEntryEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *CompendiumEntryEntity) Load(reqmatch map[string]any, ctrl map[string]an
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// CompendiumEntryLoadMatch and returns an CompendiumEntry. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *CompendiumEntryEntity) LoadTyped(reqmatch CompendiumEntryLoadMatch, ctrl map[string]any) (CompendiumEntry, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return CompendiumEntry{}, err
+	}
+	return typedFrom[CompendiumEntry](res), nil
 }
 
 

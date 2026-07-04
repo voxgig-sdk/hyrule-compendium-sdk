@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  MasterMode,
+  MasterModeLoadMatch,
+} from '../HyruleCompendiumTypes'
 
 // TODO: needs Entity superclass
-class MasterModeEntity extends HyruleCompendiumEntityBase {
+class MasterModeEntity extends HyruleCompendiumEntityBase<MasterMode> {
 
   constructor(client: HyruleCompendiumSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class MasterModeEntity extends HyruleCompendiumEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MasterModeLoadMatch, ctrl?: Control): Promise<MasterMode> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class MasterModeEntity extends HyruleCompendiumEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<MasterMode> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

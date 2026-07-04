@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -96,7 +95,7 @@ same parameters as `direct()`.
 ## CategoryEntity
 
 ```lua
-local category = client:Category(nil)
+local category = client:category(nil)
 ```
 
 ### Fields
@@ -112,7 +111,7 @@ local category = client:Category(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Category():load({ id = "category_id" })
+local result, err = client:category():load({ id = "category_id" })
 ```
 
 ### Common Methods
@@ -148,7 +147,7 @@ Return the entity name.
 ## CompendiumEntryEntity
 
 ```lua
-local compendium_entry = client:CompendiumEntry(nil)
+local compendium_entry = client:compendium_entry(nil)
 ```
 
 ### Fields
@@ -170,7 +169,7 @@ local compendium_entry = client:CompendiumEntry(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:CompendiumEntry():load({ id = "compendium_entry_id" })
+local result, err = client:compendium_entry():load({ id = "compendium_entry_id" })
 ```
 
 ### Common Methods
@@ -206,7 +205,7 @@ Return the entity name.
 ## MasterModeEntity
 
 ```lua
-local master_mode = client:MasterMode(nil)
+local master_mode = client:master_mode(nil)
 ```
 
 ### Fields
@@ -222,7 +221,7 @@ local master_mode = client:MasterMode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MasterMode():load({ id = "master_mode_id" })
+local result, err = client:master_mode():load({ id = "master_mode_id" })
 ```
 
 ### Common Methods
@@ -258,7 +257,7 @@ Return the entity name.
 ## RegionEntity
 
 ```lua
-local region = client:Region(nil)
+local region = client:region(nil)
 ```
 
 ### Fields
@@ -276,7 +275,7 @@ local region = client:Region(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Region():list()
+local results, err = client:region():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -284,7 +283,7 @@ local results, err = client:Region():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Region():load({ id = "region_id" })
+local result, err = client:region():load({ id = "region_id" })
 ```
 
 ### Common Methods

@@ -45,6 +45,7 @@ class MasterModeEntity
     end
   end
 
+  # @return [MasterMode, Hash] the current MasterMode data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class MasterModeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of MasterMode fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single MasterMode.
+  #
+  # @param reqmatch [MasterModeLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [MasterMode, Hash] the loaded MasterMode; raises HyruleCompendiumError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -245,21 +245,33 @@ func (sdk *HyruleCompendiumSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Category returns a Category entity bound to this client.
+// Idiomatic usage: client.Category(nil).List(nil, nil) or
+// client.Category(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HyruleCompendiumSDK) Category(data map[string]any) HyruleCompendiumEntity {
 	return NewCategoryEntityFunc(sdk, data)
 }
 
 
+// CompendiumEntry returns a CompendiumEntry entity bound to this client.
+// Idiomatic usage: client.CompendiumEntry(nil).List(nil, nil) or
+// client.CompendiumEntry(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HyruleCompendiumSDK) CompendiumEntry(data map[string]any) HyruleCompendiumEntity {
 	return NewCompendiumEntryEntityFunc(sdk, data)
 }
 
 
+// MasterMode returns a MasterMode entity bound to this client.
+// Idiomatic usage: client.MasterMode(nil).List(nil, nil) or
+// client.MasterMode(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HyruleCompendiumSDK) MasterMode(data map[string]any) HyruleCompendiumEntity {
 	return NewMasterModeEntityFunc(sdk, data)
 }
 
 
+// Region returns a Region entity bound to this client.
+// Idiomatic usage: client.Region(nil).List(nil, nil) or
+// client.Region(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HyruleCompendiumSDK) Region(data map[string]any) HyruleCompendiumEntity {
 	return NewRegionEntityFunc(sdk, data)
 }

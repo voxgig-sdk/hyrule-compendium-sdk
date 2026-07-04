@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'HyruleCompendium_types'
+
 
 class HyruleCompendiumSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class HyruleCompendiumSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class HyruleCompendiumSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue HyruleCompendiumError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = HyruleCompendiumHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class HyruleCompendiumSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,34 +198,62 @@ class HyruleCompendiumSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.category.list / client.category.load({ "id" => ... })
+  def category
+    require_relative 'entity/category_entity'
+    @category ||= CategoryEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.category instead.
   def Category(data = nil)
     require_relative 'entity/category_entity'
     CategoryEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.compendium_entry.list / client.compendium_entry.load({ "id" => ... })
+  def compendium_entry
+    require_relative 'entity/compendium_entry_entity'
+    @compendium_entry ||= CompendiumEntryEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.compendium_entry instead.
   def CompendiumEntry(data = nil)
     require_relative 'entity/compendium_entry_entity'
     CompendiumEntryEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.master_mode.list / client.master_mode.load({ "id" => ... })
+  def master_mode
+    require_relative 'entity/master_mode_entity'
+    @master_mode ||= MasterModeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.master_mode instead.
   def MasterMode(data = nil)
     require_relative 'entity/master_mode_entity'
     MasterModeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.region.list / client.region.load({ "id" => ... })
+  def region
+    require_relative 'entity/region_entity'
+    @region ||= RegionEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.region instead.
   def Region(data = nil)
     require_relative 'entity/region_entity'
     RegionEntity.new(self, data)

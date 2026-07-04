@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:category():list() / client:category():load({ id = ... })
+function HyruleCompendiumSDK:category(data)
+  local EntityMod = require("entity.category_entity")
+  if data == nil then
+    if self._category == nil then
+      self._category = EntityMod.new(self, nil)
+    end
+    return self._category
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:category() instead.
 function HyruleCompendiumSDK:Category(data)
   local EntityMod = require("entity.category_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:compendium_entry():list() / client:compendium_entry():load({ id = ... })
+function HyruleCompendiumSDK:compendium_entry(data)
+  local EntityMod = require("entity.compendium_entry_entity")
+  if data == nil then
+    if self._compendium_entry == nil then
+      self._compendium_entry = EntityMod.new(self, nil)
+    end
+    return self._compendium_entry
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:compendium_entry() instead.
 function HyruleCompendiumSDK:CompendiumEntry(data)
   local EntityMod = require("entity.compendium_entry_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:master_mode():list() / client:master_mode():load({ id = ... })
+function HyruleCompendiumSDK:master_mode(data)
+  local EntityMod = require("entity.master_mode_entity")
+  if data == nil then
+    if self._master_mode == nil then
+      self._master_mode = EntityMod.new(self, nil)
+    end
+    return self._master_mode
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:master_mode() instead.
 function HyruleCompendiumSDK:MasterMode(data)
   local EntityMod = require("entity.master_mode_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:region():list() / client:region():load({ id = ... })
+function HyruleCompendiumSDK:region(data)
+  local EntityMod = require("entity.region_entity")
+  if data == nil then
+    if self._region == nil then
+      self._region = EntityMod.new(self, nil)
+    end
+    return self._region
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:region() instead.
 function HyruleCompendiumSDK:Region(data)
   local EntityMod = require("entity.region_entity")
   return EntityMod.new(self, data)

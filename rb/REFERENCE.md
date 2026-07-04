@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -66,9 +65,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -82,14 +83,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -97,7 +98,7 @@ same parameters as `direct()`.
 ## CategoryEntity
 
 ```ruby
-category = client.Category
+category = client.category
 ```
 
 ### Fields
@@ -108,12 +109,12 @@ category = client.Category
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Category.load({ "id" => "category_id" })
+result = client.category.load({ "id" => "category_id" })
 ```
 
 ### Common Methods
@@ -149,7 +150,7 @@ Return the entity name.
 ## CompendiumEntryEntity
 
 ```ruby
-compendium_entry = client.CompendiumEntry
+compendium_entry = client.compendium_entry
 ```
 
 ### Fields
@@ -166,12 +167,12 @@ compendium_entry = client.CompendiumEntry
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.CompendiumEntry.load({ "id" => "compendium_entry_id" })
+result = client.compendium_entry.load({ "id" => "compendium_entry_id" })
 ```
 
 ### Common Methods
@@ -207,7 +208,7 @@ Return the entity name.
 ## MasterModeEntity
 
 ```ruby
-master_mode = client.MasterMode
+master_mode = client.master_mode
 ```
 
 ### Fields
@@ -218,12 +219,12 @@ master_mode = client.MasterMode
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.MasterMode.load({ "id" => "master_mode_id" })
+result = client.master_mode.load({ "id" => "master_mode_id" })
 ```
 
 ### Common Methods
@@ -259,7 +260,7 @@ Return the entity name.
 ## RegionEntity
 
 ```ruby
-region = client.Region
+region = client.region
 ```
 
 ### Fields
@@ -272,20 +273,20 @@ region = client.Region
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Region.list(nil)
+results = client.region.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Region.load({ "id" => "region_id" })
+result = client.region.load({ "id" => "region_id" })
 ```
 
 ### Common Methods

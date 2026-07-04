@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://botw-compendium.herokuapp.com/api/v3',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -92,7 +88,8 @@ class Config {
                     "name": "id",
                     "orig": "category",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -159,7 +156,8 @@ class Config {
                     "name": "entry_id",
                     "orig": "entry",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -197,7 +195,8 @@ class Config {
                     "name": "id",
                     "orig": "entry",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -276,7 +275,8 @@ class Config {
                     "name": "entry",
                     "orig": "entry",
                     "reqd": true,
-                    "type": "`$ANY`"
+                    "type": "`$ANY`",
+                    "index$": 0
                   }
                 ]
               },
@@ -373,7 +373,8 @@ class Config {
                     "name": "id",
                     "orig": "region",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

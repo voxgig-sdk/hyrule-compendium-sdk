@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  CompendiumEntry,
+  CompendiumEntryLoadMatch,
+} from '../HyruleCompendiumTypes'
 
 // TODO: needs Entity superclass
-class CompendiumEntryEntity extends HyruleCompendiumEntityBase {
+class CompendiumEntryEntity extends HyruleCompendiumEntityBase<CompendiumEntry> {
 
   constructor(client: HyruleCompendiumSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class CompendiumEntryEntity extends HyruleCompendiumEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CompendiumEntryLoadMatch, ctrl?: Control): Promise<CompendiumEntry> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class CompendiumEntryEntity extends HyruleCompendiumEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<CompendiumEntry> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
