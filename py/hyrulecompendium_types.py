@@ -4,59 +4,54 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Category:
-    data: Optional[list] = None
+class Category(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class CategoryLoadMatch:
+class CategoryLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class CompendiumEntry:
+class CompendiumEntry(TypedDict):
     data: dict
 
 
-@dataclass
-class CompendiumEntryLoadMatch:
+class CompendiumEntryLoadMatch(TypedDict):
     entry_id: str
     id: str
 
 
-@dataclass
-class MasterMode:
+class MasterMode(TypedDict):
     data: dict
 
 
-@dataclass
-class MasterModeLoadMatch:
+class MasterModeLoadMatch(TypedDict):
     entry: Any
 
 
-@dataclass
-class Region:
-    data: Optional[dict] = None
-    description: Optional[str] = None
-    name: Optional[str] = None
+class Region(TypedDict, total=False):
+    data: dict
+    description: str
+    name: str
 
 
-@dataclass
-class RegionLoadMatch:
+class RegionLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class RegionListMatch:
-    data: Optional[dict] = None
-    description: Optional[str] = None
-    name: Optional[str] = None
-
+class RegionListMatch(TypedDict, total=False):
+    data: dict
+    description: str
+    name: str

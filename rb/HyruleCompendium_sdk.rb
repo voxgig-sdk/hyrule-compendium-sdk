@@ -208,52 +208,28 @@ class HyruleCompendiumSDK
   end
 
 
-  # Idiomatic facade: client.category.list / client.category.load({ "id" => ... })
-  def category
-    require_relative 'entity/category_entity'
-    @category ||= CategoryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.category instead.
+  # Canonical facade: client.Category.list / client.Category.load({ "id" => ... })
   def Category(data = nil)
     require_relative 'entity/category_entity'
     CategoryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.compendium_entry.list / client.compendium_entry.load({ "id" => ... })
-  def compendium_entry
-    require_relative 'entity/compendium_entry_entity'
-    @compendium_entry ||= CompendiumEntryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.compendium_entry instead.
+  # Canonical facade: client.CompendiumEntry.list / client.CompendiumEntry.load({ "id" => ... })
   def CompendiumEntry(data = nil)
     require_relative 'entity/compendium_entry_entity'
     CompendiumEntryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.master_mode.list / client.master_mode.load({ "id" => ... })
-  def master_mode
-    require_relative 'entity/master_mode_entity'
-    @master_mode ||= MasterModeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.master_mode instead.
+  # Canonical facade: client.MasterMode.list / client.MasterMode.load({ "id" => ... })
   def MasterMode(data = nil)
     require_relative 'entity/master_mode_entity'
     MasterModeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.region.list / client.region.load({ "id" => ... })
-  def region
-    require_relative 'entity/region_entity'
-    @region ||= RegionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.region instead.
+  # Canonical facade: client.Region.list / client.Region.load({ "id" => ... })
   def Region(data = nil)
     require_relative 'entity/region_entity'
     RegionEntity.new(self, data)

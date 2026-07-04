@@ -233,10 +233,10 @@ class HyruleCompendiumSDK
 
     private $_category = null;
 
-    // Idiomatic facade: $client->category()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Category() (PHP method
-    // names are case-insensitive).
-    public function category($data = null)
+    // Canonical facade: $client->Category()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->category()
+    // resolves here too.
+    public function Category($data = null)
     {
         require_once __DIR__ . '/entity/category_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class HyruleCompendiumSDK
 
     private $_compendium_entry = null;
 
-    // Idiomatic facade: $client->compendium_entry()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CompendiumEntry() (PHP method
-    // names are case-insensitive).
-    public function compendium_entry($data = null)
+    // Canonical facade: $client->CompendiumEntry()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->compendium_entry()
+    // resolves here too.
+    public function CompendiumEntry($data = null)
     {
         require_once __DIR__ . '/entity/compendium_entry_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class HyruleCompendiumSDK
 
     private $_master_mode = null;
 
-    // Idiomatic facade: $client->master_mode()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MasterMode() (PHP method
-    // names are case-insensitive).
-    public function master_mode($data = null)
+    // Canonical facade: $client->MasterMode()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->master_mode()
+    // resolves here too.
+    public function MasterMode($data = null)
     {
         require_once __DIR__ . '/entity/master_mode_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class HyruleCompendiumSDK
 
     private $_region = null;
 
-    // Idiomatic facade: $client->region()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Region() (PHP method
-    // names are case-insensitive).
-    public function region($data = null)
+    // Canonical facade: $client->Region()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->region()
+    // resolves here too.
+    public function Region($data = null)
     {
         require_once __DIR__ . '/entity/region_entity.php';
         if ($data === null) {

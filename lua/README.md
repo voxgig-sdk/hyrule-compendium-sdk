@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a category
 
 ```lua
-local result, err = client:category():load({ id = "example_id" })
+local category, err = client:Category():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(category)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:category():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Category():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -186,17 +186,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local category, err = client:Category():load({ id = "example_id" })
+    if err then error(err) end
+    -- category is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -249,7 +254,7 @@ API path: `/regions`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `local category = client:Category(nil)`
 
 #### Operations
 
@@ -265,14 +270,14 @@ Create an instance: `const category = client.category`
 
 #### Example: Load
 
-```ts
-const category = await client.category.load({ id: 'category_id' })
+```lua
+local category, err = client:Category():load({ id = "category_id" })
 ```
 
 
 ### CompendiumEntry
 
-Create an instance: `const compendium_entry = client.compendium_entry`
+Create an instance: `local compendium_entry = client:CompendiumEntry(nil)`
 
 #### Operations
 
@@ -288,14 +293,14 @@ Create an instance: `const compendium_entry = client.compendium_entry`
 
 #### Example: Load
 
-```ts
-const compendium_entry = await client.compendium_entry.load({ id: 'compendium_entry_id' })
+```lua
+local compendium_entry, err = client:CompendiumEntry():load({ id = "compendium_entry_id" })
 ```
 
 
 ### MasterMode
 
-Create an instance: `const master_mode = client.master_mode`
+Create an instance: `local master_mode = client:MasterMode(nil)`
 
 #### Operations
 
@@ -311,14 +316,14 @@ Create an instance: `const master_mode = client.master_mode`
 
 #### Example: Load
 
-```ts
-const master_mode = await client.master_mode.load({ id: 'master_mode_id' })
+```lua
+local master_mode, err = client:MasterMode():load({ id = "master_mode_id" })
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `local region = client:Region(nil)`
 
 #### Operations
 
@@ -337,14 +342,14 @@ Create an instance: `const region = client.region`
 
 #### Example: Load
 
-```ts
-const region = await client.region.load({ id: 'region_id' })
+```lua
+local region, err = client:Region():load({ id = "region_id" })
 ```
 
 #### Example: List
 
-```ts
-const regions = await client.region.list()
+```lua
+local regions, err = client:Region():list()
 ```
 
 
@@ -419,7 +424,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local category = client:category()
+local category = client:Category()
 category:load({ id = "example_id" })
 
 -- category:data_get() now returns the loaded category data

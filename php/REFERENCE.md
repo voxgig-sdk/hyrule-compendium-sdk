@@ -97,7 +97,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CategoryEntity
 
 ```php
-$category = $client->category();
+$category = $client->Category();
 ```
 
 ### Fields
@@ -113,7 +113,7 @@ $category = $client->category();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->category()->load(["id" => "category_id"]);
+$result = $client->Category()->load(["id" => "category_id"]);
 ```
 
 ### Common Methods
@@ -149,7 +149,7 @@ Return the entity name.
 ## CompendiumEntryEntity
 
 ```php
-$compendium_entry = $client->compendium_entry();
+$compendium_entry = $client->CompendiumEntry();
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ $compendium_entry = $client->compendium_entry();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->compendium_entry()->load(["id" => "compendium_entry_id"]);
+$result = $client->CompendiumEntry()->load(["id" => "compendium_entry_id"]);
 ```
 
 ### Common Methods
@@ -207,7 +207,7 @@ Return the entity name.
 ## MasterModeEntity
 
 ```php
-$master_mode = $client->master_mode();
+$master_mode = $client->MasterMode();
 ```
 
 ### Fields
@@ -223,7 +223,7 @@ $master_mode = $client->master_mode();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->master_mode()->load(["id" => "master_mode_id"]);
+$result = $client->MasterMode()->load(["id" => "master_mode_id"]);
 ```
 
 ### Common Methods
@@ -259,7 +259,7 @@ Return the entity name.
 ## RegionEntity
 
 ```php
-$region = $client->region();
+$region = $client->Region();
 ```
 
 ### Fields
@@ -277,7 +277,7 @@ $region = $client->region();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->region()->list([]);
+$results = $client->Region()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -285,7 +285,7 @@ $results = $client->region()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->region()->load(["id" => "region_id"]);
+$result = $client->Region()->load(["id" => "region_id"]);
 ```
 
 ### Common Methods

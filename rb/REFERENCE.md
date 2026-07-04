@@ -98,7 +98,7 @@ same parameters as `direct()`. Raises on error.
 ## CategoryEntity
 
 ```ruby
-category = client.category
+category = client.Category
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ category = client.category
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.category.load({ "id" => "category_id" })
+result = client.Category.load({ "id" => "category_id" })
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ Return the entity name.
 ## CompendiumEntryEntity
 
 ```ruby
-compendium_entry = client.compendium_entry
+compendium_entry = client.CompendiumEntry
 ```
 
 ### Fields
@@ -172,7 +172,7 @@ compendium_entry = client.compendium_entry
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.compendium_entry.load({ "id" => "compendium_entry_id" })
+result = client.CompendiumEntry.load({ "id" => "compendium_entry_id" })
 ```
 
 ### Common Methods
@@ -208,7 +208,7 @@ Return the entity name.
 ## MasterModeEntity
 
 ```ruby
-master_mode = client.master_mode
+master_mode = client.MasterMode
 ```
 
 ### Fields
@@ -224,7 +224,7 @@ master_mode = client.master_mode
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.master_mode.load({ "id" => "master_mode_id" })
+result = client.MasterMode.load({ "id" => "master_mode_id" })
 ```
 
 ### Common Methods
@@ -260,7 +260,7 @@ Return the entity name.
 ## RegionEntity
 
 ```ruby
-region = client.region
+region = client.Region
 ```
 
 ### Fields
@@ -278,7 +278,7 @@ region = client.region
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.region.list(nil)
+results = client.Region.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -286,7 +286,7 @@ results = client.region.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.region.load({ "id" => "region_id" })
+result = client.Region.load({ "id" => "region_id" })
 ```
 
 ### Common Methods

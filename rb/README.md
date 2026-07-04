@@ -32,8 +32,9 @@ client = HyruleCompendiumSDK.new
 
 ```ruby
 begin
-  result = client.category.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Category record (raises on error).
+  category = client.Category.load({ "id" => "example_id" })
+  puts category
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = HyruleCompendiumSDK.test
+client = HyruleCompendiumSDK.test({
+  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.category.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+category = client.Category.load({ "id" => "test01" })
+puts category
 ```
 
 ### Use a custom fetch function
@@ -253,7 +258,7 @@ API path: `/regions`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `category = client.Category`
 
 #### Operations
 
@@ -269,14 +274,15 @@ Create an instance: `const category = client.category`
 
 #### Example: Load
 
-```ts
-const category = await client.category.load({ id: 'category_id' })
+```ruby
+# load returns the bare Category record (raises on error).
+category = client.Category.load({ "id" => "category_id" })
 ```
 
 
 ### CompendiumEntry
 
-Create an instance: `const compendium_entry = client.compendium_entry`
+Create an instance: `compendium_entry = client.CompendiumEntry`
 
 #### Operations
 
@@ -292,14 +298,15 @@ Create an instance: `const compendium_entry = client.compendium_entry`
 
 #### Example: Load
 
-```ts
-const compendium_entry = await client.compendium_entry.load({ id: 'compendium_entry_id' })
+```ruby
+# load returns the bare CompendiumEntry record (raises on error).
+compendium_entry = client.CompendiumEntry.load({ "id" => "compendium_entry_id" })
 ```
 
 
 ### MasterMode
 
-Create an instance: `const master_mode = client.master_mode`
+Create an instance: `master_mode = client.MasterMode`
 
 #### Operations
 
@@ -315,14 +322,15 @@ Create an instance: `const master_mode = client.master_mode`
 
 #### Example: Load
 
-```ts
-const master_mode = await client.master_mode.load({ id: 'master_mode_id' })
+```ruby
+# load returns the bare MasterMode record (raises on error).
+master_mode = client.MasterMode.load({ "id" => "master_mode_id" })
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `region = client.Region`
 
 #### Operations
 
@@ -341,14 +349,16 @@ Create an instance: `const region = client.region`
 
 #### Example: Load
 
-```ts
-const region = await client.region.load({ id: 'region_id' })
+```ruby
+# load returns the bare Region record (raises on error).
+region = client.Region.load({ "id" => "region_id" })
 ```
 
 #### Example: List
 
-```ts
-const regions = await client.region.list()
+```ruby
+# list returns an Array of Region records (raises on error).
+regions = client.Region.list
 ```
 
 
@@ -423,7 +433,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-category = client.category
+category = client.Category
 category.load({ "id" => "example_id" })
 
 # category.data_get now returns the loaded category data

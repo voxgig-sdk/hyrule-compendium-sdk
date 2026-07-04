@@ -30,11 +30,14 @@ const client = new HyruleCompendiumSDK()
 
 ### 3. Load a category
 
-```ts
-const result = await client.category.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const category = await client.Category().load({ id: 'example_id' })
+  console.log(category)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -52,6 +55,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -80,9 +86,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = HyruleCompendiumSDK.test()
 
-const result = await client.category.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const category = await client.Category().load({ id: 'test01' })
+// category is a bare entity populated with mock response data
+console.log(category)
 ```
 
 You can also use the instance method:
@@ -97,7 +103,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.category
+const entity = client.Category()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -195,29 +201,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): HyruleCompendiumSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -298,7 +305,7 @@ API path: `/regions`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `const category = client.Category()`
 
 #### Operations
 
@@ -315,13 +322,13 @@ Create an instance: `const category = client.category`
 #### Example: Load
 
 ```ts
-const category = await client.category.load({ id: 'category_id' })
+const category = await client.Category().load({ id: 'category_id' })
 ```
 
 
 ### CompendiumEntry
 
-Create an instance: `const compendium_entry = client.compendium_entry`
+Create an instance: `const compendium_entry = client.CompendiumEntry()`
 
 #### Operations
 
@@ -338,13 +345,13 @@ Create an instance: `const compendium_entry = client.compendium_entry`
 #### Example: Load
 
 ```ts
-const compendium_entry = await client.compendium_entry.load({ id: 'compendium_entry_id' })
+const compendium_entry = await client.CompendiumEntry().load({ id: 'compendium_entry_id' })
 ```
 
 
 ### MasterMode
 
-Create an instance: `const master_mode = client.master_mode`
+Create an instance: `const master_mode = client.MasterMode()`
 
 #### Operations
 
@@ -361,13 +368,13 @@ Create an instance: `const master_mode = client.master_mode`
 #### Example: Load
 
 ```ts
-const master_mode = await client.master_mode.load({ id: 'master_mode_id' })
+const master_mode = await client.MasterMode().load({ id: 'master_mode_id' })
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `const region = client.Region()`
 
 #### Operations
 
@@ -387,13 +394,13 @@ Create an instance: `const region = client.region`
 #### Example: Load
 
 ```ts
-const region = await client.region.load({ id: 'region_id' })
+const region = await client.Region().load({ id: 'region_id' })
 ```
 
 #### Example: List
 
 ```ts
-const regions = await client.region.list()
+const regions = await client.Region().list()
 ```
 
 
@@ -464,7 +471,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const category = client.category
+const category = client.Category()
 await category.load({ id: "example_id" })
 
 // category.data() now returns the loaded category data

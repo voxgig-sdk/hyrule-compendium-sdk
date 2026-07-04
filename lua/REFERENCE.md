@@ -95,7 +95,7 @@ same parameters as `direct()`.
 ## CategoryEntity
 
 ```lua
-local category = client:category(nil)
+local category = client:Category(nil)
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ local category = client:category(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:category():load({ id = "category_id" })
+local result, err = client:Category():load({ id = "category_id" })
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ Return the entity name.
 ## CompendiumEntryEntity
 
 ```lua
-local compendium_entry = client:compendium_entry(nil)
+local compendium_entry = client:CompendiumEntry(nil)
 ```
 
 ### Fields
@@ -169,7 +169,7 @@ local compendium_entry = client:compendium_entry(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:compendium_entry():load({ id = "compendium_entry_id" })
+local result, err = client:CompendiumEntry():load({ id = "compendium_entry_id" })
 ```
 
 ### Common Methods
@@ -205,7 +205,7 @@ Return the entity name.
 ## MasterModeEntity
 
 ```lua
-local master_mode = client:master_mode(nil)
+local master_mode = client:MasterMode(nil)
 ```
 
 ### Fields
@@ -221,7 +221,7 @@ local master_mode = client:master_mode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:master_mode():load({ id = "master_mode_id" })
+local result, err = client:MasterMode():load({ id = "master_mode_id" })
 ```
 
 ### Common Methods
@@ -257,7 +257,7 @@ Return the entity name.
 ## RegionEntity
 
 ```lua
-local region = client:region(nil)
+local region = client:Region(nil)
 ```
 
 ### Fields
@@ -275,7 +275,7 @@ local region = client:region(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:region():list()
+local results, err = client:Region():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -283,7 +283,7 @@ local results, err = client:region():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:region():load({ id = "region_id" })
+local result, err = client:Region():load({ id = "region_id" })
 ```
 
 ### Common Methods

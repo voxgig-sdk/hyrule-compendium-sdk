@@ -207,56 +207,28 @@ class HyruleCompendiumSDK {
 
 
 
-  _category?: CategoryEntity
-
-  // Idiomatic facade: `client.category.list()` / `client.category.load({ id })`.
-  get category(): CategoryEntity {
-    return (this._category ??= new CategoryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.category` instead. */
+  // Entity access: `client.Category().list()` / `client.Category().load({ id })`.
   Category(data?: any) {
     const self = this
     return new CategoryEntity(self,data)
   }
 
 
-  _compendium_entry?: CompendiumEntryEntity
-
-  // Idiomatic facade: `client.compendium_entry.list()` / `client.compendium_entry.load({ id })`.
-  get compendium_entry(): CompendiumEntryEntity {
-    return (this._compendium_entry ??= new CompendiumEntryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.compendium_entry` instead. */
+  // Entity access: `client.CompendiumEntry().list()` / `client.CompendiumEntry().load({ id })`.
   CompendiumEntry(data?: any) {
     const self = this
     return new CompendiumEntryEntity(self,data)
   }
 
 
-  _master_mode?: MasterModeEntity
-
-  // Idiomatic facade: `client.master_mode.list()` / `client.master_mode.load({ id })`.
-  get master_mode(): MasterModeEntity {
-    return (this._master_mode ??= new MasterModeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.master_mode` instead. */
+  // Entity access: `client.MasterMode().list()` / `client.MasterMode().load({ id })`.
   MasterMode(data?: any) {
     const self = this
     return new MasterModeEntity(self,data)
   }
 
 
-  _region?: RegionEntity
-
-  // Idiomatic facade: `client.region.list()` / `client.region.load({ id })`.
-  get region(): RegionEntity {
-    return (this._region ??= new RegionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.region` instead. */
+  // Entity access: `client.Region().list()` / `client.Region().load({ id })`.
   Region(data?: any) {
     const self = this
     return new RegionEntity(self,data)

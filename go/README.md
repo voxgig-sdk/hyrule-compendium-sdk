@@ -30,36 +30,30 @@ go mod edit -replace github.com/voxgig-sdk/hyrule-compendium-sdk/go=../hyrule-co
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/hyrule-compendium-sdk/go"
-    "github.com/voxgig-sdk/hyrule-compendium-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 3. Load a category
-
-```go
-    result, err = client.Category(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single category — the value is the loaded record.
+    category, err := client.Category(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(category)
 }
 ```
 
@@ -110,10 +104,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Category(nil).Load(
+category, err := client.Category(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(category) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -213,17 +210,24 @@ All entities implement the `HyruleCompendiumEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    category, err := client.Category(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // category is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -293,7 +297,11 @@ Create an instance: `category := client.Category(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Category(nil).Load(map[string]any{"id": "category_id"}, nil)
+category, err := client.Category(nil).Load(map[string]any{"id": "category_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(category) // the loaded record
 ```
 
 
@@ -316,7 +324,11 @@ Create an instance: `compendium_entry := client.CompendiumEntry(nil)`
 #### Example: Load
 
 ```go
-result, err := client.CompendiumEntry(nil).Load(map[string]any{"id": "compendium_entry_id"}, nil)
+compendium_entry, err := client.CompendiumEntry(nil).Load(map[string]any{"id": "compendium_entry_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(compendium_entry) // the loaded record
 ```
 
 
@@ -339,7 +351,11 @@ Create an instance: `master_mode := client.MasterMode(nil)`
 #### Example: Load
 
 ```go
-result, err := client.MasterMode(nil).Load(map[string]any{"id": "master_mode_id"}, nil)
+master_mode, err := client.MasterMode(nil).Load(map[string]any{"id": "master_mode_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(master_mode) // the loaded record
 ```
 
 
@@ -365,13 +381,21 @@ Create an instance: `region := client.Region(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Region(nil).Load(map[string]any{"id": "region_id"}, nil)
+region, err := client.Region(nil).Load(map[string]any{"id": "region_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(region) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Region(nil).List(nil, nil)
+regions, err := client.Region(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(regions) // the array of records
 ```
 
 

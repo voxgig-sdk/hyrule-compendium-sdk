@@ -26,9 +26,9 @@ import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium'
 
 const client = new HyruleCompendiumSDK()
 
-// Load category data
-const category = await client.category.load({})
-console.log(category.data)
+// Load category data (returns a Category)
+const category = await client.Category().load()
+console.log(category)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -87,8 +87,8 @@ from hyrulecompendium_sdk import HyruleCompendiumSDK
 client = HyruleCompendiumSDK()
 
 
-# Load a specific category
-category = client.category.load({"id": "example_id"})
+# Load a specific category (returns the record, raises on error)
+category = client.Category().load({"id": "example_id"})
 print(category)
 ```
 
@@ -101,8 +101,8 @@ require_once 'hyrulecompendium_sdk.php';
 $client = new HyruleCompendiumSDK();
 
 
-// Load a specific category
-$category = $client->category()->load(["id" => "example_id"]);
+// Load a specific category (returns the bare record; throws on error)
+$category = $client->Category()->load(["id" => "example_id"]);
 print_r($category);
 ```
 
@@ -126,8 +126,8 @@ require_relative "HyruleCompendium_sdk"
 client = HyruleCompendiumSDK.new
 
 
-# Load a specific category
-category = client.category.load({ "id" => "example_id" })
+# Load a specific category (returns the bare record; raises on error)
+category = client.Category.load({ "id" => "example_id" })
 puts category
 ```
 
@@ -140,7 +140,7 @@ local client = sdk.new()
 
 
 -- Load a specific category
-local category, err = client:category():load({ id = "example_id" })
+local category, err = client:Category():load({ id = "example_id" })
 print(category)
 ```
 
@@ -153,22 +153,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = HyruleCompendiumSDK.test()
-const result = await client.category.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const category = await client.Category().load({ id: 'test01' })
+// category is a bare Category populated with mock data
+console.log(category)
 ```
 
 ### Python
 
 ```python
 client = HyruleCompendiumSDK.test()
-result = client.category.load({"id": "test01"})
+category = client.Category().load({"id": "test01"})
+print(category)
 ```
 
 ### PHP
 
 ```php
-$client = HyruleCompendiumSDK::test();
-$result = $client->category()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = HyruleCompendiumSDK::test([
+    "entity" => ["category" => ["test01" => ["id" => "test01"]]],
+]);
+$category = $client->Category()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -183,15 +188,18 @@ result, err := client.Category(nil).Load(
 ### Ruby
 
 ```ruby
-client = HyruleCompendiumSDK.test
-result = client.category.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = HyruleCompendiumSDK.test({
+  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
+})
+category = client.Category.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:category():load({ id = "test01" })
+local result, err = client:Category():load({ id = "test01" })
 ```
 
 ## How it works
@@ -239,6 +247,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

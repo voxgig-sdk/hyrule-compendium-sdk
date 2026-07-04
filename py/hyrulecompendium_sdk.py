@@ -220,73 +220,33 @@ class HyruleCompendiumSDK:
         }
 
 
-    @property
-    def category(self):
-        """Idiomatic facade: client.category.list() / client.category.load({"id": ...})."""
-        from entity.category_entity import CategoryEntity
-        cached = getattr(self, "_category", None)
-        if cached is None:
-            cached = CategoryEntity(self, None)
-            self._category = cached
-        return cached
-
-    def Category(self, data=None):
-        # Deprecated: use client.category instead.
+    def Category(self, data=None) -> "CategoryEntity":
+        """Entity factory: client.Category().list({}) / client.Category().load({"id": ...})."""
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
-    @property
-    def compendium_entry(self):
-        """Idiomatic facade: client.compendium_entry.list() / client.compendium_entry.load({"id": ...})."""
-        from entity.compendium_entry_entity import CompendiumEntryEntity
-        cached = getattr(self, "_compendium_entry", None)
-        if cached is None:
-            cached = CompendiumEntryEntity(self, None)
-            self._compendium_entry = cached
-        return cached
-
-    def CompendiumEntry(self, data=None):
-        # Deprecated: use client.compendium_entry instead.
+    def CompendiumEntry(self, data=None) -> "CompendiumEntryEntity":
+        """Entity factory: client.CompendiumEntry().list({}) / client.CompendiumEntry().load({"id": ...})."""
         from entity.compendium_entry_entity import CompendiumEntryEntity
         return CompendiumEntryEntity(self, data)
 
 
-    @property
-    def master_mode(self):
-        """Idiomatic facade: client.master_mode.list() / client.master_mode.load({"id": ...})."""
-        from entity.master_mode_entity import MasterModeEntity
-        cached = getattr(self, "_master_mode", None)
-        if cached is None:
-            cached = MasterModeEntity(self, None)
-            self._master_mode = cached
-        return cached
-
-    def MasterMode(self, data=None):
-        # Deprecated: use client.master_mode instead.
+    def MasterMode(self, data=None) -> "MasterModeEntity":
+        """Entity factory: client.MasterMode().list({}) / client.MasterMode().load({"id": ...})."""
         from entity.master_mode_entity import MasterModeEntity
         return MasterModeEntity(self, data)
 
 
-    @property
-    def region(self):
-        """Idiomatic facade: client.region.list() / client.region.load({"id": ...})."""
-        from entity.region_entity import RegionEntity
-        cached = getattr(self, "_region", None)
-        if cached is None:
-            cached = RegionEntity(self, None)
-            self._region = cached
-        return cached
-
-    def Region(self, data=None):
-        # Deprecated: use client.region instead.
+    def Region(self, data=None) -> "RegionEntity":
+        """Entity factory: client.Region().list({}) / client.Region().load({"id": ...})."""
         from entity.region_entity import RegionEntity
         return RegionEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "HyruleCompendiumSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class HyruleCompendiumSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.category_entity import CategoryEntity
+    from entity.compendium_entry_entity import CompendiumEntryEntity
+    from entity.master_mode_entity import MasterModeEntity
+    from entity.region_entity import RegionEntity

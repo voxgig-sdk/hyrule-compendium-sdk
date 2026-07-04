@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CategoryEntity
 
 ```python
-category = client.category
+category = client.Category()
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ category = client.category
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.category.load({"id": "category_id"})
+result = client.Category().load({"id": "category_id"})
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## CompendiumEntryEntity
 
 ```python
-compendium_entry = client.compendium_entry
+compendium_entry = client.CompendiumEntry()
 ```
 
 ### Fields
@@ -165,7 +165,7 @@ compendium_entry = client.compendium_entry
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.compendium_entry.load({"id": "compendium_entry_id"})
+result = client.CompendiumEntry().load({"id": "compendium_entry_id"})
 ```
 
 ### Common Methods
@@ -200,7 +200,7 @@ Return the entity name.
 ## MasterModeEntity
 
 ```python
-master_mode = client.master_mode
+master_mode = client.MasterMode()
 ```
 
 ### Fields
@@ -216,7 +216,7 @@ master_mode = client.master_mode
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.master_mode.load({"id": "master_mode_id"})
+result = client.MasterMode().load({"id": "master_mode_id"})
 ```
 
 ### Common Methods
@@ -251,7 +251,7 @@ Return the entity name.
 ## RegionEntity
 
 ```python
-region = client.region
+region = client.Region()
 ```
 
 ### Fields
@@ -269,7 +269,9 @@ region = client.region
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.region.list({})
+results = client.Region().list({})
+for region in results:
+    print(region)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -277,7 +279,7 @@ results = client.region.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.region.load({"id": "region_id"})
+result = client.Region().load({"id": "region_id"})
 ```
 
 ### Common Methods
