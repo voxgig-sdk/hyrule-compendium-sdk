@@ -221,25 +221,25 @@ class HyruleCompendiumSDK:
 
 
     def Category(self, data=None) -> "CategoryEntity":
-        """Entity factory: client.Category().list({}) / client.Category().load({"id": ...})."""
+        """Entity factory: client.Category().list() / client.Category().load({"id": ...})."""
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
     def CompendiumEntry(self, data=None) -> "CompendiumEntryEntity":
-        """Entity factory: client.CompendiumEntry().list({}) / client.CompendiumEntry().load({"id": ...})."""
+        """Entity factory: client.CompendiumEntry().list() / client.CompendiumEntry().load({"id": ...})."""
         from entity.compendium_entry_entity import CompendiumEntryEntity
         return CompendiumEntryEntity(self, data)
 
 
     def MasterMode(self, data=None) -> "MasterModeEntity":
-        """Entity factory: client.MasterMode().list({}) / client.MasterMode().load({"id": ...})."""
+        """Entity factory: client.MasterMode().list() / client.MasterMode().load({"id": ...})."""
         from entity.master_mode_entity import MasterModeEntity
         return MasterModeEntity(self, data)
 
 
     def Region(self, data=None) -> "RegionEntity":
-        """Entity factory: client.Region().list({}) / client.Region().load({"id": ...})."""
+        """Entity factory: client.Region().list() / client.Region().load({"id": ...})."""
         from entity.region_entity import RegionEntity
         return RegionEntity(self, data)
 

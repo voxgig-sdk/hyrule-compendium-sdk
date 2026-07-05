@@ -40,5 +40,9 @@ export interface RegionLoadMatch {
   id: string
 }
 
-export type RegionListMatch = Partial<Region>
+export interface RegionListMatch {
+  data?: Record<string, any>
+  description?: string
+  name?: string
+}
 

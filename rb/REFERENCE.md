@@ -8,7 +8,7 @@ Complete API reference for the HyruleCompendium Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'hyrule-compendium_sdk'
+require_relative 'HyruleCompendium_sdk'
 
 client = HyruleCompendiumSDK.new(options)
 ```
@@ -105,7 +105,7 @@ category = client.Category
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `Array` | No |  |
 
 ### Operations
 
@@ -157,13 +157,13 @@ compendium_entry = client.CompendiumEntry
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `Hash` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `data` | Yes | - | - | - | - |
+| Field | load |
+| --- | --- |
+| `data` | Yes |
 
 ### Operations
 
@@ -215,7 +215,7 @@ master_mode = client.MasterMode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `Hash` | Yes |  |
 
 ### Operations
 
@@ -224,7 +224,7 @@ master_mode = client.MasterMode
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.MasterMode.load({ "id" => "master_mode_id" })
+result = client.MasterMode.load()
 ```
 
 ### Common Methods
@@ -267,18 +267,18 @@ region = client.Region
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `Hash` | No |  |
+| `description` | `String` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Region.list(nil)
+results = client.Region.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

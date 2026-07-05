@@ -51,8 +51,7 @@ type RegionLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// RegionListMatch mirrors the region fields as an all-optional match
-// filter (Go analog of Partial<Region>).
+// RegionListMatch is the typed request payload for Region.ListTyped.
 type RegionListMatch struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Description *string `json:"description,omitempty"`

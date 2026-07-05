@@ -92,7 +92,7 @@ RegionLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Region#list (any subset of Region fields).
+# Request payload for Region#list.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]

@@ -34,6 +34,9 @@
 ---@field id string
 
 ---@class RegionListMatch
+---@field data? table
+---@field description? string
+---@field name? string
 
 local M = {}
 

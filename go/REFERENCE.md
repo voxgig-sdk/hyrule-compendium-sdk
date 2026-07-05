@@ -109,7 +109,7 @@ category := client.Category(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `[]any` | No |  |
 
 ### Operations
 
@@ -155,13 +155,13 @@ compendium_entry := client.CompendiumEntry(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `map[string]any` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `data` | Yes | - | - | - | - |
+| Field | load |
+| --- | --- |
+| `data` | Yes |
 
 ### Operations
 
@@ -207,7 +207,7 @@ master_mode := client.MasterMode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `map[string]any` | Yes |  |
 
 ### Operations
 
@@ -216,7 +216,7 @@ master_mode := client.MasterMode(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.MasterMode(nil).Load(map[string]any{"id": "master_mode_id"}, nil)
+result, err := client.MasterMode(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -253,9 +253,9 @@ region := client.Region(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `map[string]any` | No |  |
+| `description` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

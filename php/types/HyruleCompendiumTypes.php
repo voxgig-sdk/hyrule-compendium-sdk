@@ -63,7 +63,7 @@ class RegionLoadMatch
     public string $id;
 }
 
-/** Match filter for Region#list (any subset of Region fields). */
+/** Request payload for Region#list. */
 class RegionListMatch
 {
     public ?array $data = null;

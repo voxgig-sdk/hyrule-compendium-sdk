@@ -102,7 +102,7 @@ local category = client:Category(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `table` | No |  |
 
 ### Operations
 
@@ -154,13 +154,13 @@ local compendium_entry = client:CompendiumEntry(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `table` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `data` | Yes | - | - | - | - |
+| Field | load |
+| --- | --- |
+| `data` | Yes |
 
 ### Operations
 
@@ -212,7 +212,7 @@ local master_mode = client:MasterMode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `table` | Yes |  |
 
 ### Operations
 
@@ -221,7 +221,7 @@ local master_mode = client:MasterMode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MasterMode():load({ id = "master_mode_id" })
+local result, err = client:MasterMode():load()
 ```
 
 ### Common Methods
@@ -264,9 +264,9 @@ local region = client:Region(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `table` | No |  |
+| `description` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

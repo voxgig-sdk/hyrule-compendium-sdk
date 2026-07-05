@@ -152,7 +152,7 @@ const category = client.Category()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `any[]` | No |  |
 
 ### Operations
 
@@ -202,13 +202,13 @@ const compendium_entry = client.CompendiumEntry()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `Record<string, any>` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `data` | Yes | - | - | - | - |
+| Field | load |
+| --- | --- |
+| `data` | Yes |
 
 ### Operations
 
@@ -258,7 +258,7 @@ const master_mode = client.MasterMode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `Record<string, any>` | Yes |  |
 
 ### Operations
 
@@ -267,7 +267,7 @@ const master_mode = client.MasterMode()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MasterMode().load({ id: 'master_mode_id' })
+const result = await client.MasterMode().load()
 ```
 
 ### Common Methods
@@ -308,9 +308,9 @@ const region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `description` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

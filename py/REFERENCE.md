@@ -8,7 +8,7 @@ Complete API reference for the HyruleCompendium Python SDK.
 ### Constructor
 
 ```python
-from hyrule-compendium_sdk import HyruleCompendiumSDK
+from hyrulecompendium_sdk import HyruleCompendiumSDK
 
 client = HyruleCompendiumSDK(options)
 ```
@@ -99,7 +99,7 @@ category = client.Category()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `list` | No |  |
 
 ### Operations
 
@@ -150,13 +150,13 @@ compendium_entry = client.CompendiumEntry()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `dict` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `data` | Yes | - | - | - | - |
+| Field | load |
+| --- | --- |
+| `data` | Yes |
 
 ### Operations
 
@@ -207,7 +207,7 @@ master_mode = client.MasterMode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | Yes |  |
+| `data` | `dict` | Yes |  |
 
 ### Operations
 
@@ -216,7 +216,7 @@ master_mode = client.MasterMode()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.MasterMode().load({"id": "master_mode_id"})
+result = client.MasterMode().load()
 ```
 
 ### Common Methods
@@ -258,18 +258,18 @@ region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `data` | `dict` | No |  |
+| `description` | `str` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Region().list({})
+results = client.Region().list()
 for region in results:
     print(region)
 ```
