@@ -33,12 +33,14 @@ local sdk = require("hyrule-compendium_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load a category
+### 3. Load a mastermode
+
+MasterMode is nested under entry, so provide the `entry`.
 
 ```lua
-local category, err = client:Category():load({ id = "example_id" })
+local mastermode, err = client:MasterMode():load({ entry = "example_entry" })
 if err then error(err) end
-print(category)
+print(mastermode)
 ```
 
 
@@ -338,7 +340,7 @@ Create an instance: `local master_mode = client:MasterMode(nil)`
 #### Example: Load
 
 ```lua
-local master_mode, err = client:MasterMode():load()
+local master_mode, err = client:MasterMode():load({ entry = "entry" })
 ```
 
 

@@ -28,7 +28,7 @@ class CompendiumEntry(TypedDict):
     data: dict
 
 
-class CompendiumEntryLoadMatch(TypedDict):
+class CompendiumEntryLoadMatch(TypedDict, total=False):
     entry_id: str
     id: str
 

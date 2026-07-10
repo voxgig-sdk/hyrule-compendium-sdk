@@ -16,8 +16,8 @@
 ---@field data table
 
 ---@class CompendiumEntryLoadMatch
----@field entry_id string
----@field id string
+---@field entry_id? string
+---@field id? string
 
 ---@class MasterMode
 ---@field data table

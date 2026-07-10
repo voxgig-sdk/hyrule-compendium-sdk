@@ -38,10 +38,10 @@ CompendiumEntry = Struct.new(
 # Request payload for CompendiumEntry#load.
 #
 # @!attribute [rw] entry_id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 CompendiumEntryLoadMatch = Struct.new(
   :entry_id,
   :id,

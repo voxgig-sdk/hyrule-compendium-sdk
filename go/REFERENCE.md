@@ -103,6 +103,7 @@ same parameters as `Direct()`.
 
 ```go
 category := client.Category(nil)
+fmt.Println(category.GetName()) // "category"
 ```
 
 ### Fields
@@ -119,6 +120,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Category(nil).Load(map[string]any{"id": "category_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -148,7 +153,8 @@ Return the entity name.
 ## CompendiumEntryEntity
 
 ```go
-compendium_entry := client.CompendiumEntry(nil)
+compendiumEntry := client.CompendiumEntry(nil)
+fmt.Println(compendiumEntry.GetName()) // "compendium_entry"
 ```
 
 ### Fields
@@ -171,6 +177,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.CompendiumEntry(nil).Load(map[string]any{"id": "compendium_entry_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -200,7 +210,8 @@ Return the entity name.
 ## MasterModeEntity
 
 ```go
-master_mode := client.MasterMode(nil)
+masterMode := client.MasterMode(nil)
+fmt.Println(masterMode.GetName()) // "master_mode"
 ```
 
 ### Fields
@@ -216,7 +227,11 @@ master_mode := client.MasterMode(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.MasterMode(nil).Load(nil, nil)
+result, err := client.MasterMode(nil).Load(map[string]any{"entry": "entry"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -247,6 +262,7 @@ Return the entity name.
 
 ```go
 region := client.Region(nil)
+fmt.Println(region.GetName()) // "region"
 ```
 
 ### Fields
@@ -265,6 +281,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Region(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -273,6 +293,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Region(nil).Load(map[string]any{"id": "region_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

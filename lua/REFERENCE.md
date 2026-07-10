@@ -221,7 +221,7 @@ local master_mode = client:MasterMode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MasterMode():load()
+local result, err = client:MasterMode():load({ entry = "entry" })
 ```
 
 ### Common Methods

@@ -36,14 +36,15 @@ from hyrulecompendium_sdk import HyruleCompendiumSDK
 client = HyruleCompendiumSDK()
 ```
 
-### 3. Load a category
+### 3. Load a mastermode
 
+MasterMode is nested under entry, so provide the `entry`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    category = client.Category().load({"id": "example_id"})
-    print(category)
+    mastermode = client.MasterMode().load({"entry": "example_entry"})
+    print(mastermode)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -352,7 +353,7 @@ Create an instance: `master_mode = client.MasterMode()`
 #### Example: Load
 
 ```python
-master_mode = client.MasterMode().load()
+master_mode = client.MasterMode().load({"entry": "entry"})
 ```
 
 

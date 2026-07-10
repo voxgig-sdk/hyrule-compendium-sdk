@@ -33,8 +33,8 @@ class CompendiumEntry
 /** Request payload for CompendiumEntry#load. */
 class CompendiumEntryLoadMatch
 {
-    public string $entry_id;
-    public string $id;
+    public ?string $entry_id = null;
+    public ?string $id = null;
 }
 
 /** MasterMode entity data model. */

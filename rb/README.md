@@ -30,13 +30,15 @@ require_relative "HyruleCompendium_sdk"
 client = HyruleCompendiumSDK.new
 ```
 
-### 3. Load a category
+### 3. Load a mastermode
+
+MasterMode is nested under entry, so provide the `entry`.
 
 ```ruby
 begin
-  # load returns the bare Category record (raises on error).
-  category = client.Category.load({ "id" => "example_id" })
-  puts category
+  # load returns the bare MasterMode record (raises on error).
+  mastermode = client.MasterMode.load({ "entry" => "example_entry" })
+  puts mastermode
 rescue => err
   warn "load failed: #{err}"
 end
@@ -352,7 +354,7 @@ Create an instance: `master_mode = client.MasterMode`
 
 ```ruby
 # load returns the bare MasterMode record (raises on error).
-master_mode = client.MasterMode.load()
+master_mode = client.MasterMode.load({ "entry" => "entry" })
 ```
 
 

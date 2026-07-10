@@ -267,7 +267,7 @@ const master_mode = client.MasterMode()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MasterMode().load()
+const result = await client.MasterMode().load({ entry: 'entry' })
 ```
 
 ### Common Methods

@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single category — the value is the loaded record.
-    category, err := client.Category(nil).Load(map[string]any{"id": "example"}, nil)
+    category, err := client.Category(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
@@ -335,7 +335,7 @@ fmt.Println(category) // the loaded record
 
 ### CompendiumEntry
 
-Create an instance: `compendium_entry := client.CompendiumEntry(nil)`
+Create an instance: `compendiumEntry := client.CompendiumEntry(nil)`
 
 #### Operations
 
@@ -352,17 +352,17 @@ Create an instance: `compendium_entry := client.CompendiumEntry(nil)`
 #### Example: Load
 
 ```go
-compendium_entry, err := client.CompendiumEntry(nil).Load(map[string]any{"id": "compendium_entry_id"}, nil)
+compendiumEntry, err := client.CompendiumEntry(nil).Load(map[string]any{"id": "compendium_entry_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(compendium_entry) // the loaded record
+fmt.Println(compendiumEntry) // the loaded record
 ```
 
 
 ### MasterMode
 
-Create an instance: `master_mode := client.MasterMode(nil)`
+Create an instance: `masterMode := client.MasterMode(nil)`
 
 #### Operations
 
@@ -379,11 +379,11 @@ Create an instance: `master_mode := client.MasterMode(nil)`
 #### Example: Load
 
 ```go
-master_mode, err := client.MasterMode(nil).Load(nil, nil)
+masterMode, err := client.MasterMode(nil).Load(map[string]any{"entry": "entry"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(master_mode) // the loaded record
+fmt.Println(masterMode) // the loaded record
 ```
 
 

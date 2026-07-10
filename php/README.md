@@ -31,13 +31,15 @@ require_once 'hyrulecompendium_sdk.php';
 $client = new HyruleCompendiumSDK();
 ```
 
-### 3. Load a category
+### 3. Load a mastermode
+
+MasterMode is nested under entry, so provide the `entry`.
 
 ```php
 try {
-    // load() returns the bare Category record (throws on error).
-    $category = $client->Category()->load(["id" => "example_id"]);
-    print_r($category);
+    // load() returns the bare MasterMode record (throws on error).
+    $mastermode = $client->MasterMode()->load(["entry" => "example_entry"]);
+    print_r($mastermode);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -362,7 +364,7 @@ Create an instance: `$master_mode = $client->MasterMode();`
 
 ```php
 // load() returns the bare MasterMode record (throws on error).
-$master_mode = $client->MasterMode()->load();
+$master_mode = $client->MasterMode()->load(["entry" => "entry"]);
 ```
 
 

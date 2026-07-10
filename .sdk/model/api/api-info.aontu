@@ -19,9 +19,9 @@ main: {
           url: "https://botw-compendium.herokuapp.com/api/v3"
         }
       ]
+      summary: "An API serving data on all in-game items and regions in Breath of the Wild and Tears of the Kingdom."
       title: "Hyrule Compendium API"
       version: "3.0.0"
+      website: "https://botw-compendium.herokuapp.com"
     }
   }
-}
-

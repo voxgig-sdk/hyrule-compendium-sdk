@@ -18,8 +18,8 @@ export interface CompendiumEntry {
 }
 
 export interface CompendiumEntryLoadMatch {
-  entry_id: string
-  id: string
+  entry_id?: string
+  id?: string
 }
 
 export interface MasterMode {

@@ -33,14 +33,17 @@ import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium'
 const client = new HyruleCompendiumSDK()
 ```
 
-### 3. Load a category
+### 3. Load a mastermode
 
+MasterMode is nested under entry, so provide the `entry`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const category = await client.Category().load({ id: 'example_id' })
-  console.log(category)
+  const mastermode = await client.MasterMode().load({
+    entry: 'example_entry',
+  })
+  console.log(mastermode)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -398,7 +401,7 @@ Create an instance: `const master_mode = client.MasterMode()`
 #### Example: Load
 
 ```ts
-const master_mode = await client.MasterMode().load()
+const master_mode = await client.MasterMode().load({ entry: 'entry' })
 ```
 
 

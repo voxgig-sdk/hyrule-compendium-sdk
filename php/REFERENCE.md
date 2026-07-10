@@ -223,7 +223,7 @@ $master_mode = $client->MasterMode();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->MasterMode()->load();
+$result = $client->MasterMode()->load(["entry" => "entry"]);
 ```
 
 ### Common Methods
