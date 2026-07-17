@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- HyruleCompendium SDK exists test
 
 local sdk = require("hyrule-compendium_sdk")
 
