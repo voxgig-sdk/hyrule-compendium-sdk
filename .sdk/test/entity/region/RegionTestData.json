@@ -2,21 +2,18 @@
   "existing": {
     "region": {
       "REGION00": {
-        "data": {},
-        "description": "s1f",
-        "name": "s20",
+        "description": "s14",
+        "name": "s15",
         "id": "REGION00"
       },
       "REGION01": {
-        "data": {},
-        "description": "s3d",
-        "name": "s3e",
+        "description": "s28",
+        "name": "s29",
         "id": "REGION01"
       },
       "REGION02": {
-        "data": {},
-        "description": "s5b",
-        "name": "s5c",
+        "description": "s3c",
+        "name": "s3d",
         "id": "REGION02"
       }
     }
@@ -24,9 +21,8 @@
   "new": {
     "region": {
       "region_ref01": {
-        "data": {},
-        "description": "s79",
-        "name": "s7a"
+        "description": "s50",
+        "name": "s51"
       }
     }
   }

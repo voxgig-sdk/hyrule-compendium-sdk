@@ -26,8 +26,8 @@ import {
 describe('CompendiumEntryEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HYRULECOMPENDIUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HYRULECOMPENDIUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HYRULE_COMPENDIUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HYRULE_COMPENDIUM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HyruleCompendiumSDK.test()
@@ -59,9 +59,12 @@ describe('CompendiumEntryEntity', async () => {
 
     let compendium_entry_ref01_data = Object.values(setup.data.existing.compendium_entry)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const compendium_entry_ref01_ent = client.CompendiumEntry()
+    const compendium_entry_ref01_match_dt0: any = {}
+    compendium_entry_ref01_match_dt0.id = compendium_entry_ref01_data.id
+    const compendium_entry_ref01_data_dt0 = (await compendium_entry_ref01_ent.load(compendium_entry_ref01_match_dt0)).data()
+    assert(compendium_entry_ref01_data_dt0.id === compendium_entry_ref01_data.id)
 
 
   })

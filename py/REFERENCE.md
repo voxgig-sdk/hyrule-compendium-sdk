@@ -150,13 +150,22 @@ compendium_entry = client.CompendiumEntry()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load |
-| --- | --- |
-| `data` | Yes |
+| `category` | `str` | Yes |  |
+| `common_locations` | `list` | No |  |
+| `cooking_effect` | `str` | No |  |
+| `creatures` | `list` | No |  |
+| `description` | `str` | No |  |
+| `dlc` | `bool` | No |  |
+| `drops` | `list` | No |  |
+| `edible` | `bool` | No |  |
+| `equipment` | `list` | No |  |
+| `hearts_recovered` | `float` | No |  |
+| `id` | `int` | Yes |  |
+| `image` | `str` | No |  |
+| `materials` | `list` | No |  |
+| `monsters` | `list` | No |  |
+| `name` | `str` | Yes |  |
+| `treasure` | `list` | No |  |
 
 ### Operations
 
@@ -207,7 +216,17 @@ master_mode = client.MasterMode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | Yes |  |
+| `category` | `str` | Yes |  |
+| `common_locations` | `list` | No |  |
+| `cooking_effect` | `str` | No |  |
+| `description` | `str` | No |  |
+| `dlc` | `bool` | No |  |
+| `drops` | `list` | No |  |
+| `edible` | `bool` | No |  |
+| `hearts_recovered` | `float` | No |  |
+| `id` | `int` | Yes |  |
+| `image` | `str` | No |  |
+| `name` | `str` | Yes |  |
 
 ### Operations
 
@@ -258,7 +277,6 @@ region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
 | `description` | `str` | No |  |
 | `name` | `str` | No |  |
 

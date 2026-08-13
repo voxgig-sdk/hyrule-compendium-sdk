@@ -36,7 +36,7 @@ MasterMode is nested under entry, so provide the `entry`.
 
 ```ruby
 begin
-  # load returns the bare MasterMode record (raises on error).
+  # load returns the ENTITY — call data_get for the MasterMode record (raises on error).
   mastermode = client.MasterMode.load({ "entry" => "example_entry" })
   puts mastermode
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  category = client.Category.load({ "id" => "example_id" })
+  mastermode = client.MasterMode.load({ "entry" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -114,17 +114,15 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = HyruleCompendiumSDK.test({
-  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
-})
+client = HyruleCompendiumSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-category = client.Category.load({ "id" => "test01" })
-puts category
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+mastermode = client.MasterMode.load({ "entry" => "example" })
+puts mastermode
 ```
 
 ### Use a custom fetch function
@@ -253,7 +251,22 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `creatures` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `equipment` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `materials` |  |
+| `monsters` |  |
+| `name` |  |
+| `treasure` |  |
 
 Operations: Load.
 
@@ -263,7 +276,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -273,7 +296,6 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `description` |  |
 | `name` |  |
 
@@ -305,7 +327,7 @@ Create an instance: `category = client.Category`
 #### Example: Load
 
 ```ruby
-# load returns the bare Category record (raises on error).
+# load returns the ENTITY — call data_get for the Category record (raises on error).
 category = client.Category.load({ "id" => "category_id" })
 ```
 
@@ -324,12 +346,27 @@ Create an instance: `compendium_entry = client.CompendiumEntry`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
+| `category` | `String` |  |
+| `common_locations` | `Array` |  |
+| `cooking_effect` | `String` |  |
+| `creatures` | `Array` |  |
+| `description` | `String` |  |
+| `dlc` | `Boolean` |  |
+| `drops` | `Array` |  |
+| `edible` | `Boolean` |  |
+| `equipment` | `Array` |  |
+| `hearts_recovered` | `Float` |  |
+| `id` | `Integer` |  |
+| `image` | `String` |  |
+| `materials` | `Array` |  |
+| `monsters` | `Array` |  |
+| `name` | `String` |  |
+| `treasure` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare CompendiumEntry record (raises on error).
+# load returns the ENTITY — call data_get for the CompendiumEntry record (raises on error).
 compendium_entry = client.CompendiumEntry.load({ "id" => "compendium_entry_id" })
 ```
 
@@ -348,12 +385,22 @@ Create an instance: `master_mode = client.MasterMode`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
+| `category` | `String` |  |
+| `common_locations` | `Array` |  |
+| `cooking_effect` | `String` |  |
+| `description` | `String` |  |
+| `dlc` | `Boolean` |  |
+| `drops` | `Array` |  |
+| `edible` | `Boolean` |  |
+| `hearts_recovered` | `Float` |  |
+| `id` | `Integer` |  |
+| `image` | `String` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare MasterMode record (raises on error).
+# load returns the ENTITY — call data_get for the MasterMode record (raises on error).
 master_mode = client.MasterMode.load({ "entry" => "entry" })
 ```
 
@@ -373,14 +420,13 @@ Create an instance: `region = client.Region`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
 | `description` | `String` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Region record (raises on error).
+# load returns the ENTITY — call data_get for the Region record (raises on error).
 region = client.Region.load({ "id" => "region_id" })
 ```
 
@@ -468,11 +514,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-category = client.Category
-category.load({ "id" => "example_id" })
+mastermode = client.MasterMode
+mastermode.load({ "entry" => "example" })
 
-# category.data_get now returns the category data from the last load
-# category.match_get returns the last match criteria
+# mastermode.data_get now returns the mastermode data from the last load
+# mastermode.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

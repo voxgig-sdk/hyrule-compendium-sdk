@@ -26,8 +26,8 @@ import {
 describe('RegionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HYRULECOMPENDIUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HYRULECOMPENDIUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HYRULE_COMPENDIUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HYRULE_COMPENDIUM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HyruleCompendiumSDK.test()
@@ -63,7 +63,7 @@ describe('RegionEntity', async () => {
     const region_ref01_ent = client.Region()
     const region_ref01_match: any = {}
 
-    const region_ref01_list = await region_ref01_ent.list(region_ref01_match)
+    const region_ref01_list = (await region_ref01_ent.list(region_ref01_match)).map((e: any) => e.data())
 
 
 

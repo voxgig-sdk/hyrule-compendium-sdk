@@ -2,26 +2,62 @@
   "existing": {
     "master_mode": {
       "MASTER_MODE00": {
-        "data": {},
-        "entry": "ENTRY01",
-        "id": "MASTER_MODE00"
+        "category": "s6e",
+        "common_locations": [],
+        "cooking_effect": "s70",
+        "description": "s71",
+        "dlc": true,
+        "drops": [],
+        "edible": true,
+        "hearts_recovered": 117,
+        "id": "MASTER_MODE00",
+        "image": "s77",
+        "name": "s78",
+        "entry": "ENTRY01"
       },
       "MASTER_MODE01": {
-        "data": {},
-        "entry": "ENTRY01",
-        "id": "MASTER_MODE01"
+        "category": "sdc",
+        "common_locations": [],
+        "cooking_effect": "sde",
+        "description": "sdf",
+        "dlc": true,
+        "drops": [],
+        "edible": true,
+        "hearts_recovered": 227,
+        "id": "MASTER_MODE01",
+        "image": "se5",
+        "name": "se6",
+        "entry": "ENTRY01"
       },
       "MASTER_MODE02": {
-        "data": {},
-        "entry": "ENTRY01",
-        "id": "MASTER_MODE02"
+        "category": "s14a",
+        "common_locations": [],
+        "cooking_effect": "s14c",
+        "description": "s14d",
+        "dlc": true,
+        "drops": [],
+        "edible": true,
+        "hearts_recovered": 337,
+        "id": "MASTER_MODE02",
+        "image": "s153",
+        "name": "s154",
+        "entry": "ENTRY01"
       }
     }
   },
   "new": {
     "master_mode": {
       "master_mode_ref01": {
-        "data": {}
+        "category": "s1b8",
+        "common_locations": [],
+        "cooking_effect": "s1ba",
+        "description": "s1bb",
+        "dlc": true,
+        "drops": [],
+        "edible": true,
+        "hearts_recovered": 447,
+        "image": "s1c1",
+        "name": "s1c2"
       }
     }
   }

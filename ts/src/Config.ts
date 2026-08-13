@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'HyruleCompendium',
   }
 
 
@@ -93,6 +93,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/category/{category}",
               "parts": [
@@ -127,16 +128,115 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
-          "op": {
-            "load": {
-              "req": false,
-              "type": "`$OBJECT`"
-            }
-          },
+          "name": "category",
           "req": true,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
+        },
+        {
+          "active": true,
+          "name": "common_locations",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 1
+        },
+        {
+          "active": true,
+          "name": "cooking_effect",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 2
+        },
+        {
+          "active": true,
+          "name": "creatures",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 3
+        },
+        {
+          "active": true,
+          "name": "description",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 4
+        },
+        {
+          "active": true,
+          "name": "dlc",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "index$": 5
+        },
+        {
+          "active": true,
+          "name": "drops",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 6
+        },
+        {
+          "active": true,
+          "name": "edible",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "index$": 7
+        },
+        {
+          "active": true,
+          "name": "equipment",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 8
+        },
+        {
+          "active": true,
+          "name": "hearts_recovered",
+          "req": false,
+          "type": "`$NUMBER`",
+          "index$": 9
+        },
+        {
+          "active": true,
+          "name": "id",
+          "req": true,
+          "type": "`$INTEGER`",
+          "index$": 10
+        },
+        {
+          "active": true,
+          "name": "image",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 11
+        },
+        {
+          "active": true,
+          "name": "materials",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 12
+        },
+        {
+          "active": true,
+          "name": "monsters",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 13
+        },
+        {
+          "active": true,
+          "name": "name",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 14
+        },
+        {
+          "active": true,
+          "name": "treasure",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 15
         }
       ],
       "name": "compendium_entry",
@@ -161,6 +261,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/entry/{entry}/image",
               "parts": [
@@ -200,6 +301,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/entry/{entry}",
               "parts": [
@@ -218,13 +320,14 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 1
             },
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/all",
               "parts": [
@@ -233,7 +336,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 2
             }
@@ -253,10 +356,80 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
+          "name": "category",
           "req": true,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
+        },
+        {
+          "active": true,
+          "name": "common_locations",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 1
+        },
+        {
+          "active": true,
+          "name": "cooking_effect",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 2
+        },
+        {
+          "active": true,
+          "name": "description",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 3
+        },
+        {
+          "active": true,
+          "name": "dlc",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "index$": 4
+        },
+        {
+          "active": true,
+          "name": "drops",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 5
+        },
+        {
+          "active": true,
+          "name": "edible",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "index$": 6
+        },
+        {
+          "active": true,
+          "name": "hearts_recovered",
+          "req": false,
+          "type": "`$NUMBER`",
+          "index$": 7
+        },
+        {
+          "active": true,
+          "name": "id",
+          "req": true,
+          "type": "`$INTEGER`",
+          "index$": 8
+        },
+        {
+          "active": true,
+          "name": "image",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 9
+        },
+        {
+          "active": true,
+          "name": "name",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 10
         }
       ],
       "name": "master_mode",
@@ -280,6 +453,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/master_mode/entry/{entry}",
               "parts": [
@@ -294,7 +468,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -314,24 +488,17 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
-        },
-        {
-          "active": true,
           "name": "description",
           "req": false,
           "type": "`$STRING`",
-          "index$": 1
+          "index$": 0
         },
         {
           "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "index$": 2
+          "index$": 1
         }
       ],
       "name": "region",
@@ -343,6 +510,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/regions",
               "parts": [
@@ -351,7 +519,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -378,6 +546,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/region/{region}",
               "parts": [
@@ -396,7 +565,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }

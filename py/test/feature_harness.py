@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import HyruleCompendiumControl
-from core.error import HyruleCompendiumError
-from core.result import HyruleCompendiumResult
-from core.spec import HyruleCompendiumSpec
+from hyrulecompendium_sdk.config import make_config
+from hyrulecompendium_sdk.features import _make_feature
+from hyrulecompendium_sdk.core.control import HyruleCompendiumControl
+from hyrulecompendium_sdk.core.error import HyruleCompendiumError
+from hyrulecompendium_sdk.core.result import HyruleCompendiumResult
+from hyrulecompendium_sdk.core.spec import HyruleCompendiumSpec
 
 
 # True when this SDK was generated with the named feature.

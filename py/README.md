@@ -39,7 +39,7 @@ client = HyruleCompendiumSDK()
 ### 3. Load a mastermode
 
 MasterMode is nested under entry, so provide the `entry`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -56,8 +56,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    category = client.Category().load({"id": "example_id"})
-    print(category)
+    mastermode = client.MasterMode().load({"entry": "example"})
+    print(mastermode)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -123,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = HyruleCompendiumSDK.test()
 
-# Entity ops return the bare record and raise on error.
-category = client.Category().load({"id": "test01"})
-# category contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+mastermode = client.MasterMode().load({"entry": "example"})
+# mastermode contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -223,7 +224,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -255,7 +256,22 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `creatures` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `equipment` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `materials` |  |
+| `monsters` |  |
+| `name` |  |
+| `treasure` |  |
 
 Operations: Load.
 
@@ -265,7 +281,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -275,7 +301,6 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `description` |  |
 | `name` |  |
 
@@ -325,7 +350,22 @@ Create an instance: `compendium_entry = client.CompendiumEntry()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `dict` |  |
+| `category` | `str` |  |
+| `common_locations` | `list` |  |
+| `cooking_effect` | `str` |  |
+| `creatures` | `list` |  |
+| `description` | `str` |  |
+| `dlc` | `bool` |  |
+| `drops` | `list` |  |
+| `edible` | `bool` |  |
+| `equipment` | `list` |  |
+| `hearts_recovered` | `float` |  |
+| `id` | `int` |  |
+| `image` | `str` |  |
+| `materials` | `list` |  |
+| `monsters` | `list` |  |
+| `name` | `str` |  |
+| `treasure` | `list` |  |
 
 #### Example: Load
 
@@ -348,7 +388,17 @@ Create an instance: `master_mode = client.MasterMode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `dict` |  |
+| `category` | `str` |  |
+| `common_locations` | `list` |  |
+| `cooking_effect` | `str` |  |
+| `description` | `str` |  |
+| `dlc` | `bool` |  |
+| `drops` | `list` |  |
+| `edible` | `bool` |  |
+| `hearts_recovered` | `float` |  |
+| `id` | `int` |  |
+| `image` | `str` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -372,7 +422,6 @@ Create an instance: `region = client.Region()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `dict` |  |
 | `description` | `str` |  |
 | `name` | `str` |  |
 
@@ -464,11 +513,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-category = client.Category()
-category.load({"id": "example_id"})
+mastermode = client.MasterMode()
+mastermode.load({"entry": "example"})
 
-# category.data_get() now returns the category data from the last load
-# category.match_get() returns the last match criteria
+# mastermode.data_get() now returns the mastermode data from the last load
+# mastermode.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -35,8 +35,8 @@ end
 
 
 function runner.env_override(m)
-  local live = runner.getenv("HYRULECOMPENDIUM_TEST_LIVE")
-  local override = runner.getenv("HYRULECOMPENDIUM_TEST_OVERRIDE")
+  local live = runner.getenv("HYRULE_COMPENDIUM_TEST_LIVE")
+  local override = runner.getenv("HYRULE_COMPENDIUM_TEST_OVERRIDE")
 
   if live == "TRUE" or override == "TRUE" then
     for key, _ in pairs(m) do
@@ -56,9 +56,9 @@ function runner.env_override(m)
     end
   end
 
-  local explain = runner.getenv("HYRULECOMPENDIUM_TEST_EXPLAIN")
+  local explain = runner.getenv("HYRULE_COMPENDIUM_TEST_EXPLAIN")
   if explain ~= nil and explain ~= "" then
-    m["HYRULECOMPENDIUM_TEST_EXPLAIN"] = explain
+    m["HYRULE_COMPENDIUM_TEST_EXPLAIN"] = explain
   end
 
   return m

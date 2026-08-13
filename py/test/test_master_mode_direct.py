@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from hyrulecompendium_sdk.utility.voxgig_struct import voxgig_struct as vs
 from hyrulecompendium_sdk import HyruleCompendiumSDK
-from core import helpers
+from hyrulecompendium_sdk.core import helpers
 from test import runner
 
 
@@ -66,11 +66,11 @@ def _master_mode_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID": {},
-        "HYRULECOMPENDIUM_TEST_LIVE": "FALSE",
+        "HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID": {},
+        "HYRULE_COMPENDIUM_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("HYRULECOMPENDIUM_TEST_LIVE") == "TRUE"
+    live = env.get("HYRULE_COMPENDIUM_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

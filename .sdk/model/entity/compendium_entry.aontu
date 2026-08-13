@@ -6,17 +6,91 @@ main: kit: entity: compendium_entry: {
 
   fields: [
     {
-      name: "data"
-      op: {
-        load: {
-          req: false
-          type: "`$OBJECT`"
-        }
-      }
+      name: "category"
       req: true
-      type: "`$OBJECT`"
+      type: "`$STRING`"
+    }
+    {
+      name: "common_locations"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "cooking_effect"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "creatures"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "dlc"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "drops"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "edible"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "equipment"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "hearts_recovered"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "materials"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "monsters"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "treasure"
+      req: false
+      type: "`$ARRAY`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "compendium_entry"
   op: {
@@ -89,7 +163,7 @@ main: kit: entity: compendium_entry: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
         {
@@ -100,7 +174,7 @@ main: kit: entity: compendium_entry: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

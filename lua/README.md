@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local category, err = client:Category():load({ id = "example_id" })
+local mastermode, err = client:MasterMode():load({ entry = "example" })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Category():load({ id = "test01" })
+local result, err = client:MasterMode():load({ entry = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -242,7 +242,22 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `creatures` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `equipment` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `materials` |  |
+| `monsters` |  |
+| `name` |  |
+| `treasure` |  |
 
 Operations: Load.
 
@@ -252,7 +267,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -262,7 +287,6 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `description` |  |
 | `name` |  |
 
@@ -312,7 +336,22 @@ Create an instance: `local compendium_entry = client:CompendiumEntry(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
+| `category` | `string` |  |
+| `common_locations` | `table` |  |
+| `cooking_effect` | `string` |  |
+| `creatures` | `table` |  |
+| `description` | `string` |  |
+| `dlc` | `boolean` |  |
+| `drops` | `table` |  |
+| `edible` | `boolean` |  |
+| `equipment` | `table` |  |
+| `hearts_recovered` | `number` |  |
+| `id` | `number` |  |
+| `image` | `string` |  |
+| `materials` | `table` |  |
+| `monsters` | `table` |  |
+| `name` | `string` |  |
+| `treasure` | `table` |  |
 
 #### Example: Load
 
@@ -335,7 +374,17 @@ Create an instance: `local master_mode = client:MasterMode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
+| `category` | `string` |  |
+| `common_locations` | `table` |  |
+| `cooking_effect` | `string` |  |
+| `description` | `string` |  |
+| `dlc` | `boolean` |  |
+| `drops` | `table` |  |
+| `edible` | `boolean` |  |
+| `hearts_recovered` | `number` |  |
+| `id` | `number` |  |
+| `image` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -359,7 +408,6 @@ Create an instance: `local region = client:Region(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
 | `description` | `string` |  |
 | `name` | `string` |  |
 
@@ -452,11 +500,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local category = client:Category()
-category:load({ id = "example_id" })
+local mastermode = client:MasterMode()
+mastermode:load({ entry = "example" })
 
--- category:data_get() now returns the category data from the last load
--- category:match_get() returns the last match criteria
+-- mastermode:data_get() now returns the mastermode data from the last load
+-- mastermode:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

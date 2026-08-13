@@ -37,7 +37,7 @@ MasterMode is nested under entry, so provide the `entry`.
 
 ```php
 try {
-    // load() returns the bare MasterMode record (throws on error).
+    // load() returns the ENTITY — call data_get() for the MasterMode record (throws on error).
     $mastermode = $client->MasterMode()->load(["entry" => "example_entry"]);
     print_r($mastermode);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $category = $client->Category()->load(["id" => "example_id"]);
+    $mastermode = $client->MasterMode()->load(["entry" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -120,17 +120,15 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = HyruleCompendiumSDK::test([
-    "entity" => ["category" => ["test01" => ["id" => "test01"]]],
-]);
+$client = HyruleCompendiumSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$category = $client->Category()->load(["id" => "test01"]);
-print_r($category);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$mastermode = $client->MasterMode()->load(["entry" => "example"]);
+print_r($mastermode);
 ```
 
 ### Use a custom fetch function
@@ -231,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -263,7 +261,22 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `creatures` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `equipment` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `materials` |  |
+| `monsters` |  |
+| `name` |  |
+| `treasure` |  |
 
 Operations: Load.
 
@@ -273,7 +286,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -283,7 +306,6 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `description` |  |
 | `name` |  |
 
@@ -315,7 +337,7 @@ Create an instance: `$category = $client->Category();`
 #### Example: Load
 
 ```php
-// load() returns the bare Category record (throws on error).
+// load() returns the ENTITY — call data_get() for the Category record (throws on error).
 $category = $client->Category()->load(["id" => "category_id"]);
 ```
 
@@ -334,12 +356,27 @@ Create an instance: `$compendium_entry = $client->CompendiumEntry();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
+| `category` | `string` |  |
+| `common_locations` | `array` |  |
+| `cooking_effect` | `string` |  |
+| `creatures` | `array` |  |
+| `description` | `string` |  |
+| `dlc` | `bool` |  |
+| `drops` | `array` |  |
+| `edible` | `bool` |  |
+| `equipment` | `array` |  |
+| `hearts_recovered` | `float` |  |
+| `id` | `int` |  |
+| `image` | `string` |  |
+| `materials` | `array` |  |
+| `monsters` | `array` |  |
+| `name` | `string` |  |
+| `treasure` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare CompendiumEntry record (throws on error).
+// load() returns the ENTITY — call data_get() for the CompendiumEntry record (throws on error).
 $compendium_entry = $client->CompendiumEntry()->load(["id" => "compendium_entry_id"]);
 ```
 
@@ -358,12 +395,22 @@ Create an instance: `$master_mode = $client->MasterMode();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
+| `category` | `string` |  |
+| `common_locations` | `array` |  |
+| `cooking_effect` | `string` |  |
+| `description` | `string` |  |
+| `dlc` | `bool` |  |
+| `drops` | `array` |  |
+| `edible` | `bool` |  |
+| `hearts_recovered` | `float` |  |
+| `id` | `int` |  |
+| `image` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare MasterMode record (throws on error).
+// load() returns the ENTITY — call data_get() for the MasterMode record (throws on error).
 $master_mode = $client->MasterMode()->load(["entry" => "entry"]);
 ```
 
@@ -383,14 +430,13 @@ Create an instance: `$region = $client->Region();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
 | `description` | `string` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Region record (throws on error).
+// load() returns the ENTITY — call data_get() for the Region record (throws on error).
 $region = $client->Region()->load(["id" => "region_id"]);
 ```
 
@@ -478,11 +524,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$category = $client->Category();
-$category->load(["id" => "example_id"]);
+$mastermode = $client->MasterMode();
+$mastermode->load(["entry" => "example"]);
 
-// $category->data_get() now returns the category data from the last load
-// $category->match_get() returns the last match criteria
+// $mastermode->data_get() now returns the mastermode data from the last load
+// $mastermode->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

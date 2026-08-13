@@ -27,7 +27,22 @@ class CategoryLoadMatch
 /** CompendiumEntry entity data model. */
 class CompendiumEntry
 {
-    public array $data;
+    public string $category;
+    public ?array $common_locations = null;
+    public ?string $cooking_effect = null;
+    public ?array $creatures = null;
+    public ?string $description = null;
+    public ?bool $dlc = null;
+    public ?array $drops = null;
+    public ?bool $edible = null;
+    public ?array $equipment = null;
+    public ?float $hearts_recovered = null;
+    public int $id;
+    public ?string $image = null;
+    public ?array $materials = null;
+    public ?array $monsters = null;
+    public string $name;
+    public ?array $treasure = null;
 }
 
 /** Request payload for CompendiumEntry#load. */
@@ -40,7 +55,17 @@ class CompendiumEntryLoadMatch
 /** MasterMode entity data model. */
 class MasterMode
 {
-    public array $data;
+    public string $category;
+    public ?array $common_locations = null;
+    public ?string $cooking_effect = null;
+    public ?string $description = null;
+    public ?bool $dlc = null;
+    public ?array $drops = null;
+    public ?bool $edible = null;
+    public ?float $hearts_recovered = null;
+    public int $id;
+    public ?string $image = null;
+    public string $name;
 }
 
 /** Request payload for MasterMode#load. */
@@ -52,7 +77,6 @@ class MasterModeLoadMatch
 /** Region entity data model. */
 class Region
 {
-    public ?array $data = null;
     public ?string $description = null;
     public ?string $name = null;
 }
@@ -66,7 +90,6 @@ class RegionLoadMatch
 /** Request payload for Region#list. */
 class RegionListMatch
 {
-    public ?array $data = null;
     public ?string $description = null;
     public ?string $name = null;
 }

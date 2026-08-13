@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-category, err := client.Category(nil).Load(map[string]any{"id": "example_id"}, nil)
+mastermode, err := client.MasterMode(nil).Load(map[string]any{"entry": "example"}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = category
+_ = mastermode
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-category, err := client.Category(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+masterMode, err := client.MasterMode(nil).Load(
+    map[string]any{"entry": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(category) // the returned mock data
+fmt.Println(masterMode) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -273,7 +273,22 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
+| `"category"` |  |
+| `"common_locations"` |  |
+| `"cooking_effect"` |  |
+| `"creatures"` |  |
+| `"description"` |  |
+| `"dlc"` |  |
+| `"drops"` |  |
+| `"edible"` |  |
+| `"equipment"` |  |
+| `"hearts_recovered"` |  |
+| `"id"` |  |
+| `"image"` |  |
+| `"materials"` |  |
+| `"monsters"` |  |
+| `"name"` |  |
+| `"treasure"` |  |
 
 Operations: Load.
 
@@ -283,7 +298,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
+| `"category"` |  |
+| `"common_locations"` |  |
+| `"cooking_effect"` |  |
+| `"description"` |  |
+| `"dlc"` |  |
+| `"drops"` |  |
+| `"edible"` |  |
+| `"hearts_recovered"` |  |
+| `"id"` |  |
+| `"image"` |  |
+| `"name"` |  |
 
 Operations: Load.
 
@@ -293,7 +318,6 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
 | `"description"` |  |
 | `"name"` |  |
 
@@ -347,7 +371,22 @@ Create an instance: `compendiumEntry := client.CompendiumEntry(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
+| `category` | `string` |  |
+| `common_locations` | `[]any` |  |
+| `cooking_effect` | `string` |  |
+| `creatures` | `[]any` |  |
+| `description` | `string` |  |
+| `dlc` | `bool` |  |
+| `drops` | `[]any` |  |
+| `edible` | `bool` |  |
+| `equipment` | `[]any` |  |
+| `hearts_recovered` | `float64` |  |
+| `id` | `int` |  |
+| `image` | `string` |  |
+| `materials` | `[]any` |  |
+| `monsters` | `[]any` |  |
+| `name` | `string` |  |
+| `treasure` | `[]any` |  |
 
 #### Example: Load
 
@@ -374,7 +413,17 @@ Create an instance: `masterMode := client.MasterMode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
+| `category` | `string` |  |
+| `common_locations` | `[]any` |  |
+| `cooking_effect` | `string` |  |
+| `description` | `string` |  |
+| `dlc` | `bool` |  |
+| `drops` | `[]any` |  |
+| `edible` | `bool` |  |
+| `hearts_recovered` | `float64` |  |
+| `id` | `int` |  |
+| `image` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -402,7 +451,6 @@ Create an instance: `region := client.Region(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
 | `description` | `string` |  |
 | `name` | `string` |  |
 
@@ -500,11 +548,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-category := client.Category(nil)
-category.Load(map[string]any{"id": "example_id"}, nil)
+mastermode := client.MasterMode(nil)
+mastermode.Load(map[string]any{"entry": "example"}, nil)
 
-// category.Data() now returns the category data from the last load
-// category.Match() returns the last match criteria
+// mastermode.Data() now returns the mastermode data from the last load
+// mastermode.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

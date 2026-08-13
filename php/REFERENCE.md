@@ -156,13 +156,22 @@ $compendium_entry = $client->CompendiumEntry();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load |
-| --- | --- |
-| `data` | Yes |
+| `category` | `string` | Yes |  |
+| `common_locations` | `array` | No |  |
+| `cooking_effect` | `string` | No |  |
+| `creatures` | `array` | No |  |
+| `description` | `string` | No |  |
+| `dlc` | `bool` | No |  |
+| `drops` | `array` | No |  |
+| `edible` | `bool` | No |  |
+| `equipment` | `array` | No |  |
+| `hearts_recovered` | `float` | No |  |
+| `id` | `int` | Yes |  |
+| `image` | `string` | No |  |
+| `materials` | `array` | No |  |
+| `monsters` | `array` | No |  |
+| `name` | `string` | Yes |  |
+| `treasure` | `array` | No |  |
 
 ### Operations
 
@@ -214,7 +223,17 @@ $master_mode = $client->MasterMode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | Yes |  |
+| `category` | `string` | Yes |  |
+| `common_locations` | `array` | No |  |
+| `cooking_effect` | `string` | No |  |
+| `description` | `string` | No |  |
+| `dlc` | `bool` | No |  |
+| `drops` | `array` | No |  |
+| `edible` | `bool` | No |  |
+| `hearts_recovered` | `float` | No |  |
+| `id` | `int` | Yes |  |
+| `image` | `string` | No |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
@@ -266,7 +285,6 @@ $region = $client->Region();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
 | `description` | `string` | No |  |
 | `name` | `string` | No |  |
 

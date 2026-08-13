@@ -2,26 +2,82 @@
   "existing": {
     "compendium_entry": {
       "COMPENDIUM_ENTRY00": {
-        "data": {},
-        "entry_id": "ENTRY01",
-        "id": "COMPENDIUM_ENTRY00"
+        "category": "sa0",
+        "common_locations": [],
+        "cooking_effect": "sa2",
+        "creatures": [],
+        "description": "sa4",
+        "dlc": false,
+        "drops": [],
+        "edible": false,
+        "equipment": [],
+        "hearts_recovered": 169,
+        "id": "COMPENDIUM_ENTRY00",
+        "image": "sab",
+        "materials": [],
+        "monsters": [],
+        "name": "sae",
+        "treasure": [],
+        "entry_id": "ENTRY01"
       },
       "COMPENDIUM_ENTRY01": {
-        "data": {},
-        "entry_id": "ENTRY01",
-        "id": "COMPENDIUM_ENTRY01"
+        "category": "s140",
+        "common_locations": [],
+        "cooking_effect": "s142",
+        "creatures": [],
+        "description": "s144",
+        "dlc": false,
+        "drops": [],
+        "edible": false,
+        "equipment": [],
+        "hearts_recovered": 329,
+        "id": "COMPENDIUM_ENTRY01",
+        "image": "s14b",
+        "materials": [],
+        "monsters": [],
+        "name": "s14e",
+        "treasure": [],
+        "entry_id": "ENTRY01"
       },
       "COMPENDIUM_ENTRY02": {
-        "data": {},
-        "entry_id": "ENTRY01",
-        "id": "COMPENDIUM_ENTRY02"
+        "category": "s1e0",
+        "common_locations": [],
+        "cooking_effect": "s1e2",
+        "creatures": [],
+        "description": "s1e4",
+        "dlc": false,
+        "drops": [],
+        "edible": false,
+        "equipment": [],
+        "hearts_recovered": 489,
+        "id": "COMPENDIUM_ENTRY02",
+        "image": "s1eb",
+        "materials": [],
+        "monsters": [],
+        "name": "s1ee",
+        "treasure": [],
+        "entry_id": "ENTRY01"
       }
     }
   },
   "new": {
     "compendium_entry": {
       "compendium_entry_ref01": {
-        "data": {}
+        "category": "s280",
+        "common_locations": [],
+        "cooking_effect": "s282",
+        "creatures": [],
+        "description": "s284",
+        "dlc": false,
+        "drops": [],
+        "edible": false,
+        "equipment": [],
+        "hearts_recovered": 649,
+        "image": "s28b",
+        "materials": [],
+        "monsters": [],
+        "name": "s28e",
+        "treasure": []
       }
     }
   }

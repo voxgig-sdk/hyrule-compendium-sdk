@@ -26,8 +26,8 @@ import {
 describe('MasterModeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HYRULECOMPENDIUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HYRULECOMPENDIUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HYRULE_COMPENDIUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HYRULE_COMPENDIUM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HyruleCompendiumSDK.test()
@@ -59,9 +59,12 @@ describe('MasterModeEntity', async () => {
 
     let master_mode_ref01_data = Object.values(setup.data.existing.master_mode)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const master_mode_ref01_ent = client.MasterMode()
+    const master_mode_ref01_match_dt0: any = {}
+    master_mode_ref01_match_dt0.id = master_mode_ref01_data.id
+    const master_mode_ref01_data_dt0 = (await master_mode_ref01_ent.load(master_mode_ref01_match_dt0)).data()
+    assert(master_mode_ref01_data_dt0.id === master_mode_ref01_data.id)
 
 
   })

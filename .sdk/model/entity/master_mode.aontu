@@ -6,11 +6,66 @@ main: kit: entity: master_mode: {
 
   fields: [
     {
-      name: "data"
+      name: "category"
       req: true
-      type: "`$OBJECT`"
+      type: "`$STRING`"
+    }
+    {
+      name: "common_locations"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "cooking_effect"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "dlc"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "drops"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "edible"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "hearts_recovered"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "master_mode"
   op: {
@@ -43,7 +98,7 @@ main: kit: entity: master_mode: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

@@ -23,8 +23,8 @@ module HyruleCompendiumTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("HYRULECOMPENDIUM_TEST_LIVE")
-    override = getenv("HYRULECOMPENDIUM_TEST_OVERRIDE")
+    live = getenv("HYRULE_COMPENDIUM_TEST_LIVE")
+    override = getenv("HYRULE_COMPENDIUM_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module HyruleCompendiumTestRunner
       end
     end
 
-    explain = getenv("HYRULECOMPENDIUM_TEST_EXPLAIN")
-    m["HYRULECOMPENDIUM_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("HYRULE_COMPENDIUM_TEST_EXPLAIN")
+    m["HYRULE_COMPENDIUM_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -56,8 +56,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const category = await client.Category().load({ id: "example_id" })
-  console.log(category)
+  const mastermode = await client.MasterMode().load({ entry: "example" })
+  console.log(mastermode)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -123,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = HyruleCompendiumSDK.test()
 
-const category = await client.Category().load({ id: 'test01' })
-// category is a bare entity populated with mock response data
-console.log(category)
+const mastermode = await client.MasterMode().load({ entry: 'example_entry' })
+// mastermode is the entity, populated with mock response data
+// — call mastermode.data() for the record itself
+console.log(mastermode)
 ```
 
 You can also use the instance method:
@@ -140,14 +141,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Category()
+const entity = client.MasterMode()
 
 // First call runs the operation and stores its result
-await entity.load({ id: 'example' })
+await entity.load({ entry: 'example_entry' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -303,7 +304,22 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `creatures` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `equipment` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `materials` |  |
+| `monsters` |  |
+| `name` |  |
+| `treasure` |  |
 
 Operations: load.
 
@@ -313,7 +329,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `category` |  |
+| `common_locations` |  |
+| `cooking_effect` |  |
+| `description` |  |
+| `dlc` |  |
+| `drops` |  |
+| `edible` |  |
+| `hearts_recovered` |  |
+| `id` |  |
+| `image` |  |
+| `name` |  |
 
 Operations: load.
 
@@ -323,7 +349,6 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `description` |  |
 | `name` |  |
 
@@ -373,7 +398,22 @@ Create an instance: `const compendium_entry = client.CompendiumEntry()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
+| `category` | `string` |  |
+| `common_locations` | `any[]` |  |
+| `cooking_effect` | `string` |  |
+| `creatures` | `any[]` |  |
+| `description` | `string` |  |
+| `dlc` | `boolean` |  |
+| `drops` | `any[]` |  |
+| `edible` | `boolean` |  |
+| `equipment` | `any[]` |  |
+| `hearts_recovered` | `number` |  |
+| `id` | `number` |  |
+| `image` | `string` |  |
+| `materials` | `any[]` |  |
+| `monsters` | `any[]` |  |
+| `name` | `string` |  |
+| `treasure` | `any[]` |  |
 
 #### Example: Load
 
@@ -396,7 +436,17 @@ Create an instance: `const master_mode = client.MasterMode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
+| `category` | `string` |  |
+| `common_locations` | `any[]` |  |
+| `cooking_effect` | `string` |  |
+| `description` | `string` |  |
+| `dlc` | `boolean` |  |
+| `drops` | `any[]` |  |
+| `edible` | `boolean` |  |
+| `hearts_recovered` | `number` |  |
+| `id` | `number` |  |
+| `image` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -420,7 +470,6 @@ Create an instance: `const region = client.Region()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
 | `description` | `string` |  |
 | `name` | `string` |  |
 
@@ -506,11 +555,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const category = client.Category()
-await category.load({ id: "example_id" })
+const mastermode = client.MasterMode()
+await mastermode.load({ entry: "example" })
 
-// category.data() now returns the category data from the last `load`
-// category.match() returns { id: "example_id" }
+// mastermode.data() now returns the mastermode data from the last `load`
+// mastermode.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

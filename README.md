@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new HyruleCompendiumSDK()
-const category = await client.Category().load()
+const category = await client.Category().load({ id: "example_id" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = HyruleCompendiumSDK.test()
-const category = await client.Category().load({ id: 'test01' })
-// category is a bare Category populated with mock data
-console.log(category)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = HyruleCompendiumSDK.test({
+  entity: {
+    master_mode: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const mastermode = await client.MasterMode().load({ entry: 'example_entry' })
+// mastermode is the MasterMode entity, populated with mock data
+// — call mastermode.data() for the record itself
+console.log(mastermode)
 ```
 
 ### Python
 
 ```python
 client = HyruleCompendiumSDK.test()
-category = client.Category().load({"id": "test01"})
-print(category)
+mastermode = client.MasterMode().load({"entry": "example"})
+print(mastermode)
 ```
 
 ### PHP
@@ -57,17 +66,17 @@ print(category)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = HyruleCompendiumSDK::test([
-    "entity" => ["category" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["mastermode" => ["test01" => []]],
 ]);
-$category = $client->Category()->load(["id" => "test01"]);
+$mastermode = $client->MasterMode()->load(["entry" => "example"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Category(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+result, err := client.MasterMode(nil).Load(
+    nil, nil,
 )
 ```
 
@@ -76,16 +85,16 @@ result, err := client.Category(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = HyruleCompendiumSDK.test({
-  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "mastermode" => { "test01" => {} } },
 })
-category = client.Category.load({ "id" => "test01" })
+mastermode = client.MasterMode.load({ "entry" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Category():load({ id = "test01" })
+local result, err = client:MasterMode():load({ entry = "example" })
 ```
 
 ## Packages
@@ -188,7 +197,7 @@ require_once 'hyrulecompendium_sdk.php';
 $client = new HyruleCompendiumSDK();
 
 
-// Load a specific category (returns the bare record; throws on error)
+// Load a specific category (returns the ENTITY; call data_get() for the record; throws on error)
 $category = $client->Category()->load(["id" => "example_id"]);
 print_r($category);
 ```
@@ -219,7 +228,7 @@ require_relative "HyruleCompendium_sdk"
 client = HyruleCompendiumSDK.new
 
 
-# Load a specific category (returns the bare record; raises on error)
+# Load a specific category (returns the ENTITY; call data_get for the record)
 category = client.Category.load({ "id" => "example_id" })
 puts category
 ```
@@ -353,6 +362,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/gadhagod/Hyrule-Compendium-API](https://github.com/gadhagod/Hyrule-Compendium-API)
 

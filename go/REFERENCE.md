@@ -161,13 +161,22 @@ fmt.Println(compendiumEntry.GetName()) // "compendium_entry"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load |
-| --- | --- |
-| `data` | Yes |
+| `category` | `string` | Yes |  |
+| `common_locations` | `[]any` | No |  |
+| `cooking_effect` | `string` | No |  |
+| `creatures` | `[]any` | No |  |
+| `description` | `string` | No |  |
+| `dlc` | `bool` | No |  |
+| `drops` | `[]any` | No |  |
+| `edible` | `bool` | No |  |
+| `equipment` | `[]any` | No |  |
+| `hearts_recovered` | `float64` | No |  |
+| `id` | `int` | Yes |  |
+| `image` | `string` | No |  |
+| `materials` | `[]any` | No |  |
+| `monsters` | `[]any` | No |  |
+| `name` | `string` | Yes |  |
+| `treasure` | `[]any` | No |  |
 
 ### Operations
 
@@ -218,7 +227,17 @@ fmt.Println(masterMode.GetName()) // "master_mode"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | Yes |  |
+| `category` | `string` | Yes |  |
+| `common_locations` | `[]any` | No |  |
+| `cooking_effect` | `string` | No |  |
+| `description` | `string` | No |  |
+| `dlc` | `bool` | No |  |
+| `drops` | `[]any` | No |  |
+| `edible` | `bool` | No |  |
+| `hearts_recovered` | `float64` | No |  |
+| `id` | `int` | Yes |  |
+| `image` | `string` | No |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
@@ -269,7 +288,6 @@ fmt.Println(region.GetName()) // "region"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
 | `description` | `string` | No |  |
 | `name` | `string` | No |  |
 

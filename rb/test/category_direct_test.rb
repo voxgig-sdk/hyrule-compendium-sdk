@@ -67,11 +67,11 @@ def category_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "HYRULECOMPENDIUM_TEST_CATEGORY_ENTID" => {},
-    "HYRULECOMPENDIUM_TEST_LIVE" => "FALSE",
+    "HYRULE_COMPENDIUM_TEST_CATEGORY_ENTID" => {},
+    "HYRULE_COMPENDIUM_TEST_LIVE" => "FALSE",
   })
 
-  live = env["HYRULECOMPENDIUM_TEST_LIVE"] == "TRUE"
+  live = env["HYRULE_COMPENDIUM_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

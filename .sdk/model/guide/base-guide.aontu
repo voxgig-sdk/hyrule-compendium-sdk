@@ -15,10 +15,12 @@ guide: {
   entity: compendium_entry: {
     path: "/all": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
     path: "/entry/{entry}": {
       rename: param: "entry": *"id"
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
     path: "/entry/{entry}/image": {
       rename: param: "entry": *"entry_id"
@@ -29,6 +31,7 @@ guide: {
   entity: master_mode: {
     path: "/master_mode/entry/{entry}": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
   }
 
@@ -36,9 +39,11 @@ guide: {
     path: "/region/{region}": {
       rename: param: "region": *"id"
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
     path: "/regions": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
   }
 

@@ -28,10 +28,70 @@ CategoryLoadMatch = Struct.new(
 
 # CompendiumEntry entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash]
+# @!attribute [rw] category
+#   @return [String]
+#
+# @!attribute [rw] common_locations
+#   @return [Array, nil]
+#
+# @!attribute [rw] cooking_effect
+#   @return [String, nil]
+#
+# @!attribute [rw] creatures
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] dlc
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] drops
+#   @return [Array, nil]
+#
+# @!attribute [rw] edible
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] equipment
+#   @return [Array, nil]
+#
+# @!attribute [rw] hearts_recovered
+#   @return [Float, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer]
+#
+# @!attribute [rw] image
+#   @return [String, nil]
+#
+# @!attribute [rw] materials
+#   @return [Array, nil]
+#
+# @!attribute [rw] monsters
+#   @return [Array, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] treasure
+#   @return [Array, nil]
 CompendiumEntry = Struct.new(
-  :data,
+  :category,
+  :common_locations,
+  :cooking_effect,
+  :creatures,
+  :description,
+  :dlc,
+  :drops,
+  :edible,
+  :equipment,
+  :hearts_recovered,
+  :id,
+  :image,
+  :materials,
+  :monsters,
+  :name,
+  :treasure,
   keyword_init: true
 )
 
@@ -50,10 +110,50 @@ CompendiumEntryLoadMatch = Struct.new(
 
 # MasterMode entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash]
+# @!attribute [rw] category
+#   @return [String]
+#
+# @!attribute [rw] common_locations
+#   @return [Array, nil]
+#
+# @!attribute [rw] cooking_effect
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] dlc
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] drops
+#   @return [Array, nil]
+#
+# @!attribute [rw] edible
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] hearts_recovered
+#   @return [Float, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer]
+#
+# @!attribute [rw] image
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
 MasterMode = Struct.new(
-  :data,
+  :category,
+  :common_locations,
+  :cooking_effect,
+  :description,
+  :dlc,
+  :drops,
+  :edible,
+  :hearts_recovered,
+  :id,
+  :image,
+  :name,
   keyword_init: true
 )
 
@@ -68,16 +168,12 @@ MasterModeLoadMatch = Struct.new(
 
 # Region entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
 # @!attribute [rw] description
 #   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 Region = Struct.new(
-  :data,
   :description,
   :name,
   keyword_init: true
@@ -94,16 +190,12 @@ RegionLoadMatch = Struct.new(
 
 # Request payload for Region#list.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
 # @!attribute [rw] description
 #   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 RegionListMatch = Struct.new(
-  :data,
   :description,
   :name,
   keyword_init: true

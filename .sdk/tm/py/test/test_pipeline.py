@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import HyruleCompendiumSDK
-from core.error import HyruleCompendiumError
-from core.result import HyruleCompendiumResult
-from core.response import HyruleCompendiumResponse
-from core.spec import HyruleCompendiumSpec
-from feature.base_feature import HyruleCompendiumBaseFeature
+from projectname_sdk.core.error import HyruleCompendiumError
+from projectname_sdk.core.result import HyruleCompendiumResult
+from projectname_sdk.core.response import HyruleCompendiumResponse
+from projectname_sdk.core.spec import HyruleCompendiumSpec
+from projectname_sdk.feature.base_feature import HyruleCompendiumBaseFeature
 
 
 def _client():

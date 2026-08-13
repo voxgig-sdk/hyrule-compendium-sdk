@@ -13,20 +13,44 @@
 ---@field id string
 
 ---@class CompendiumEntry
----@field data table
+---@field category string
+---@field common_locations? table
+---@field cooking_effect? string
+---@field creatures? table
+---@field description? string
+---@field dlc? boolean
+---@field drops? table
+---@field edible? boolean
+---@field equipment? table
+---@field hearts_recovered? number
+---@field id number
+---@field image? string
+---@field materials? table
+---@field monsters? table
+---@field name string
+---@field treasure? table
 
 ---@class CompendiumEntryLoadMatch
 ---@field entry_id? string
 ---@field id? string
 
 ---@class MasterMode
----@field data table
+---@field category string
+---@field common_locations? table
+---@field cooking_effect? string
+---@field description? string
+---@field dlc? boolean
+---@field drops? table
+---@field edible? boolean
+---@field hearts_recovered? number
+---@field id number
+---@field image? string
+---@field name string
 
 ---@class MasterModeLoadMatch
 ---@field entry any
 
 ---@class Region
----@field data? table
 ---@field description? string
 ---@field name? string
 
@@ -34,7 +58,6 @@
 ---@field id string
 
 ---@class RegionListMatch
----@field data? table
 ---@field description? string
 ---@field name? string
 

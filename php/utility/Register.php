@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ HyruleCompendiumUtility::setRegistrar(function (HyruleCompendiumUtility $u): voi
     $u->prepare_params = [HyruleCompendiumPrepareParams::class, 'call'];
     $u->prepare_path = [HyruleCompendiumPreparePath::class, 'call'];
     $u->prepare_query = [HyruleCompendiumPrepareQuery::class, 'call'];
+    $u->graphql_body = [HyruleCompendiumGraphql::class, 'body'];
+    $u->graphql_errors = [HyruleCompendiumGraphql::class, 'errors'];
     $u->result_basic = [HyruleCompendiumResultBasic::class, 'call'];
     $u->result_body = [HyruleCompendiumResultBody::class, 'call'];
     $u->result_headers = [HyruleCompendiumResultHeaders::class, 'call'];

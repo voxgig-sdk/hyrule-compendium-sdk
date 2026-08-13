@@ -33,7 +33,7 @@ class MasterModeEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -48,9 +48,13 @@ class MasterModeEntityTest extends TestCase
 
         // LOAD
         $master_mode_ref01_ent = $client->MasterMode(null);
-        $master_mode_ref01_match_dt0 = [];
+        $master_mode_ref01_match_dt0 = [
+            "id" => $master_mode_ref01_data["id"],
+        ];
         $master_mode_ref01_data_dt0_loaded = $master_mode_ref01_ent->load($master_mode_ref01_match_dt0, null);
-        $this->assertNotNull($master_mode_ref01_data_dt0_loaded);
+        $master_mode_ref01_data_dt0_load_result = Helpers::to_map(is_object($master_mode_ref01_data_dt0_loaded) && method_exists($master_mode_ref01_data_dt0_loaded, 'data_get') ? $master_mode_ref01_data_dt0_loaded->data_get() : $master_mode_ref01_data_dt0_loaded);
+        $this->assertNotNull($master_mode_ref01_data_dt0_load_result);
+        $this->assertEquals($master_mode_ref01_data_dt0_load_result["id"], $master_mode_ref01_data["id"]);
 
     }
 }
@@ -77,22 +81,22 @@ function master_mode_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID");
+    $entid_env_raw = getenv("HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID" => $idmap,
-        "HYRULECOMPENDIUM_TEST_LIVE" => "FALSE",
-        "HYRULECOMPENDIUM_TEST_EXPLAIN" => "FALSE",
+        "HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID" => $idmap,
+        "HYRULE_COMPENDIUM_TEST_LIVE" => "FALSE",
+        "HYRULE_COMPENDIUM_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID"]);
+        $env["HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["HYRULECOMPENDIUM_TEST_LIVE"] === "TRUE") {
+    if ($env["HYRULE_COMPENDIUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -101,13 +105,13 @@ function master_mode_basic_setup($extra)
         $client = new HyruleCompendiumSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["HYRULECOMPENDIUM_TEST_LIVE"] === "TRUE";
+    $live = $env["HYRULE_COMPENDIUM_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["HYRULECOMPENDIUM_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["HYRULE_COMPENDIUM_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# HyruleCompendium SDK exists test
 
 import pytest
 from hyrulecompendium_sdk import HyruleCompendiumSDK

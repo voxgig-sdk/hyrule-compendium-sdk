@@ -26,8 +26,8 @@ import {
 describe('CategoryEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HYRULECOMPENDIUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HYRULECOMPENDIUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HYRULE_COMPENDIUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HYRULE_COMPENDIUM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HyruleCompendiumSDK.test()

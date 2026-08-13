@@ -154,13 +154,22 @@ local compendium_entry = client:CompendiumEntry(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load |
-| --- | --- |
-| `data` | Yes |
+| `category` | `string` | Yes |  |
+| `common_locations` | `table` | No |  |
+| `cooking_effect` | `string` | No |  |
+| `creatures` | `table` | No |  |
+| `description` | `string` | No |  |
+| `dlc` | `boolean` | No |  |
+| `drops` | `table` | No |  |
+| `edible` | `boolean` | No |  |
+| `equipment` | `table` | No |  |
+| `hearts_recovered` | `number` | No |  |
+| `id` | `number` | Yes |  |
+| `image` | `string` | No |  |
+| `materials` | `table` | No |  |
+| `monsters` | `table` | No |  |
+| `name` | `string` | Yes |  |
+| `treasure` | `table` | No |  |
 
 ### Operations
 
@@ -212,7 +221,17 @@ local master_mode = client:MasterMode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | Yes |  |
+| `category` | `string` | Yes |  |
+| `common_locations` | `table` | No |  |
+| `cooking_effect` | `string` | No |  |
+| `description` | `string` | No |  |
+| `dlc` | `boolean` | No |  |
+| `drops` | `table` | No |  |
+| `edible` | `boolean` | No |  |
+| `hearts_recovered` | `number` | No |  |
+| `id` | `number` | Yes |  |
+| `image` | `string` | No |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
@@ -264,7 +283,6 @@ local region = client:Region(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
 | `description` | `string` | No |  |
 | `name` | `string` | No |  |
 

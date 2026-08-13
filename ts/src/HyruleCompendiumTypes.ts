@@ -14,7 +14,22 @@ export interface CategoryLoadMatch {
 }
 
 export interface CompendiumEntry {
-  data: Record<string, any>
+  category: string
+  common_locations?: any[]
+  cooking_effect?: string
+  creatures?: any[]
+  description?: string
+  dlc?: boolean
+  drops?: any[]
+  edible?: boolean
+  equipment?: any[]
+  hearts_recovered?: number
+  id: number
+  image?: string
+  materials?: any[]
+  monsters?: any[]
+  name: string
+  treasure?: any[]
 }
 
 export interface CompendiumEntryLoadMatch {
@@ -23,7 +38,17 @@ export interface CompendiumEntryLoadMatch {
 }
 
 export interface MasterMode {
-  data: Record<string, any>
+  category: string
+  common_locations?: any[]
+  cooking_effect?: string
+  description?: string
+  dlc?: boolean
+  drops?: any[]
+  edible?: boolean
+  hearts_recovered?: number
+  id: number
+  image?: string
+  name: string
 }
 
 export interface MasterModeLoadMatch {
@@ -31,7 +56,6 @@ export interface MasterModeLoadMatch {
 }
 
 export interface Region {
-  data?: Record<string, any>
   description?: string
   name?: string
 }
@@ -41,7 +65,6 @@ export interface RegionLoadMatch {
 }
 
 export interface RegionListMatch {
-  data?: Record<string, any>
   description?: string
   name?: string
 }

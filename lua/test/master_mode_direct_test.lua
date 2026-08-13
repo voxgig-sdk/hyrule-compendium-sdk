@@ -70,11 +70,11 @@ function master_mode_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["HYRULECOMPENDIUM_TEST_MASTER_MODE_ENTID"] = {},
-    ["HYRULECOMPENDIUM_TEST_LIVE"] = "FALSE",
+    ["HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID"] = {},
+    ["HYRULE_COMPENDIUM_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["HYRULECOMPENDIUM_TEST_LIVE"] == "TRUE"
+  local live = env["HYRULE_COMPENDIUM_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

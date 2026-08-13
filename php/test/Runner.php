@@ -43,8 +43,8 @@ class HyruleCompendiumTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('HYRULECOMPENDIUM_TEST_LIVE');
-        $override = self::getenv('HYRULECOMPENDIUM_TEST_OVERRIDE');
+        $live = self::getenv('HYRULE_COMPENDIUM_TEST_LIVE');
+        $override = self::getenv('HYRULE_COMPENDIUM_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class HyruleCompendiumTestRunner
             }
         }
 
-        $explain = self::getenv('HYRULECOMPENDIUM_TEST_EXPLAIN');
+        $explain = self::getenv('HYRULE_COMPENDIUM_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['HYRULECOMPENDIUM_TEST_EXPLAIN'] = $explain;
+            $m['HYRULE_COMPENDIUM_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;
