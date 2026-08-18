@@ -46,8 +46,7 @@ class CompendiumEntry(CompendiumEntryRequired, total=False):
     treasure: list
 
 
-class CompendiumEntryLoadMatch(TypedDict, total=False):
-    entry_id: str
+class CompendiumEntryLoadMatch(TypedDict):
     id: str
 
 

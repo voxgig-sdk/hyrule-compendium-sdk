@@ -23,6 +23,7 @@ build = {
   modules = {
     ["hyrule-compendium_sdk"] = "hyrule-compendium_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

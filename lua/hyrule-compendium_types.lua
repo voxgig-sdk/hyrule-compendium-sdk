@@ -31,8 +31,7 @@
 ---@field treasure? table
 
 ---@class CompendiumEntryLoadMatch
----@field entry_id? string
----@field id? string
+---@field id string
 
 ---@class MasterMode
 ---@field category string

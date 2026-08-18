@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://botw-compendium.herokuapp.com/api/v3',
+    base: "https://botw-compendium.herokuapp.com/api/v3",
 
     headers: {
       "content-type": "application/json"
@@ -64,11 +64,8 @@ class Config {
     "category": {
       "fields": [
         {
-          "active": true,
           "name": "data",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         }
       ],
       "name": "category",
@@ -78,18 +75,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "monsters",
                     "kind": "param",
                     "name": "id",
                     "orig": "category",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -113,11 +107,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -127,116 +119,71 @@ class Config {
     "compendium_entry": {
       "fields": [
         {
-          "active": true,
           "name": "category",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "common_locations",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "cooking_effect",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "creatures",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 3
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "description",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dlc",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 5
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "drops",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 6
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "edible",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 7
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "equipment",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 8
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "hearts_recovered",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 9
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "image",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "materials",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 12
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "monsters",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 13
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "treasure",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 15
+          "type": "`$ARRAY`"
         }
       ],
       "name": "compendium_entry",
@@ -246,18 +193,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "white-maned_lynel",
                     "kind": "param",
                     "name": "entry_id",
                     "orig": "entry",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -282,22 +226,18 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "white-maned_lynel",
                     "kind": "param",
                     "name": "id",
                     "orig": "entry",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -321,11 +261,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -337,11 +275,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -355,81 +291,51 @@ class Config {
     "master_mode": {
       "fields": [
         {
-          "active": true,
           "name": "category",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "common_locations",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "cooking_effect",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "description",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dlc",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 4
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "drops",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 5
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "edible",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 6
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "hearts_recovered",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 7
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "image",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         }
       ],
       "name": "master_mode",
@@ -439,17 +345,14 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "entry",
                     "orig": "entry",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "index$": 0
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -469,11 +372,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -487,18 +388,12 @@ class Config {
     "region": {
       "fields": [
         {
-          "active": true,
           "name": "description",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         }
       ],
       "name": "region",
@@ -508,7 +403,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -520,29 +414,24 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "hyrule_field",
                     "kind": "param",
                     "name": "id",
                     "orig": "region",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -566,11 +455,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

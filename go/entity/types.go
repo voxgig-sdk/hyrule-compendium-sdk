@@ -44,8 +44,7 @@ type CompendiumEntry struct {
 
 // CompendiumEntryLoadMatch is the typed request payload for CompendiumEntry.LoadTyped.
 type CompendiumEntryLoadMatch struct {
-	EntryId *string `json:"entry_id,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 }
 
 // MasterMode is the typed data model for the master_mode entity.

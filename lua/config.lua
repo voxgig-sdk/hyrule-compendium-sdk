@@ -1,5 +1,8 @@
 -- HyruleCompendium SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -28,11 +31,8 @@ local function make_config()
       ["category"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "data",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 0,
           },
         },
         ["name"] = "category",
@@ -42,18 +42,15 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "monsters",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "category",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -78,10 +75,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -91,116 +86,71 @@ local function make_config()
       ["compendium_entry"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "category",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "common_locations",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "cooking_effect",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "creatures",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "dlc",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "drops",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "edible",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "equipment",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "hearts_recovered",
-            ["req"] = false,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "id",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "image",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "materials",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "monsters",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 13,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 14,
           },
           {
-            ["active"] = true,
             ["name"] = "treasure",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 15,
           },
         },
         ["name"] = "compendium_entry",
@@ -210,18 +160,15 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "white-maned_lynel",
                       ["kind"] = "param",
                       ["name"] = "entry_id",
                       ["orig"] = "entry",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -247,21 +194,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "white-maned_lynel",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "entry",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -286,10 +229,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["index$"] = 1,
               },
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
@@ -302,10 +243,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["index$"] = 2,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -319,81 +258,51 @@ local function make_config()
       ["master_mode"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "category",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "common_locations",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "cooking_effect",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "dlc",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "drops",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "edible",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "hearts_recovered",
-            ["req"] = false,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "id",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "image",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
         },
         ["name"] = "master_mode",
@@ -403,17 +312,14 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "entry",
                       ["orig"] = "entry",
                       ["reqd"] = true,
                       ["type"] = "`$ANY`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -434,10 +340,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -451,18 +355,12 @@ local function make_config()
       ["region"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
         },
         ["name"] = "region",
@@ -472,7 +370,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
@@ -485,28 +382,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "hyrule_field",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "region",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -531,10 +423,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {

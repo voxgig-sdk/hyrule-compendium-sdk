@@ -40,7 +40,7 @@ class HyruleCompendiumSDK
         $utility = new HyruleCompendiumUtility();
         $this->_utility = $utility;
 
-        $config = HyruleCompendiumConfig::make_config();
+        $config = HyruleCompendiumConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

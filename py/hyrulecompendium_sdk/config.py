@@ -1,7 +1,30 @@
 # HyruleCompendium SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "HyruleCompendium",
@@ -29,11 +52,8 @@ def make_config():
       "category": {
         "fields": [
           {
-            "active": True,
             "name": "data",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
         ],
         "name": "category",
@@ -43,18 +63,15 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "monsters",
                       "kind": "param",
                       "name": "id",
                       "orig": "category",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -79,10 +96,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -92,116 +107,71 @@ def make_config():
       "compendium_entry": {
         "fields": [
           {
-            "active": True,
             "name": "category",
             "req": True,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "common_locations",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "cooking_effect",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "creatures",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "dlc",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "drops",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "edible",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "equipment",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "hearts_recovered",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "id",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "image",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "materials",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "monsters",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "treasure",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 15,
           },
         ],
         "name": "compendium_entry",
@@ -211,18 +181,15 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "white-maned_lynel",
                       "kind": "param",
                       "name": "entry_id",
                       "orig": "entry",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -248,21 +215,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "white-maned_lynel",
                       "kind": "param",
                       "name": "id",
                       "orig": "entry",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -287,10 +250,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -303,10 +264,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -320,81 +279,51 @@ def make_config():
       "master_mode": {
         "fields": [
           {
-            "active": True,
             "name": "category",
             "req": True,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "common_locations",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "cooking_effect",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "dlc",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "drops",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "edible",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "hearts_recovered",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "id",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "image",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$STRING`",
-            "index$": 10,
           },
         ],
         "name": "master_mode",
@@ -404,17 +333,14 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "entry",
                       "orig": "entry",
                       "reqd": True,
                       "type": "`$ANY`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -435,10 +361,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -452,18 +376,12 @@ def make_config():
       "region": {
         "fields": [
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
         ],
         "name": "region",
@@ -473,7 +391,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -486,28 +403,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "hyrule_field",
                       "kind": "param",
                       "name": "id",
                       "orig": "region",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -532,10 +444,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {

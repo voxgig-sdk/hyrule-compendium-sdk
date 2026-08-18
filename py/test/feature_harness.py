@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from hyrulecompendium_sdk.config import make_config
+from hyrulecompendium_sdk.config import shared_config
 from hyrulecompendium_sdk.features import _make_feature
 from hyrulecompendium_sdk.core.control import HyruleCompendiumControl
 from hyrulecompendium_sdk.core.error import HyruleCompendiumError
@@ -24,7 +24,7 @@ from hyrulecompendium_sdk.core.spec import HyruleCompendiumSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

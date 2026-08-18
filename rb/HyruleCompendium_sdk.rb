@@ -28,7 +28,7 @@ class HyruleCompendiumSDK
     utility = HyruleCompendiumUtility.new
     @_utility = utility
 
-    config = HyruleCompendiumConfig.make_config
+    config = HyruleCompendiumConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -23,8 +23,8 @@ class HyruleCompendiumSDK:
         utility = HyruleCompendiumUtility()
         self._utility = utility
 
-        from hyrulecompendium_sdk.config import make_config
-        config = make_config()
+        from hyrulecompendium_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
