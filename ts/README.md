@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -304,21 +304,21 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `common_locations` |  |
-| `cooking_effect` |  |
+| `category` | Category of the entry |
+| `common_locations` | Common locations where this entry can be found |
+| `cooking_effect` | Cooking effect for food/material entries |
 | `creatures` |  |
-| `description` |  |
-| `dlc` |  |
-| `drops` |  |
-| `edible` |  |
+| `description` | Detailed description of the entry |
+| `dlc` | Whether this entry is part of DLC content |
+| `drops` | Items that can be dropped by this entry |
+| `edible` | Whether this item is edible |
 | `equipment` |  |
-| `hearts_recovered` |  |
-| `id` |  |
-| `image` |  |
+| `hearts_recovered` | Hearts recovered when consuming this item |
+| `id` | Unique identifier for the entry |
+| `image` | URL to the entry's image |
 | `materials` |  |
 | `monsters` |  |
-| `name` |  |
+| `name` | Name of the entry |
 | `treasure` |  |
 
 Operations: load.
@@ -329,17 +329,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `common_locations` |  |
-| `cooking_effect` |  |
-| `description` |  |
-| `dlc` |  |
-| `drops` |  |
-| `edible` |  |
-| `hearts_recovered` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
+| `category` | Category of the entry |
+| `common_locations` | Common locations where this entry can be found |
+| `cooking_effect` | Cooking effect for food/material entries |
+| `description` | Detailed description of the entry |
+| `dlc` | Whether this entry is part of DLC content |
+| `drops` | Items that can be dropped by this entry |
+| `edible` | Whether this item is edible |
+| `hearts_recovered` | Hearts recovered when consuming this item |
+| `id` | Unique identifier for the entry |
+| `image` | URL to the entry's image |
+| `name` | Name of the entry |
 
 Operations: load.
 
@@ -349,8 +349,8 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `name` |  |
+| `description` | Description of the region |
+| `name` | Name of the region |
 
 Operations: list, load.
 
@@ -398,21 +398,21 @@ Create an instance: `const compendium_entry = client.CompendiumEntry()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `common_locations` | `any[]` |  |
-| `cooking_effect` | `string` |  |
+| `category` | `string` | Category of the entry |
+| `common_locations` | `any[]` | Common locations where this entry can be found |
+| `cooking_effect` | `string` | Cooking effect for food/material entries |
 | `creatures` | `any[]` |  |
-| `description` | `string` |  |
-| `dlc` | `boolean` |  |
-| `drops` | `any[]` |  |
-| `edible` | `boolean` |  |
+| `description` | `string` | Detailed description of the entry |
+| `dlc` | `boolean` | Whether this entry is part of DLC content |
+| `drops` | `any[]` | Items that can be dropped by this entry |
+| `edible` | `boolean` | Whether this item is edible |
 | `equipment` | `any[]` |  |
-| `hearts_recovered` | `number` |  |
-| `id` | `number` |  |
-| `image` | `string` |  |
+| `hearts_recovered` | `number` | Hearts recovered when consuming this item |
+| `id` | `number` | Unique identifier for the entry |
+| `image` | `string` | URL to the entry's image |
 | `materials` | `any[]` |  |
 | `monsters` | `any[]` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the entry |
 | `treasure` | `any[]` |  |
 
 #### Example: Load
@@ -436,17 +436,17 @@ Create an instance: `const master_mode = client.MasterMode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `common_locations` | `any[]` |  |
-| `cooking_effect` | `string` |  |
-| `description` | `string` |  |
-| `dlc` | `boolean` |  |
-| `drops` | `any[]` |  |
-| `edible` | `boolean` |  |
-| `hearts_recovered` | `number` |  |
-| `id` | `number` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
+| `category` | `string` | Category of the entry |
+| `common_locations` | `any[]` | Common locations where this entry can be found |
+| `cooking_effect` | `string` | Cooking effect for food/material entries |
+| `description` | `string` | Detailed description of the entry |
+| `dlc` | `boolean` | Whether this entry is part of DLC content |
+| `drops` | `any[]` | Items that can be dropped by this entry |
+| `edible` | `boolean` | Whether this item is edible |
+| `hearts_recovered` | `number` | Hearts recovered when consuming this item |
+| `id` | `number` | Unique identifier for the entry |
+| `image` | `string` | URL to the entry's image |
+| `name` | `string` | Name of the entry |
 
 #### Example: Load
 
@@ -470,8 +470,8 @@ Create an instance: `const region = client.Region()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | Description of the region |
+| `name` | `string` | Name of the region |
 
 #### Example: Load
 

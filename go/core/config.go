@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "HyruleCompendium",
+			"slug": "hyrule-compendium",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -92,14 +95,17 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "category",
 						"req": true,
+						"short": "Category of the entry",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "common_locations",
+						"short": "Common locations where this entry can be found",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "cooking_effect",
+						"short": "Cooking effect for food/material entries",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -108,18 +114,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the entry",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "dlc",
+						"short": "Whether this entry is part of DLC content",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "drops",
+						"short": "Items that can be dropped by this entry",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "edible",
+						"short": "Whether this item is edible",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
@@ -128,15 +138,18 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "hearts_recovered",
+						"short": "Hearts recovered when consuming this item",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the entry",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the entry's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -150,6 +163,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "Name of the entry",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -264,48 +278,59 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "category",
 						"req": true,
+						"short": "Category of the entry",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "common_locations",
+						"short": "Common locations where this entry can be found",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "cooking_effect",
+						"short": "Cooking effect for food/material entries",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the entry",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "dlc",
+						"short": "Whether this entry is part of DLC content",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "drops",
+						"short": "Items that can be dropped by this entry",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "edible",
+						"short": "Whether this item is edible",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "hearts_recovered",
+						"short": "Hearts recovered when consuming this item",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the entry",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the entry's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "Name of the entry",
 						"type": "`$STRING`",
 					},
 				},
@@ -360,10 +385,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the region",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the region",
 						"type": "`$STRING`",
 					},
 				},

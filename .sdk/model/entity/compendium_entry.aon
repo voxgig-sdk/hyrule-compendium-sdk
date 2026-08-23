@@ -8,16 +8,19 @@ main: kit: entity: compendium_entry: {
     {
       name: "category"
       req: true
+      short: "Category of the entry"
       type: "`$STRING`"
     }
     {
       name: "common_locations"
       req: false
+      short: "Common locations where this entry can be found"
       type: "`$ARRAY`"
     }
     {
       name: "cooking_effect"
       req: false
+      short: "Cooking effect for food/material entries"
       type: "`$STRING`"
     }
     {
@@ -28,21 +31,25 @@ main: kit: entity: compendium_entry: {
     {
       name: "description"
       req: false
+      short: "Detailed description of the entry"
       type: "`$STRING`"
     }
     {
       name: "dlc"
       req: false
+      short: "Whether this entry is part of DLC content"
       type: "`$BOOLEAN`"
     }
     {
       name: "drops"
       req: false
+      short: "Items that can be dropped by this entry"
       type: "`$ARRAY`"
     }
     {
       name: "edible"
       req: false
+      short: "Whether this item is edible"
       type: "`$BOOLEAN`"
     }
     {
@@ -53,16 +60,19 @@ main: kit: entity: compendium_entry: {
     {
       name: "hearts_recovered"
       req: false
+      short: "Hearts recovered when consuming this item"
       type: "`$NUMBER`"
     }
     {
       name: "id"
       req: true
+      short: "Unique identifier for the entry"
       type: "`$INTEGER`"
     }
     {
       name: "image"
       req: false
+      short: "URL to the entry's image"
       type: "`$STRING`"
     }
     {
@@ -78,6 +88,7 @@ main: kit: entity: compendium_entry: {
     {
       name: "name"
       req: true
+      short: "Name of the entry"
       type: "`$STRING`"
     }
     {

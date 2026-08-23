@@ -154,21 +154,21 @@ local compendium_entry = client:CompendiumEntry(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | Yes |  |
-| `common_locations` | `table` | No |  |
-| `cooking_effect` | `string` | No |  |
+| `category` | `string` | Yes | Category of the entry |
+| `common_locations` | `table` | No | Common locations where this entry can be found |
+| `cooking_effect` | `string` | No | Cooking effect for food/material entries |
 | `creatures` | `table` | No |  |
-| `description` | `string` | No |  |
-| `dlc` | `boolean` | No |  |
-| `drops` | `table` | No |  |
-| `edible` | `boolean` | No |  |
+| `description` | `string` | No | Detailed description of the entry |
+| `dlc` | `boolean` | No | Whether this entry is part of DLC content |
+| `drops` | `table` | No | Items that can be dropped by this entry |
+| `edible` | `boolean` | No | Whether this item is edible |
 | `equipment` | `table` | No |  |
-| `hearts_recovered` | `number` | No |  |
-| `id` | `number` | Yes |  |
-| `image` | `string` | No |  |
+| `hearts_recovered` | `number` | No | Hearts recovered when consuming this item |
+| `id` | `number` | Yes | Unique identifier for the entry |
+| `image` | `string` | No | URL to the entry's image |
 | `materials` | `table` | No |  |
 | `monsters` | `table` | No |  |
-| `name` | `string` | Yes |  |
+| `name` | `string` | Yes | Name of the entry |
 | `treasure` | `table` | No |  |
 
 ### Operations
@@ -221,17 +221,17 @@ local master_mode = client:MasterMode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | Yes |  |
-| `common_locations` | `table` | No |  |
-| `cooking_effect` | `string` | No |  |
-| `description` | `string` | No |  |
-| `dlc` | `boolean` | No |  |
-| `drops` | `table` | No |  |
-| `edible` | `boolean` | No |  |
-| `hearts_recovered` | `number` | No |  |
-| `id` | `number` | Yes |  |
-| `image` | `string` | No |  |
-| `name` | `string` | Yes |  |
+| `category` | `string` | Yes | Category of the entry |
+| `common_locations` | `table` | No | Common locations where this entry can be found |
+| `cooking_effect` | `string` | No | Cooking effect for food/material entries |
+| `description` | `string` | No | Detailed description of the entry |
+| `dlc` | `boolean` | No | Whether this entry is part of DLC content |
+| `drops` | `table` | No | Items that can be dropped by this entry |
+| `edible` | `boolean` | No | Whether this item is edible |
+| `hearts_recovered` | `number` | No | Hearts recovered when consuming this item |
+| `id` | `number` | Yes | Unique identifier for the entry |
+| `image` | `string` | No | URL to the entry's image |
+| `name` | `string` | Yes | Name of the entry |
 
 ### Operations
 
@@ -283,8 +283,8 @@ local region = client:Region(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Description of the region |
+| `name` | `string` | No | Name of the region |
 
 ### Operations
 

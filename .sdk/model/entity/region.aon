@@ -8,11 +8,13 @@ main: kit: entity: region: {
     {
       name: "description"
       req: false
+      short: "Description of the region"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "Name of the region"
       type: "`$STRING`"
     }
   ]

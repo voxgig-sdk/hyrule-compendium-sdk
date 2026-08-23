@@ -150,21 +150,21 @@ compendium_entry = client.CompendiumEntry()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `str` | Yes |  |
-| `common_locations` | `list` | No |  |
-| `cooking_effect` | `str` | No |  |
+| `category` | `str` | Yes | Category of the entry |
+| `common_locations` | `list` | No | Common locations where this entry can be found |
+| `cooking_effect` | `str` | No | Cooking effect for food/material entries |
 | `creatures` | `list` | No |  |
-| `description` | `str` | No |  |
-| `dlc` | `bool` | No |  |
-| `drops` | `list` | No |  |
-| `edible` | `bool` | No |  |
+| `description` | `str` | No | Detailed description of the entry |
+| `dlc` | `bool` | No | Whether this entry is part of DLC content |
+| `drops` | `list` | No | Items that can be dropped by this entry |
+| `edible` | `bool` | No | Whether this item is edible |
 | `equipment` | `list` | No |  |
-| `hearts_recovered` | `float` | No |  |
-| `id` | `int` | Yes |  |
-| `image` | `str` | No |  |
+| `hearts_recovered` | `float` | No | Hearts recovered when consuming this item |
+| `id` | `int` | Yes | Unique identifier for the entry |
+| `image` | `str` | No | URL to the entry's image |
 | `materials` | `list` | No |  |
 | `monsters` | `list` | No |  |
-| `name` | `str` | Yes |  |
+| `name` | `str` | Yes | Name of the entry |
 | `treasure` | `list` | No |  |
 
 ### Operations
@@ -216,17 +216,17 @@ master_mode = client.MasterMode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `str` | Yes |  |
-| `common_locations` | `list` | No |  |
-| `cooking_effect` | `str` | No |  |
-| `description` | `str` | No |  |
-| `dlc` | `bool` | No |  |
-| `drops` | `list` | No |  |
-| `edible` | `bool` | No |  |
-| `hearts_recovered` | `float` | No |  |
-| `id` | `int` | Yes |  |
-| `image` | `str` | No |  |
-| `name` | `str` | Yes |  |
+| `category` | `str` | Yes | Category of the entry |
+| `common_locations` | `list` | No | Common locations where this entry can be found |
+| `cooking_effect` | `str` | No | Cooking effect for food/material entries |
+| `description` | `str` | No | Detailed description of the entry |
+| `dlc` | `bool` | No | Whether this entry is part of DLC content |
+| `drops` | `list` | No | Items that can be dropped by this entry |
+| `edible` | `bool` | No | Whether this item is edible |
+| `hearts_recovered` | `float` | No | Hearts recovered when consuming this item |
+| `id` | `int` | Yes | Unique identifier for the entry |
+| `image` | `str` | No | URL to the entry's image |
+| `name` | `str` | Yes | Name of the entry |
 
 ### Operations
 
@@ -277,8 +277,8 @@ region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `name` | `str` | No |  |
+| `description` | `str` | No | Description of the region |
+| `name` | `str` | No | Name of the region |
 
 ### Operations
 

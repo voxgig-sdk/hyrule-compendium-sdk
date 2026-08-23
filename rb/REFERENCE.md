@@ -157,21 +157,21 @@ compendium_entry = client.CompendiumEntry
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `String` | Yes |  |
-| `common_locations` | `Array` | No |  |
-| `cooking_effect` | `String` | No |  |
+| `category` | `String` | Yes | Category of the entry |
+| `common_locations` | `Array` | No | Common locations where this entry can be found |
+| `cooking_effect` | `String` | No | Cooking effect for food/material entries |
 | `creatures` | `Array` | No |  |
-| `description` | `String` | No |  |
-| `dlc` | `Boolean` | No |  |
-| `drops` | `Array` | No |  |
-| `edible` | `Boolean` | No |  |
+| `description` | `String` | No | Detailed description of the entry |
+| `dlc` | `Boolean` | No | Whether this entry is part of DLC content |
+| `drops` | `Array` | No | Items that can be dropped by this entry |
+| `edible` | `Boolean` | No | Whether this item is edible |
 | `equipment` | `Array` | No |  |
-| `hearts_recovered` | `Float` | No |  |
-| `id` | `Integer` | Yes |  |
-| `image` | `String` | No |  |
+| `hearts_recovered` | `Float` | No | Hearts recovered when consuming this item |
+| `id` | `Integer` | Yes | Unique identifier for the entry |
+| `image` | `String` | No | URL to the entry's image |
 | `materials` | `Array` | No |  |
 | `monsters` | `Array` | No |  |
-| `name` | `String` | Yes |  |
+| `name` | `String` | Yes | Name of the entry |
 | `treasure` | `Array` | No |  |
 
 ### Operations
@@ -224,17 +224,17 @@ master_mode = client.MasterMode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `String` | Yes |  |
-| `common_locations` | `Array` | No |  |
-| `cooking_effect` | `String` | No |  |
-| `description` | `String` | No |  |
-| `dlc` | `Boolean` | No |  |
-| `drops` | `Array` | No |  |
-| `edible` | `Boolean` | No |  |
-| `hearts_recovered` | `Float` | No |  |
-| `id` | `Integer` | Yes |  |
-| `image` | `String` | No |  |
-| `name` | `String` | Yes |  |
+| `category` | `String` | Yes | Category of the entry |
+| `common_locations` | `Array` | No | Common locations where this entry can be found |
+| `cooking_effect` | `String` | No | Cooking effect for food/material entries |
+| `description` | `String` | No | Detailed description of the entry |
+| `dlc` | `Boolean` | No | Whether this entry is part of DLC content |
+| `drops` | `Array` | No | Items that can be dropped by this entry |
+| `edible` | `Boolean` | No | Whether this item is edible |
+| `hearts_recovered` | `Float` | No | Hearts recovered when consuming this item |
+| `id` | `Integer` | Yes | Unique identifier for the entry |
+| `image` | `String` | No | URL to the entry's image |
+| `name` | `String` | Yes | Name of the entry |
 
 ### Operations
 
@@ -286,8 +286,8 @@ region = client.Region
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `name` | `String` | No |  |
+| `description` | `String` | No | Description of the region |
+| `name` | `String` | No | Name of the region |
 
 ### Operations
 

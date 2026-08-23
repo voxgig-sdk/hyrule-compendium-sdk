@@ -99,18 +99,21 @@
               "active": true,
               "name": "category",
               "req": true,
+              "short": "Category of the entry",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "common_locations",
               "req": false,
+              "short": "Common locations where this entry can be found",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "cooking_effect",
               "req": false,
+              "short": "Cooking effect for food/material entries",
               "type": "`$STRING`"
             },
             {
@@ -123,24 +126,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the entry",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "dlc",
               "req": false,
+              "short": "Whether this entry is part of DLC content",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "drops",
               "req": false,
+              "short": "Items that can be dropped by this entry",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "edible",
               "req": false,
+              "short": "Whether this item is edible",
               "type": "`$BOOLEAN`"
             },
             {
@@ -153,18 +160,21 @@
               "active": true,
               "name": "hearts_recovered",
               "req": false,
+              "short": "Hearts recovered when consuming this item",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for the entry",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the entry's image",
               "type": "`$STRING`"
             },
             {
@@ -183,6 +193,7 @@
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Name of the entry",
               "type": "`$STRING`"
             },
             {
@@ -313,66 +324,77 @@
               "active": true,
               "name": "category",
               "req": true,
+              "short": "Category of the entry",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "common_locations",
               "req": false,
+              "short": "Common locations where this entry can be found",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "cooking_effect",
               "req": false,
+              "short": "Cooking effect for food/material entries",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the entry",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "dlc",
               "req": false,
+              "short": "Whether this entry is part of DLC content",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "drops",
               "req": false,
+              "short": "Items that can be dropped by this entry",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "edible",
               "req": false,
+              "short": "Whether this item is edible",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "hearts_recovered",
               "req": false,
+              "short": "Hearts recovered when consuming this item",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for the entry",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the entry's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Name of the entry",
               "type": "`$STRING`"
             }
           ],
@@ -439,12 +461,14 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the region",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the region",
               "type": "`$STRING`"
             }
           ],

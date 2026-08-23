@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "HyruleCompendium",
+            "slug": "hyrule-compendium",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -109,14 +112,17 @@ def make_config():
           {
             "name": "category",
             "req": True,
+            "short": "Category of the entry",
             "type": "`$STRING`",
           },
           {
             "name": "common_locations",
+            "short": "Common locations where this entry can be found",
             "type": "`$ARRAY`",
           },
           {
             "name": "cooking_effect",
+            "short": "Cooking effect for food/material entries",
             "type": "`$STRING`",
           },
           {
@@ -125,18 +131,22 @@ def make_config():
           },
           {
             "name": "description",
+            "short": "Detailed description of the entry",
             "type": "`$STRING`",
           },
           {
             "name": "dlc",
+            "short": "Whether this entry is part of DLC content",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "drops",
+            "short": "Items that can be dropped by this entry",
             "type": "`$ARRAY`",
           },
           {
             "name": "edible",
+            "short": "Whether this item is edible",
             "type": "`$BOOLEAN`",
           },
           {
@@ -145,15 +155,18 @@ def make_config():
           },
           {
             "name": "hearts_recovered",
+            "short": "Hearts recovered when consuming this item",
             "type": "`$NUMBER`",
           },
           {
             "name": "id",
             "req": True,
+            "short": "Unique identifier for the entry",
             "type": "`$INTEGER`",
           },
           {
             "name": "image",
+            "short": "URL to the entry's image",
             "type": "`$STRING`",
           },
           {
@@ -167,6 +180,7 @@ def make_config():
           {
             "name": "name",
             "req": True,
+            "short": "Name of the entry",
             "type": "`$STRING`",
           },
           {
@@ -281,48 +295,59 @@ def make_config():
           {
             "name": "category",
             "req": True,
+            "short": "Category of the entry",
             "type": "`$STRING`",
           },
           {
             "name": "common_locations",
+            "short": "Common locations where this entry can be found",
             "type": "`$ARRAY`",
           },
           {
             "name": "cooking_effect",
+            "short": "Cooking effect for food/material entries",
             "type": "`$STRING`",
           },
           {
             "name": "description",
+            "short": "Detailed description of the entry",
             "type": "`$STRING`",
           },
           {
             "name": "dlc",
+            "short": "Whether this entry is part of DLC content",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "drops",
+            "short": "Items that can be dropped by this entry",
             "type": "`$ARRAY`",
           },
           {
             "name": "edible",
+            "short": "Whether this item is edible",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "hearts_recovered",
+            "short": "Hearts recovered when consuming this item",
             "type": "`$NUMBER`",
           },
           {
             "name": "id",
             "req": True,
+            "short": "Unique identifier for the entry",
             "type": "`$INTEGER`",
           },
           {
             "name": "image",
+            "short": "URL to the entry's image",
             "type": "`$STRING`",
           },
           {
             "name": "name",
             "req": True,
+            "short": "Name of the entry",
             "type": "`$STRING`",
           },
         ],
@@ -377,10 +402,12 @@ def make_config():
         "fields": [
           {
             "name": "description",
+            "short": "Description of the region",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "short": "Name of the region",
             "type": "`$STRING`",
           },
         ],

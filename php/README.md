@@ -261,21 +261,21 @@ API path: `/category/{category}`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `common_locations` |  |
-| `cooking_effect` |  |
+| `category` | Category of the entry |
+| `common_locations` | Common locations where this entry can be found |
+| `cooking_effect` | Cooking effect for food/material entries |
 | `creatures` |  |
-| `description` |  |
-| `dlc` |  |
-| `drops` |  |
-| `edible` |  |
+| `description` | Detailed description of the entry |
+| `dlc` | Whether this entry is part of DLC content |
+| `drops` | Items that can be dropped by this entry |
+| `edible` | Whether this item is edible |
 | `equipment` |  |
-| `hearts_recovered` |  |
-| `id` |  |
-| `image` |  |
+| `hearts_recovered` | Hearts recovered when consuming this item |
+| `id` | Unique identifier for the entry |
+| `image` | URL to the entry's image |
 | `materials` |  |
 | `monsters` |  |
-| `name` |  |
+| `name` | Name of the entry |
 | `treasure` |  |
 
 Operations: Load.
@@ -286,17 +286,17 @@ API path: `/entry/{entry}/image`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `common_locations` |  |
-| `cooking_effect` |  |
-| `description` |  |
-| `dlc` |  |
-| `drops` |  |
-| `edible` |  |
-| `hearts_recovered` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
+| `category` | Category of the entry |
+| `common_locations` | Common locations where this entry can be found |
+| `cooking_effect` | Cooking effect for food/material entries |
+| `description` | Detailed description of the entry |
+| `dlc` | Whether this entry is part of DLC content |
+| `drops` | Items that can be dropped by this entry |
+| `edible` | Whether this item is edible |
+| `hearts_recovered` | Hearts recovered when consuming this item |
+| `id` | Unique identifier for the entry |
+| `image` | URL to the entry's image |
+| `name` | Name of the entry |
 
 Operations: Load.
 
@@ -306,8 +306,8 @@ API path: `/master_mode/entry/{entry}`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `name` |  |
+| `description` | Description of the region |
+| `name` | Name of the region |
 
 Operations: List, Load.
 
@@ -356,21 +356,21 @@ Create an instance: `$compendium_entry = $client->CompendiumEntry();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `common_locations` | `array` |  |
-| `cooking_effect` | `string` |  |
+| `category` | `string` | Category of the entry |
+| `common_locations` | `array` | Common locations where this entry can be found |
+| `cooking_effect` | `string` | Cooking effect for food/material entries |
 | `creatures` | `array` |  |
-| `description` | `string` |  |
-| `dlc` | `bool` |  |
-| `drops` | `array` |  |
-| `edible` | `bool` |  |
+| `description` | `string` | Detailed description of the entry |
+| `dlc` | `bool` | Whether this entry is part of DLC content |
+| `drops` | `array` | Items that can be dropped by this entry |
+| `edible` | `bool` | Whether this item is edible |
 | `equipment` | `array` |  |
-| `hearts_recovered` | `float` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
+| `hearts_recovered` | `float` | Hearts recovered when consuming this item |
+| `id` | `int` | Unique identifier for the entry |
+| `image` | `string` | URL to the entry's image |
 | `materials` | `array` |  |
 | `monsters` | `array` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the entry |
 | `treasure` | `array` |  |
 
 #### Example: Load
@@ -395,17 +395,17 @@ Create an instance: `$master_mode = $client->MasterMode();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `common_locations` | `array` |  |
-| `cooking_effect` | `string` |  |
-| `description` | `string` |  |
-| `dlc` | `bool` |  |
-| `drops` | `array` |  |
-| `edible` | `bool` |  |
-| `hearts_recovered` | `float` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
+| `category` | `string` | Category of the entry |
+| `common_locations` | `array` | Common locations where this entry can be found |
+| `cooking_effect` | `string` | Cooking effect for food/material entries |
+| `description` | `string` | Detailed description of the entry |
+| `dlc` | `bool` | Whether this entry is part of DLC content |
+| `drops` | `array` | Items that can be dropped by this entry |
+| `edible` | `bool` | Whether this item is edible |
+| `hearts_recovered` | `float` | Hearts recovered when consuming this item |
+| `id` | `int` | Unique identifier for the entry |
+| `image` | `string` | URL to the entry's image |
+| `name` | `string` | Name of the entry |
 
 #### Example: Load
 
@@ -430,8 +430,8 @@ Create an instance: `$region = $client->Region();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | Description of the region |
+| `name` | `string` | Name of the region |
 
 #### Example: Load
 
