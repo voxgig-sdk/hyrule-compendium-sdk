@@ -48,9 +48,13 @@ class CategoryEntityTest extends TestCase
 
         // LOAD
         $category_ref01_ent = $client->Category(null);
-        $category_ref01_match_dt0 = [];
+        $category_ref01_match_dt0 = [
+            "id" => $category_ref01_data["id"],
+        ];
         $category_ref01_data_dt0_loaded = $category_ref01_ent->load($category_ref01_match_dt0, null);
-        $this->assertNotNull($category_ref01_data_dt0_loaded);
+        $category_ref01_data_dt0_load_result = Helpers::to_map(is_object($category_ref01_data_dt0_loaded) && method_exists($category_ref01_data_dt0_loaded, 'data_get') ? $category_ref01_data_dt0_loaded->data_get() : $category_ref01_data_dt0_loaded);
+        $this->assertNotNull($category_ref01_data_dt0_load_result);
+        $this->assertEquals($category_ref01_data_dt0_load_result["id"], $category_ref01_data["id"]);
 
     }
 }

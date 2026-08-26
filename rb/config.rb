@@ -28,6 +28,7 @@ module HyruleCompendiumConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -48,6 +49,10 @@ module HyruleCompendiumConfig
             {
               "name" => "data",
               "type" => "`$ARRAY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
           ],
           "name" => "category",
@@ -394,6 +399,10 @@ module HyruleCompendiumConfig
             {
               "name" => "description",
               "short" => "Description of the region",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

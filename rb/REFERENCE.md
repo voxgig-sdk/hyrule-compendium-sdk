@@ -106,6 +106,7 @@ category = client.Category
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `Array` | No |  |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -287,6 +288,7 @@ region = client.Region
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `String` | No | Description of the region |
+| `id` | `String` | No |  |
 | `name` | `String` | No | Name of the region |
 
 ### Operations

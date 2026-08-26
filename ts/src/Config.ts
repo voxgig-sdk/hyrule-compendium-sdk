@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -77,6 +78,10 @@ class Config {
         {
           "name": "data",
           "type": "`$ARRAY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         }
       ],
       "name": "category",
@@ -423,6 +428,10 @@ class Config {
         {
           "name": "description",
           "short": "Description of the region",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {

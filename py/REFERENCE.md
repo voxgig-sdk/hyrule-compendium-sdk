@@ -100,6 +100,7 @@ category = client.Category()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `list` | No |  |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -278,6 +279,7 @@ region = client.Region()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `str` | No | Description of the region |
+| `id` | `str` | No |  |
 | `name` | `str` | No | Name of the region |
 
 ### Operations

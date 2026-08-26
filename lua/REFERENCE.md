@@ -103,6 +103,7 @@ local category = client:Category(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `table` | No |  |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -284,6 +285,7 @@ local region = client:Region(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No | Description of the region |
+| `id` | `string` | No |  |
 | `name` | `string` | No | Name of the region |
 
 ### Operations

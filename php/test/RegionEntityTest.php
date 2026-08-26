@@ -93,9 +93,13 @@ class RegionEntityTest extends TestCase
         $this->assertIsArray($region_ref01_list_result);
 
         // LOAD
-        $region_ref01_match_dt0 = [];
+        $region_ref01_match_dt0 = [
+            "id" => $region_ref01_data["id"],
+        ];
         $region_ref01_data_dt0_loaded = $region_ref01_ent->load($region_ref01_match_dt0, null);
-        $this->assertNotNull($region_ref01_data_dt0_loaded);
+        $region_ref01_data_dt0_load_result = Helpers::to_map(is_object($region_ref01_data_dt0_loaded) && method_exists($region_ref01_data_dt0_loaded, 'data_get') ? $region_ref01_data_dt0_loaded->data_get() : $region_ref01_data_dt0_loaded);
+        $this->assertNotNull($region_ref01_data_dt0_load_result);
+        $this->assertEquals($region_ref01_data_dt0_load_result["id"], $region_ref01_data["id"]);
 
     }
 }

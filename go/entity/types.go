@@ -15,6 +15,7 @@ import (
 // Category is the typed data model for the category entity.
 type Category struct {
 	Data *[]any `json:"data,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // CategoryLoadMatch is the typed request payload for Category.LoadTyped.
@@ -70,6 +71,7 @@ type MasterModeLoadMatch struct {
 // Region is the typed data model for the region entity.
 type Region struct {
 	Description *string `json:"description,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -81,6 +83,7 @@ type RegionLoadMatch struct {
 // RegionListMatch is the typed request payload for Region.ListTyped.
 type RegionListMatch struct {
 	Description *string `json:"description,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 

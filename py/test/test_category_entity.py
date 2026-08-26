@@ -48,9 +48,13 @@ class TestCategoryEntity:
 
         # LOAD
         category_ref01_ent = client.Category(None)
-        category_ref01_match_dt0 = {}
+        category_ref01_match_dt0 = {
+            "id": category_ref01_data["id"],
+        }
         category_ref01_data_dt0_loaded = category_ref01_ent.load(category_ref01_match_dt0, None)
-        assert category_ref01_data_dt0_loaded is not None
+        category_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(category_ref01_data_dt0_loaded))
+        assert category_ref01_data_dt0_load_result is not None
+        assert category_ref01_data_dt0_load_result["id"] == category_ref01_data["id"]
 
 
 

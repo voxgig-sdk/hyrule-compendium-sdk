@@ -247,6 +247,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 
 Operations: Load.
 
@@ -302,6 +303,7 @@ API path: `/master_mode/entry/{entry}`
 | Field | Description |
 | --- | --- |
 | `description` | Description of the region |
+| `id` |  |
 | `name` | Name of the region |
 
 Operations: List, Load.
@@ -328,6 +330,7 @@ Create an instance: `category = client.Category()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `list` |  |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -423,6 +426,7 @@ Create an instance: `region = client.Region()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `str` | Description of the region |
+| `id` | `str` |  |
 | `name` | `str` | Name of the region |
 
 #### Example: Load

@@ -92,10 +92,14 @@ describe("RegionEntity", function()
     assert.is_table(region_ref01_list_result)
 
     -- LOAD
-    local region_ref01_match_dt0 = {}
+    local region_ref01_match_dt0 = {
+      id = region_ref01_data["id"],
+    }
     local region_ref01_data_dt0_loaded, err = region_ref01_ent:load(region_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(region_ref01_data_dt0_loaded)
+    local region_ref01_data_dt0_load_result = helpers.to_map(type(region_ref01_data_dt0_loaded) == 'table' and region_ref01_data_dt0_loaded.data_get and region_ref01_data_dt0_loaded:data_get() or region_ref01_data_dt0_loaded)
+    assert.is_not_nil(region_ref01_data_dt0_load_result)
+    assert.are.equal(region_ref01_data_dt0_load_result["id"], region_ref01_data["id"])
 
   end)
 end)

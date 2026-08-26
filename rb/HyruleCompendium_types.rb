@@ -12,8 +12,12 @@
 #
 # @!attribute [rw] data
 #   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 Category = Struct.new(
   :data,
+  :id,
   keyword_init: true
 )
 
@@ -167,10 +171,14 @@ MasterModeLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 Region = Struct.new(
   :description,
+  :id,
   :name,
   keyword_init: true
 )
@@ -189,10 +197,14 @@ RegionLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 RegionListMatch = Struct.new(
   :description,
+  :id,
   :name,
   keyword_init: true
 )

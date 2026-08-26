@@ -295,6 +295,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 
 Operations: load.
 
@@ -350,6 +351,7 @@ API path: `/master_mode/entry/{entry}`
 | Field | Description |
 | --- | --- |
 | `description` | Description of the region |
+| `id` |  |
 | `name` | Name of the region |
 
 Operations: list, load.
@@ -376,6 +378,7 @@ Create an instance: `const category = client.Category()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `any[]` |  |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -471,6 +474,7 @@ Create an instance: `const region = client.Region()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` | Description of the region |
+| `id` | `string` |  |
 | `name` | `string` | Name of the region |
 
 #### Example: Load

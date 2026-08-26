@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -57,6 +58,10 @@ def make_config():
           {
             "name": "data",
             "type": "`$ARRAY`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
         ],
         "name": "category",
@@ -403,6 +408,10 @@ def make_config():
           {
             "name": "description",
             "short": "Description of the region",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

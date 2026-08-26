@@ -7,6 +7,7 @@
 
 export interface Category {
   data?: any[]
+  id?: string
 }
 
 export interface CategoryLoadMatch {
@@ -56,6 +57,7 @@ export interface MasterModeLoadMatch {
 
 export interface Region {
   description?: string
+  id?: string
   name?: string
 }
 
@@ -65,6 +67,7 @@ export interface RegionLoadMatch {
 
 export interface RegionListMatch {
   description?: string
+  id?: string
   name?: string
 }
 

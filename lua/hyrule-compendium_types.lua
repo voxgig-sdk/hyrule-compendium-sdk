@@ -8,6 +8,7 @@
 
 ---@class Category
 ---@field data? table
+---@field id? string
 
 ---@class CategoryLoadMatch
 ---@field id string
@@ -51,6 +52,7 @@
 
 ---@class Region
 ---@field description? string
+---@field id? string
 ---@field name? string
 
 ---@class RegionLoadMatch
@@ -58,6 +60,7 @@
 
 ---@class RegionListMatch
 ---@field description? string
+---@field id? string
 ---@field name? string
 
 local M = {}

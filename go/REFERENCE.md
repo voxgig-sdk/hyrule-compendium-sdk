@@ -111,6 +111,7 @@ fmt.Println(category.GetName()) // "category"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `[]any` | No |  |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -289,6 +290,7 @@ fmt.Println(region.GetName()) // "region"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No | Description of the region |
+| `id` | `string` | No |  |
 | `name` | `string` | No | Name of the region |
 
 ### Operations

@@ -18,6 +18,7 @@ from typing import TypedDict, Any
 
 class Category(TypedDict, total=False):
     data: list
+    id: str
 
 
 class CategoryLoadMatch(TypedDict):
@@ -73,6 +74,7 @@ class MasterModeLoadMatch(TypedDict):
 
 class Region(TypedDict, total=False):
     description: str
+    id: str
     name: str
 
 
@@ -82,4 +84,5 @@ class RegionLoadMatch(TypedDict):
 
 class RegionListMatch(TypedDict, total=False):
     description: str
+    id: str
     name: str

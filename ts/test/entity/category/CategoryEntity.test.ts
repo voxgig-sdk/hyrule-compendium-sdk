@@ -59,9 +59,12 @@ describe('CategoryEntity', async () => {
 
     let category_ref01_data = Object.values(setup.data.existing.category)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const category_ref01_ent = client.Category()
+    const category_ref01_match_dt0: any = {}
+    category_ref01_match_dt0.id = category_ref01_data.id
+    const category_ref01_data_dt0 = (await category_ref01_ent.load(category_ref01_match_dt0)).data()
+    assert(category_ref01_data_dt0.id === category_ref01_data.id)
 
 
   })

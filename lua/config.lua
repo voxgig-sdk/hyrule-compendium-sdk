@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -36,6 +37,10 @@ local function make_config()
           {
             ["name"] = "data",
             ["type"] = "`$ARRAY`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
         },
         ["name"] = "category",
@@ -382,6 +387,10 @@ local function make_config()
           {
             ["name"] = "description",
             ["short"] = "Description of the region",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

@@ -83,9 +83,13 @@ class RegionEntityTest < Minitest::Test
     assert region_ref01_list_result.is_a?(Array)
 
     # LOAD
-    region_ref01_match_dt0 = {}
+    region_ref01_match_dt0 = {
+      "id" => region_ref01_data["id"],
+    }
     region_ref01_data_dt0_loaded = region_ref01_ent.load(region_ref01_match_dt0, nil)
-    assert !region_ref01_data_dt0_loaded.nil?
+    region_ref01_data_dt0_load_result = Helpers.to_map(region_ref01_data_dt0_loaded.respond_to?(:data_get) ? region_ref01_data_dt0_loaded.data_get : region_ref01_data_dt0_loaded)
+    assert !region_ref01_data_dt0_load_result.nil?
+    assert_equal region_ref01_data_dt0_load_result["id"], region_ref01_data["id"]
 
   end
 end

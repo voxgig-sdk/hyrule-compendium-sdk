@@ -264,6 +264,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"data"` |  |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -319,6 +320,7 @@ API path: `/master_mode/entry/{entry}`
 | Field | Description |
 | --- | --- |
 | `"description"` | Description of the region |
+| `"id"` |  |
 | `"name"` | Name of the region |
 
 Operations: List, Load.
@@ -345,6 +347,7 @@ Create an instance: `category := client.Category(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `[]any` |  |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -452,6 +455,7 @@ Create an instance: `region := client.Region(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` | Description of the region |
+| `id` | `string` |  |
 | `name` | `string` | Name of the region |
 
 #### Example: Load

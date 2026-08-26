@@ -252,6 +252,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 
 Operations: Load.
 
@@ -307,6 +308,7 @@ API path: `/master_mode/entry/{entry}`
 | Field | Description |
 | --- | --- |
 | `description` | Description of the region |
+| `id` |  |
 | `name` | Name of the region |
 
 Operations: List, Load.
@@ -333,6 +335,7 @@ Create an instance: `$category = $client->Category();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `array` |  |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -431,6 +434,7 @@ Create an instance: `$region = $client->Region();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` | Description of the region |
+| `id` | `string` |  |
 | `name` | `string` | Name of the region |
 
 #### Example: Load

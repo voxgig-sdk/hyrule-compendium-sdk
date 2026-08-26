@@ -242,6 +242,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 
 Operations: Load.
 
@@ -297,6 +298,7 @@ API path: `/master_mode/entry/{entry}`
 | Field | Description |
 | --- | --- |
 | `description` | Description of the region |
+| `id` |  |
 | `name` | Name of the region |
 
 Operations: List, Load.
@@ -323,6 +325,7 @@ Create an instance: `category = client.Category`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `Array` |  |
+| `id` | `String` |  |
 
 #### Example: Load
 
@@ -421,6 +424,7 @@ Create an instance: `region = client.Region`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `String` | Description of the region |
+| `id` | `String` |  |
 | `name` | `String` | Name of the region |
 
 #### Example: Load

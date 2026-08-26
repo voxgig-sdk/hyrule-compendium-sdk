@@ -16,6 +16,7 @@ declare(strict_types=1);
 class Category
 {
     public ?array $data = null;
+    public ?string $id = null;
 }
 
 /** Request payload for Category#load. */
@@ -77,6 +78,7 @@ class MasterModeLoadMatch
 class Region
 {
     public ?string $description = null;
+    public ?string $id = null;
     public ?string $name = null;
 }
 
@@ -90,6 +92,7 @@ class RegionLoadMatch
 class RegionListMatch
 {
     public ?string $description = null;
+    public ?string $id = null;
     public ?string $name = null;
 }
 

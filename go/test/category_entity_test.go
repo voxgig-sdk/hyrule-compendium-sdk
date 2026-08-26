@@ -61,13 +61,19 @@ func TestCategoryEntity(t *testing.T) {
 
 		// LOAD
 		categoryRef01Ent := client.Category(nil)
-		categoryRef01MatchDt0 := map[string]any{}
+		categoryRef01MatchDt0 := map[string]any{
+			"id": categoryRef01Data["id"],
+		}
 		categoryRef01DataDt0Loaded, err := categoryRef01Ent.Load(categoryRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if categoryRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		categoryRef01DataDt0LoadResult := core.ToMapAny(entityData(categoryRef01DataDt0Loaded))
+		if categoryRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if categoryRef01DataDt0LoadResult["id"] != categoryRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

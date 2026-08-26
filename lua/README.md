@@ -233,6 +233,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 
 Operations: Load.
 
@@ -288,6 +289,7 @@ API path: `/master_mode/entry/{entry}`
 | Field | Description |
 | --- | --- |
 | `description` | Description of the region |
+| `id` |  |
 | `name` | Name of the region |
 
 Operations: List, Load.
@@ -314,6 +316,7 @@ Create an instance: `local category = client:Category(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `table` |  |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -409,6 +412,7 @@ Create an instance: `local region = client:Region(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` | Description of the region |
+| `id` | `string` |  |
 | `name` | `string` | Name of the region |
 
 #### Example: Load

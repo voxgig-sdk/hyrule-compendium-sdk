@@ -41,9 +41,13 @@ class CategoryEntityTest < Minitest::Test
 
     # LOAD
     category_ref01_ent = client.Category(nil)
-    category_ref01_match_dt0 = {}
+    category_ref01_match_dt0 = {
+      "id" => category_ref01_data["id"],
+    }
     category_ref01_data_dt0_loaded = category_ref01_ent.load(category_ref01_match_dt0, nil)
-    assert !category_ref01_data_dt0_loaded.nil?
+    category_ref01_data_dt0_load_result = Helpers.to_map(category_ref01_data_dt0_loaded.respond_to?(:data_get) ? category_ref01_data_dt0_loaded.data_get : category_ref01_data_dt0_loaded)
+    assert !category_ref01_data_dt0_load_result.nil?
+    assert_equal category_ref01_data_dt0_load_result["id"], category_ref01_data["id"]
 
   end
 end

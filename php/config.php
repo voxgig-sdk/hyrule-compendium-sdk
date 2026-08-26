@@ -42,6 +42,7 @@ class HyruleCompendiumConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -62,6 +63,10 @@ class HyruleCompendiumConfig
             [
               'name' => 'data',
               'type' => '`$ARRAY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
           ],
           'name' => 'category',
@@ -408,6 +413,10 @@ class HyruleCompendiumConfig
             [
               'name' => 'description',
               'short' => 'Description of the region',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

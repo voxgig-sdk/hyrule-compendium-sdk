@@ -153,6 +153,7 @@ const category = client.Category()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `any[]` | No |  |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -328,6 +329,7 @@ const region = client.Region()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No | Description of the region |
+| `id` | `string` | No |  |
 | `name` | `string` | No | Name of the region |
 
 ### Operations
