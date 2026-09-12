@@ -37,8 +37,10 @@ main: kit: entity: region: {
         {
           method: "GET"
           orig: "/regions"
-          parts: [
-            "regions"
+          segments: [
+            {
+              lit: "regions"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -65,15 +67,19 @@ main: kit: entity: region: {
           }
           method: "GET"
           orig: "/region/{region}"
-          parts: [
-            "region"
-            "{id}"
-          ]
           rename: {
             param: {
               region: "id"
             }
           }
+          segments: [
+            {
+              lit: "region"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

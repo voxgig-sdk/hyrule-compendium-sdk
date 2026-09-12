@@ -1,0 +1,57 @@
+export interface Category {
+    data?: any[];
+    id?: string;
+}
+export interface CategoryLoadMatch {
+    id: string;
+}
+export interface CompendiumEntry {
+    category: string;
+    common_locations?: any[];
+    cooking_effect?: string;
+    creatures?: any[];
+    description?: string;
+    dlc?: boolean;
+    drops?: any[];
+    edible?: boolean;
+    equipment?: any[];
+    hearts_recovered?: number;
+    id: number;
+    image?: string;
+    materials?: any[];
+    monsters?: any[];
+    name: string;
+    treasure?: any[];
+}
+export interface CompendiumEntryLoadMatch {
+    id: string;
+}
+export interface MasterMode {
+    category: string;
+    common_locations?: any[];
+    cooking_effect?: string;
+    description?: string;
+    dlc?: boolean;
+    drops?: any[];
+    edible?: boolean;
+    hearts_recovered?: number;
+    id: number;
+    image?: string;
+    name: string;
+}
+export interface MasterModeLoadMatch {
+    entry: any;
+}
+export interface Region {
+    description?: string;
+    id?: string;
+    name?: string;
+}
+export interface RegionLoadMatch {
+    id: string;
+}
+export interface RegionListMatch {
+    description?: string;
+    id?: string;
+    name?: string;
+}

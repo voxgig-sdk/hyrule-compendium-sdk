@@ -55,6 +55,10 @@ module HyruleCompendiumConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "category",
           "op" => {
             "load" => {
@@ -77,15 +81,19 @@ module HyruleCompendiumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/category/{category}",
-                  "parts" => [
-                    "category",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "category" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "category",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -95,6 +103,10 @@ module HyruleCompendiumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "category",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -161,6 +173,7 @@ module HyruleCompendiumConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the entry's image",
               "type" => "`$STRING`",
@@ -184,6 +197,10 @@ module HyruleCompendiumConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "compendium_entry",
           "op" => {
             "load" => {
@@ -206,16 +223,22 @@ module HyruleCompendiumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/entry/{entry}/image",
-                  "parts" => [
-                    "entry",
-                    "{entry_id}",
-                    "image",
-                  ],
                   "rename" => {
                     "param" => {
                       "entry" => "entry_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "entry",
+                    },
+                    {
+                      "var" => "entry_id",
+                    },
+                    {
+                      "lit" => "image",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "entry_id",
@@ -225,6 +248,11 @@ module HyruleCompendiumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "entry",
+                    "{entry_id}",
+                    "image",
+                  ],
                 },
                 {
                   "args" => {
@@ -242,15 +270,19 @@ module HyruleCompendiumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/entry/{entry}",
-                  "parts" => [
-                    "entry",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "entry" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "entry",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -260,20 +292,29 @@ module HyruleCompendiumConfig
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "entry",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/all",
-                  "parts" => [
-                    "all",
+                  "segments" => [
+                    {
+                      "lit" => "all",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "all",
+                  ],
                 },
               ],
             },
@@ -336,6 +377,7 @@ module HyruleCompendiumConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the entry's image",
               "type" => "`$STRING`",
@@ -347,6 +389,10 @@ module HyruleCompendiumConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "master_mode",
           "op" => {
             "load" => {
@@ -368,10 +414,16 @@ module HyruleCompendiumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/master_mode/entry/{entry}",
-                  "parts" => [
-                    "master_mode",
-                    "entry",
-                    "{entry}",
+                  "segments" => [
+                    {
+                      "lit" => "master_mode",
+                    },
+                    {
+                      "lit" => "entry",
+                    },
+                    {
+                      "var" => "entry",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -382,6 +434,11 @@ module HyruleCompendiumConfig
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "master_mode",
+                    "entry",
+                    "{entry}",
+                  ],
                 },
               ],
             },
@@ -411,6 +468,10 @@ module HyruleCompendiumConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "region",
           "op" => {
             "list" => {
@@ -422,14 +483,19 @@ module HyruleCompendiumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/regions",
-                  "parts" => [
-                    "regions",
+                  "segments" => [
+                    {
+                      "lit" => "regions",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "regions",
+                  ],
                 },
               ],
             },
@@ -453,15 +519,19 @@ module HyruleCompendiumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/region/{region}",
-                  "parts" => [
-                    "region",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "region" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "region",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -471,6 +541,10 @@ module HyruleCompendiumConfig
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "region",
+                    "{id}",
+                  ],
                 },
               ],
             },

@@ -60,6 +60,7 @@ main: kit: entity: master_mode: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the entry's image"
@@ -97,10 +98,16 @@ main: kit: entity: master_mode: {
           }
           method: "GET"
           orig: "/master_mode/entry/{entry}"
-          parts: [
-            "master_mode"
-            "entry"
-            "{entry}"
+          segments: [
+            {
+              lit: "master_mode"
+            }
+            {
+              lit: "entry"
+            }
+            {
+              var: "entry"
+            }
           ]
           select: {
             exist: [

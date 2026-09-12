@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -84,6 +95,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "category",
       "op": {
         "load": {
@@ -106,15 +121,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/category/{category}",
-              "parts": [
-                "category",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "category": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "category"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -123,7 +142,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "category",
+                "{id}"
+              ]
             }
           ]
         }
@@ -190,6 +213,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uri",
           "name": "image",
           "short": "URL to the entry's image",
           "type": "`$STRING`"
@@ -213,6 +237,10 @@ class Config {
           "type": "`$ARRAY`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "compendium_entry",
       "op": {
         "load": {
@@ -235,16 +263,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/entry/{entry}/image",
-              "parts": [
-                "entry",
-                "{entry_id}",
-                "image"
-              ],
               "rename": {
                 "param": {
                   "entry": "entry_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "entry"
+                },
+                {
+                  "var": "entry_id"
+                },
+                {
+                  "lit": "image"
+                }
+              ],
               "select": {
                 "exist": [
                   "entry_id"
@@ -253,7 +287,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "entry",
+                "{entry_id}",
+                "image"
+              ]
             },
             {
               "args": {
@@ -271,15 +310,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/entry/{entry}",
-              "parts": [
-                "entry",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "entry": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "entry"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -288,21 +331,30 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "entry",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/all",
-              "parts": [
-                "all"
+              "segments": [
+                {
+                  "lit": "all"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "all"
+              ]
             }
           ]
         }
@@ -365,6 +417,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uri",
           "name": "image",
           "short": "URL to the entry's image",
           "type": "`$STRING`"
@@ -376,6 +429,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "master_mode",
       "op": {
         "load": {
@@ -397,10 +454,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/master_mode/entry/{entry}",
-              "parts": [
-                "master_mode",
-                "entry",
-                "{entry}"
+              "segments": [
+                {
+                  "lit": "master_mode"
+                },
+                {
+                  "lit": "entry"
+                },
+                {
+                  "var": "entry"
+                }
               ],
               "select": {
                 "exist": [
@@ -410,7 +473,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "master_mode",
+                "entry",
+                "{entry}"
+              ]
             }
           ]
         }
@@ -440,6 +508,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "region",
       "op": {
         "list": {
@@ -451,14 +523,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/regions",
-              "parts": [
-                "regions"
+              "segments": [
+                {
+                  "lit": "regions"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "regions"
+              ]
             }
           ]
         },
@@ -482,15 +559,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/region/{region}",
-              "parts": [
-                "region",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "region": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "region"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -499,7 +580,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "region",
+                "{id}"
+              ]
             }
           ]
         }
@@ -515,6 +600,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

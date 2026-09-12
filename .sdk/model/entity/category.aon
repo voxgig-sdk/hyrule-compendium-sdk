@@ -42,15 +42,19 @@ main: kit: entity: category: {
           }
           method: "GET"
           orig: "/category/{category}"
-          parts: [
-            "category"
-            "{id}"
-          ]
           rename: {
             param: {
               category: "id"
             }
           }
+          segments: [
+            {
+              lit: "category"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

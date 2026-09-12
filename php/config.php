@@ -69,6 +69,10 @@ class HyruleCompendiumConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'category',
           'op' => [
             'load' => [
@@ -91,13 +95,17 @@ class HyruleCompendiumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/category/{category}',
-                  'parts' => [
-                    'category',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'category' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'category',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -108,6 +116,10 @@ class HyruleCompendiumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'category',
+                    '{id}',
                   ],
                 ],
               ],
@@ -175,6 +187,7 @@ class HyruleCompendiumConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'uri',
               'name' => 'image',
               'short' => 'URL to the entry\'s image',
               'type' => '`$STRING`',
@@ -198,6 +211,10 @@ class HyruleCompendiumConfig
               'type' => '`$ARRAY`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'compendium_entry',
           'op' => [
             'load' => [
@@ -220,14 +237,20 @@ class HyruleCompendiumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/entry/{entry}/image',
-                  'parts' => [
-                    'entry',
-                    '{entry_id}',
-                    'image',
-                  ],
                   'rename' => [
                     'param' => [
                       'entry' => 'entry_id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'entry',
+                    ],
+                    [
+                      'var' => 'entry_id',
+                    ],
+                    [
+                      'lit' => 'image',
                     ],
                   ],
                   'select' => [
@@ -238,6 +261,11 @@ class HyruleCompendiumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'entry',
+                    '{entry_id}',
+                    'image',
                   ],
                 ],
                 [
@@ -256,13 +284,17 @@ class HyruleCompendiumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/entry/{entry}',
-                  'parts' => [
-                    'entry',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'entry' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'entry',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -274,19 +306,28 @@ class HyruleCompendiumConfig
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
                   ],
+                  'parts' => [
+                    'entry',
+                    '{id}',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/all',
-                  'parts' => [
-                    'all',
+                  'segments' => [
+                    [
+                      'lit' => 'all',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'all',
                   ],
                 ],
               ],
@@ -350,6 +391,7 @@ class HyruleCompendiumConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'uri',
               'name' => 'image',
               'short' => 'URL to the entry\'s image',
               'type' => '`$STRING`',
@@ -360,6 +402,10 @@ class HyruleCompendiumConfig
               'short' => 'Name of the entry',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'master_mode',
           'op' => [
@@ -382,10 +428,16 @@ class HyruleCompendiumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/master_mode/entry/{entry}',
-                  'parts' => [
-                    'master_mode',
-                    'entry',
-                    '{entry}',
+                  'segments' => [
+                    [
+                      'lit' => 'master_mode',
+                    ],
+                    [
+                      'lit' => 'entry',
+                    ],
+                    [
+                      'var' => 'entry',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -395,6 +447,11 @@ class HyruleCompendiumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'master_mode',
+                    'entry',
+                    '{entry}',
                   ],
                 ],
               ],
@@ -425,6 +482,10 @@ class HyruleCompendiumConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'region',
           'op' => [
             'list' => [
@@ -436,13 +497,18 @@ class HyruleCompendiumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/regions',
-                  'parts' => [
-                    'regions',
+                  'segments' => [
+                    [
+                      'lit' => 'regions',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'regions',
                   ],
                 ],
               ],
@@ -467,13 +533,17 @@ class HyruleCompendiumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/region/{region}',
-                  'parts' => [
-                    'region',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'region' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'region',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -484,6 +554,10 @@ class HyruleCompendiumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'region',
+                    '{id}',
                   ],
                 ],
               ],

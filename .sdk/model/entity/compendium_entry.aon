@@ -70,6 +70,7 @@ main: kit: entity: compendium_entry: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the entry's image"
@@ -123,16 +124,22 @@ main: kit: entity: compendium_entry: {
           }
           method: "GET"
           orig: "/entry/{entry}/image"
-          parts: [
-            "entry"
-            "{entry_id}"
-            "image"
-          ]
           rename: {
             param: {
               entry: "entry_id"
             }
           }
+          segments: [
+            {
+              lit: "entry"
+            }
+            {
+              var: "entry_id"
+            }
+            {
+              lit: "image"
+            }
+          ]
           select: {
             exist: [
               "entry_id"
@@ -158,15 +165,19 @@ main: kit: entity: compendium_entry: {
           }
           method: "GET"
           orig: "/entry/{entry}"
-          parts: [
-            "entry"
-            "{id}"
-          ]
           rename: {
             param: {
               entry: "id"
             }
           }
+          segments: [
+            {
+              lit: "entry"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -180,8 +191,10 @@ main: kit: entity: compendium_entry: {
         {
           method: "GET"
           orig: "/all"
-          parts: [
-            "all"
+          segments: [
+            {
+              lit: "all"
+            }
           ]
           transform: {
             req: "`reqdata`"
