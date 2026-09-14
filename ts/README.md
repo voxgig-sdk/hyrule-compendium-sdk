@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium'
+import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium-sdk'
 
 const client = new HyruleCompendiumSDK()
 ```
@@ -572,7 +572,7 @@ hyrule-compendium/
 Import the SDK from the package root:
 
 ```ts
-import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium'
+import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium-sdk'
 ```
 
 ### Entity state

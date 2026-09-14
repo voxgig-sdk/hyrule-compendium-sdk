@@ -105,7 +105,7 @@ local result, err = client:MasterMode():load({ entry = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
+| TypeScript | `@voxgig-sdk/hyrule-compendium-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
 | Python | `voxgig-sdk-hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
 | PHP | `voxgig-sdk/hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/hyrule-compendium-sdk/go` | `go get github.com/voxgig-sdk/hyrule-compendium-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:MasterMode():load({ entry = "example" })
 ### TypeScript
 
 ```ts
-import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium'
+import { HyruleCompendiumSDK } from '@voxgig-sdk/hyrule-compendium-sdk'
 
 const client = new HyruleCompendiumSDK()
 
