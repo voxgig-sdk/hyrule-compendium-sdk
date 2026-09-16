@@ -4,7 +4,10 @@ declare(strict_types=1);
 // HyruleCompendium SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class HyruleCompendiumFeatures
@@ -14,8 +17,14 @@ class HyruleCompendiumFeatures
         switch ($name) {
             case "base":
                 return new HyruleCompendiumBaseFeature();
+            case "ratelimit":
+                return new HyruleCompendiumRatelimitFeature();
+            case "retry":
+                return new HyruleCompendiumRetryFeature();
             case "test":
                 return new HyruleCompendiumTestFeature();
+            case "timeout":
+                return new HyruleCompendiumTimeoutFeature();
             default:
                 return new HyruleCompendiumBaseFeature();
         }
@@ -31,7 +40,10 @@ class HyruleCompendiumFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

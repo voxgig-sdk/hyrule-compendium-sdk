@@ -25,5 +25,111 @@
         "name": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /regions": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllRegions",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "description": {
+                            "description": "Description of the region",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the region",
+                            "example": "Hyrule Field",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with all regions"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /region/{region}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRegion",
+        "parameters": [
+          {
+            "description": "The name of the region (use underscores for spaces)",
+            "example": "hyrule_field",
+            "in": "path",
+            "name": "region",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "description": {
+                          "description": "Description of the region",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the region",
+                          "example": "Hyrule Field",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with region data"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Region not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

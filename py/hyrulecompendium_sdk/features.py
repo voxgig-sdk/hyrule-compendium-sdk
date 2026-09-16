@@ -1,12 +1,18 @@
 # HyruleCompendium SDK feature factory
 
 from hyrulecompendium_sdk.feature.base_feature import HyruleCompendiumBaseFeature
+from hyrulecompendium_sdk.feature.ratelimit_feature import HyruleCompendiumRatelimitFeature
+from hyrulecompendium_sdk.feature.retry_feature import HyruleCompendiumRetryFeature
 from hyrulecompendium_sdk.feature.test_feature import HyruleCompendiumTestFeature
+from hyrulecompendium_sdk.feature.timeout_feature import HyruleCompendiumTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: HyruleCompendiumBaseFeature(),
+    "ratelimit": lambda: HyruleCompendiumRatelimitFeature(),
+    "retry": lambda: HyruleCompendiumRetryFeature(),
     "test": lambda: HyruleCompendiumTestFeature(),
+    "timeout": lambda: HyruleCompendiumTimeoutFeature(),
 }
 
 

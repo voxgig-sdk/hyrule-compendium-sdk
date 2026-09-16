@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.HYRULE_COMPENDIUM_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'master_mode.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'master_mode.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "category", "req": true, "short": "Category of the entry", "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "common_locations", "req": false, "short": "Common locations where this entry can be found", "type": "`$ARRAY`", "index$": 1 }, { "active": true, "name": "cooking_effect", "req": false, "short": "Cooking effect for food/material entries", "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "description", "req": false, "short": "Detailed description of the entry", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "dlc", "req": false, "short": "Whether this entry is part of DLC content", "type": "`$BOOLEAN`", "index$": 4 }, { "active": true, "name": "drops", "req": false, "short": "Items that can be dropped by this entry", "type": "`$ARRAY`", "index$": 5 }, { "active": true, "name": "edible", "req": false, "short": "Whether this item is edible", "type": "`$BOOLEAN`", "index$": 6 }, { "active": true, "name": "hearts_recovered", "req": false, "short": "Hearts recovered when consuming this item", "type": "`$NUMBER`", "index$": 7 }, { "active": true, "name": "id", "req": true, "short": "Unique identifier for the entry", "type": "`$INTEGER`", "index$": 8 }, { "active": true, "format": "uri", "name": "image", "req": false, "short": "URL to the entry's image", "type": "`$STRING`", "index$": 9 }, { "active": true, "name": "name", "req": true, "short": "Name of the entry", "type": "`$STRING`", "index$": 10 }], "id": { "field": "id", "name": "id" }, "name": "master_mode", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "entry", "orig": "entry", "reqd": true, "type": "`$ANY`", "index$": 0 }] }, "contract": { "id": "GET /master_mode/entry/{entry}", "json": "{\"operationId\":\"getMasterModeEntry\",\"parameters\":[{\"description\":\"The name or ID of the master mode entry\",\"in\":\"path\",\"name\":\"entry\",\"required\":true,\"schema\":{\"oneOf\":[{\"type\":\"string\"},{\"type\":\"integer\"}]}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"category\":{\"description\":\"Category of the entry\",\"enum\":[\"creatures\",\"equipment\",\"materials\",\"monsters\",\"treasure\"],\"example\":\"monsters\",\"type\":\"string\"},\"common_locations\":{\"description\":\"Common locations where this entry can be found\",\"example\":[\"Hyrule Field\",\"Hebra Mountains\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"cooking_effect\":{\"description\":\"Cooking effect for food/material entries\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the entry\",\"example\":\"These fearsome monsters have lived in Hyrule since ancient times.\",\"type\":\"string\"},\"dlc\":{\"description\":\"Whether this entry is part of DLC content\",\"type\":\"boolean\"},\"drops\":{\"description\":\"Items that can be dropped by this entry\",\"example\":[\"lynel horn\",\"lynel hoof\",\"lynel guts\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"edible\":{\"description\":\"Whether this item is edible\",\"type\":\"boolean\"},\"hearts_recovered\":{\"description\":\"Hearts recovered when consuming this item\",\"type\":\"number\"},\"id\":{\"description\":\"Unique identifier for the entry\",\"example\":123,\"type\":\"integer\"},\"image\":{\"description\":\"URL to the entry's image\",\"example\":\"https://botw-compendium.herokuapp.com/api/v3/entry/white-maned_lynel/image\",\"format\":\"uri\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the entry\",\"example\":\"white-maned lynel\",\"type\":\"string\"}},\"required\":[\"id\",\"name\",\"category\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with master mode entry data\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Entry not found\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/master_mode/entry/{entry}", "segments": [{ "lit": "master_mode" }, { "lit": "entry" }, { "var": "entry" }], "select": { "exist": ["entry"] }, "transform": { "req": "`reqdata`", "res": "`body.data`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [["entry"]] }, "key$": "master_mode", "name__orig": "master_mode", "Name": "MasterMode", "name_": "master_mode", "name-": "master-mode", "NAME": "MASTER_MODE", "index$": 2 }, { "active": true, "entity": "master_mode", "key$": "BasicMasterModeFlow", "kind": "basic", "name": "BasicMasterModeFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "master_mode_ref01", "srcdatavar": "master_mode_ref01_data", "suffix": "_dt0" }, "match": { "id": "master_mode01" }, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-master_mode_ref01" } }], "index$": 0 }] }, 'MasterMode');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -103,12 +101,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID': idmap,
         'HYRULE_COMPENDIUM_TEST_LIVE': 'FALSE',
@@ -116,7 +108,13 @@ function basicSetup(extra) {
     });
     idmap = env['HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID'];
     const live = 'TRUE' === env.HYRULE_COMPENDIUM_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['HYRULE_COMPENDIUM_TEST_MASTER_MODE_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.HyruleCompendiumSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -127,7 +125,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -139,7 +138,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.HYRULE_COMPENDIUM_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;
