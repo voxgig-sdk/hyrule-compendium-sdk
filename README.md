@@ -105,12 +105,12 @@ local result, err = client:MasterMode():load({ entry = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/hyrule-compendium-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
-| Python | `voxgig-sdk-hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
-| PHP | `voxgig-sdk/hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
+| TypeScript | `@voxgig-sdk/hyrule-compendium-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/tags) |
+| Python | `voxgig-sdk-hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/tags) |
+| PHP | `voxgig-sdk/hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/hyrule-compendium-sdk/go` | `go get github.com/voxgig-sdk/hyrule-compendium-sdk/go@latest` |
-| Ruby | `voxgig-sdk-hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
-| Lua | `voxgig-sdk-hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/releases) |
+| Ruby | `voxgig-sdk-hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/tags) |
+| Lua | `voxgig-sdk-hyrule-compendium` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hyrule-compendium-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/hyrule-compendium-sdk/go-cli` | `go install github.com/voxgig-sdk/hyrule-compendium-sdk/go-cli/cmd/hyrule-compendium@latest` |
 | Go MCP server | `github.com/voxgig-sdk/hyrule-compendium-sdk/go-mcp` | `go get github.com/voxgig-sdk/hyrule-compendium-sdk/go-mcp@latest` |
 

@@ -127,18 +127,18 @@ class Config {
 
     entity: {
       
-      category: {
-      },
-
-      compendium_entry: {
-      },
-
-      master_mode: {
-      },
-
-      region: {
-      },
-
+        category: {
+        },
+  
+        compendium_entry: {
+        },
+  
+        master_mode: {
+        },
+  
+        region: {
+        },
+  
     }
   }
 
